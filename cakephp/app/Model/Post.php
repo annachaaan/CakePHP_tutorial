@@ -1,2 +1,3 @@
-class Post extends AppMpdel {
+<?php
+class Post extends AppModel {
 }
