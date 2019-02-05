@@ -109,3 +109,7 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+// ここまでデフォルト
+// https://github.com/cakephp/debug_kit
+CakePlugin::load('DebugKit');
