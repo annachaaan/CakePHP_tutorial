@@ -22,6 +22,15 @@ array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
         </td>
         <td>
             <?php
+                // postLink() を使うと、
+                // 投稿記事の削除を行う POST リクエストをするための JavaScript を使うリンクが生成される
+                echo $this->Form->postLink(
+                    'Delete',
+                    array('action' => 'delete', $post['Post']['id']),
+                    array('confirm' => 'Are you sure?')
+                );
+            ?>
+            <?php
                 echo $this->Html->link(
                     'Edit',
                     array('action' => 'edit', $post['Post']['id'])
