@@ -4,8 +4,26 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
     public function beforeFilter() {
+        // ↓ AppControllerのBeforeFilterを有効にする呪文
         parent::beforeFilter();
-        $this->Auth->allow('add');
+        // ユーザー自身によるaddとlogoutアクションを有効にしておく
+        $this->Auth->allow('add', 'logout');
+    }
+
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                // https://qiita.com/kazu56/items/a54596e963d9e2b71f2e
+                // チュートリアルでは->Auth->redirect()だったけど2.3以降は->Auth->redirectUrl()らしいので修正しておく
+                $this->redirect($this->Auth->redirectUrl());
+                } else {
+                    $this->Flash->error(__('Invalid username or password, try again'));
+                }
+            }
+    }
+
+    public function logout() {
+        $this->redirect($this->Auth->logout());
     }
 
     public function index() {
