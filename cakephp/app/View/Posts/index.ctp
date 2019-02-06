@@ -7,6 +7,7 @@
     <tr>
         <th>Id</th>
         <th>Title</th>
+        <th>Category</th>
         <th>Action</th>
         <th>Created</th>
     </tr>
@@ -20,6 +21,7 @@
             <?php echo $this->Html->link($post['Post']['title'],
 array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
         </td>
+        <td><?php echo $post['Category']['category']; ?></td>
         <td>
             <?php
                 // postLink() を使うと、
