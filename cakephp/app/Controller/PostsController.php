@@ -1,5 +1,24 @@
 <?php
+App::uses('AppController', 'Controller');
 class PostsController extends AppController {
+    public function isAuthorized($user) {
+        // 登録済ユーザーは投稿できる
+        if ($this->action === 'add') {
+           return true;
+        }
+
+        // 投稿のオーナーは編集削除ができる
+        if (in_array($this->action, array('edit', 'delete'))) {
+            $postId = (int) $this->request->params['pass'][0];
+            // isOwnedByメソッドはPost.phpに記載
+            if ($this->Post->isOwnedBy($postId, $user['id'])) {
+                return true;
+            }
+        }
+        $this->Flash->error(__('You do not have permission'));
+        return parent::isAuthorized($user);
+    }
+
     public $helpers = array('Html', 'Form');
 
     // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
@@ -40,6 +59,7 @@ class PostsController extends AppController {
         // ポストされたデータの内容をチェックするためのものではない
         if ($this->request->is('post')) {
             $this->Post->create();
+            $this->request->data['Post']['user_id'] = $this->Auth->user('id');
             if ($this->Post->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved'));
                 return $this->redirect(array('action' => 'index'));

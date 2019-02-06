@@ -42,13 +42,26 @@ class AppController extends Controller {
                 'controller' => 'users',
                 'action' => 'login'
             ),
+            'authError' => 'Did you really think you are allowed to see that?',
             'authenticate' => array(
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
                 )
-            )
+            ),
+            'authorize' => array('Controller'),
+            'unauthorizedRedirect' => '/',
         )
     );
+
+    public function isAuthorized($user) {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+
+        // デフォルトは拒否
+        return false;
+    }
 
     // beforeFilter()で、全てのコントローラにこいつが適用される
     public function beforeFilter() {
