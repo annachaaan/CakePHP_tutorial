@@ -2,9 +2,17 @@
 class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
 
+    // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
+    // $this->loadModel('Category');
+    // ↑も同等
+    public $uses = ['Post', 'Category'];
+
     public function index() {
         // set() を使って、コントローラからビューにデータを渡す
-        $this->set('posts', $this->Post->find('all'));
+        // Categoryテーブルのid順に投稿が並んでしまうので order で並び順指定
+        $this->set('posts', $this->Post->find('all', array(
+            'order' => array('created' => 'asc')
+        )));
     }
 
     public function view($id = null) {
@@ -17,12 +25,17 @@ class PostsController extends AppController {
         // 一つの投稿記事を取得するので、afindByID()を使用
         $post = $this->Post->findById($id);
         if (!$post) {
-            throw new NotFoundException(__('Indalid post'));
+            throw new NotFoundException(__('Invalid post'));
         }
         $this->set('post', $post);
     }
 
     public function add() {
+        // Categoryモデルを持ってくる
+        $uses;
+        $this -> set('categories', $this->Category->find('list', array(
+            'fields' => 'id, category',
+        )));
         // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
         // ポストされたデータの内容をチェックするためのものではない
         if ($this->request->is('post')) {
@@ -44,6 +57,12 @@ class PostsController extends AppController {
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
+
+        // Categoryモデルを持ってくる
+        $uses;
+        $this -> set('categories', $this->Category->find('list', array(
+            'fields' => 'id, category',
+        )));
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
