@@ -24,6 +24,7 @@ class PostsController extends AppController {
     // $this->loadModel('Category');
     // ↑も同等
     public $uses = ['Post', 'Category'];
+    public $uses = ['Post', 'Category', 'Tags'];
 
     public function index() {
         // set() を使って、コントローラからビューにデータを渡す
