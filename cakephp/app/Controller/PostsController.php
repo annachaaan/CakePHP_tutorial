@@ -23,7 +23,6 @@ class PostsController extends AppController {
     // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
     // $this->loadModel('Category');
     // ↑も同等
-    public $uses = ['Post', 'Category'];
     public $uses = ['Post', 'Category', 'Tags'];
 
     public function index() {
