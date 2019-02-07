@@ -60,6 +60,7 @@ class AppController extends Controller {
         }
 
         // デフォルトは拒否
+        $this->Flash->error(__('You do not have permission'));
         return false;
     }
 

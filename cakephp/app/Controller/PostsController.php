@@ -15,7 +15,6 @@ class PostsController extends AppController {
                 return true;
             }
         }
-        $this->Flash->error(__('You do not have permission'));
         return parent::isAuthorized($user);
     }
 
