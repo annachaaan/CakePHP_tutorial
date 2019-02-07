@@ -52,7 +52,7 @@ class PostsController extends AppController {
     public function add() {
         // Categoryモデルを持ってくる
         $uses;
-        $this -> set('categories', $this->Category->find('list', array(
+        $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
         // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
