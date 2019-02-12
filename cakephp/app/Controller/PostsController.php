@@ -62,7 +62,7 @@ class PostsController extends AppController {
         if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
-            if ($this->Post->save($this->request->data)) {
+            if ($this->Post->saveAll($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('Your post has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
