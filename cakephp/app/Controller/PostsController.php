@@ -23,7 +23,7 @@ class PostsController extends AppController {
     // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
     // $this->loadModel('Category');
     // ↑も同等
-    public $uses = ['Post', 'Category', 'Tags'];
+    public $uses = ['Post', 'Category', 'Tag'];
 
     public function index() {
         // set() を使って、コントローラからビューにデータを渡す
@@ -54,6 +54,9 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
+        $this->set('tags', $this->Tag->find('list', array(
+            'fields' => 'id, tagSlug',
+        )));
         // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
         // ポストされたデータの内容をチェックするためのものではない
         if ($this->request->is('post')) {
@@ -81,6 +84,10 @@ class PostsController extends AppController {
         $uses;
         $this -> set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
+        )));
+
+        $this->set('tags', $this->Tag->find('list', array(
+            'fields' => 'id, tagSlug',
         )));
 
         if ($this->request->is(array('post', 'put'))) {

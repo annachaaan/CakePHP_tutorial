@@ -13,7 +13,7 @@ class Post extends AppModel {
         'Category' => array(
             'className' => 'Category',
             'foreignKey' => 'category_id',
-        ),
+        )
     );
 
     public $hasAndBelongsToMany = array(
