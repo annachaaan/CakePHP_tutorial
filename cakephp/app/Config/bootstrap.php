@@ -113,3 +113,4 @@ CakeLog::config('error', array(
 // ここまでデフォルト
 // https://github.com/cakephp/debug_kit
 CakePlugin::load('DebugKit');
+CakePlugin::load('Migrations');
