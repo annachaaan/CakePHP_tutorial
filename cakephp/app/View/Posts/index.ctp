@@ -8,6 +8,7 @@
         <th>No</th>
         <th>Title</th>
         <th>Category</th>
+        <th>Tags</th>
         <th>Action</th>
         <th>Created</th>
     </tr>
@@ -24,6 +25,11 @@
 array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
         </td>
         <td><?php echo $post['Category']['category']; ?></td>
+        <td>
+            <?php foreach ($post['Tag'] as $tag): ?>
+                <?php echo $tag['tagSlug']; ?>
+            <?php endforeach; ?>
+        </td>
         <td>
             <?php
                 // postLink() を使うと、
@@ -46,3 +52,5 @@ array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
     <?php endforeach; ?>
     <?php unset($post); ?>
 </table>
+
+<?php print_r($posts[0]); ?>
