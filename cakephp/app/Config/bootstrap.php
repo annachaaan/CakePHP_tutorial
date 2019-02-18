@@ -110,7 +110,7 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
-// ここまでデフォルト
 // https://github.com/cakephp/debug_kit
 CakePlugin::load('DebugKit');
+CakePlugin::load('Upload');
 CakePlugin::load('Migrations');

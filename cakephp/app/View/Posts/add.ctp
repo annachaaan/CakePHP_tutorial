@@ -1,6 +1,9 @@
 <h1>Add Post</h1>
 <?php
-echo $this->Form->create('Post');
+echo $this->Form->create('Post', array(
+    'type' => 'file',
+    'enctype' => 'multipart/form-data'
+));
 echo $this->Form->input('category_id');
 echo $this->Form->input('Tag', array(
     'type' => 'select',
@@ -9,6 +12,24 @@ echo $this->Form->input('Tag', array(
 ));
 echo $this->Form->input('title');
 echo $this->Form->input('body', array('rows' => '3'));
+echo $this->Form->input('Attachment.0.file_name', array(
+    'type' => 'file',
+    'label' => 'Image',
+    'multiple' => 'multiple'
+));
+echo $this->Form->input('Attachment.1.file_name', array(
+    'type' => 'file',
+    'label' => 'Image',
+    'multiple' => 'multiple',
+    'required' => false
+));
+echo $this->Form->input(
+    'Attachment.2.file_name', array(
+        'type' => 'file',
+        'label' => 'Image',
+        'multiple' => 'multiple',
+        'required' => false
+));
 echo $this->Form->end('Save Post');
 
 ?>

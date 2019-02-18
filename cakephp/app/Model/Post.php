@@ -13,6 +13,16 @@ class Post extends AppModel {
         )
     );
 
+    public $hasMany = array(
+        'Attachment' => array(
+            'className' => 'Attachment',
+            'foreignKey' => 'post_id',
+            // 'conditions' => array(
+            //     'Attachment.model' => 'Post'
+            // )
+        ),
+    );
+
     public $belongsTo = array(
         'Category' => array(
             'className' => 'Category',
