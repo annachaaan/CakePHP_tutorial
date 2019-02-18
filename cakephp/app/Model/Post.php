@@ -1,5 +1,9 @@
 <?php
 class Post extends AppModel {
+    public $actsAs = array(
+        'SoftDelete'
+    );
+
     public $validate = array(
         'title' => array(
             'rule' =>'notBlank'
