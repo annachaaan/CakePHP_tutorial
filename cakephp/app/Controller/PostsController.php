@@ -104,13 +104,16 @@ class PostsController extends AppController {
         }
     }
 
-    public function delete($id) {
+    public function delete($id, $cascade = true) {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
 
-        if ($this->Post->delete($id)) {
+        if ($this->Post->delete($id, true)) {
             $this->Flash->success(__('The post with id: %s has been deleted.', h($id)));
+            $sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+            $this->Tag->query($sql);
+            $this->autoRender = false;
         } else {
             $this->Flash->error(__('The post with id: %s cloud not be deleted.', h($id)));
         }

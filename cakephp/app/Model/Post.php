@@ -17,6 +17,7 @@ class Post extends AppModel {
         'Category' => array(
             'className' => 'Category',
             'foreignKey' => 'category_id',
+            'dependent'    => true
         )
     );
 
@@ -27,6 +28,7 @@ class Post extends AppModel {
             'foreignKey' => 'post_id',
             'associationForeignKey' => 'tag_id',
             'unique' => true,
+            'dependent'    => true
         )
     );
 
