@@ -2,6 +2,10 @@
 <?php echo $this->Html->link(
     'Add post',
     array('controller' => 'posts', 'action' => 'add')
+); ?><br>
+<?php echo $this->Html->link(
+    'Search',
+    array('controller' => 'posts', 'action' => 'find')
 ); ?>
 <table>
     <tr>

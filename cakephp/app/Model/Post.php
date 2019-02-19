@@ -1,7 +1,12 @@
 <?php
 class Post extends AppModel {
     public $actsAs = array(
-        'SoftDelete'
+        'SoftDelete',
+        'Search.Searchable'
+    );
+
+    public $filterArgs = array(
+        'category_id' => array('type' => 'value'),
     );
 
     public $validate = array(
@@ -17,9 +22,6 @@ class Post extends AppModel {
         'Attachment' => array(
             'className' => 'Attachment',
             'foreignKey' => 'post_id',
-            // 'conditions' => array(
-            //     'Attachment.model' => 'Post'
-            // )
         ),
     );
 

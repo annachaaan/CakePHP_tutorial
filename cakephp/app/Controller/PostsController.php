@@ -18,6 +18,10 @@ class PostsController extends AppController {
         return parent::isAuthorized($user);
     }
 
+    public $components = array('Search.Prg');
+    public $presetVars = true;
+    public $paginate = array();
+
     public $helpers = array('Html', 'Form');
 
     // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
@@ -31,6 +35,19 @@ class PostsController extends AppController {
         $this->set('posts', $this->Post->find('all', array(
             'order' => array('Post.created' => 'asc')
         )));
+    }
+
+    public function find() {
+        $this->set('categories', $this->Category->find('list', array(
+            'fields' => 'id, category',
+        )));
+        $this->Prg->commonProcess();
+        $this->paginate = array(
+            'conditions' => $this->Post->parseCriteria($this->passedArgs));
+
+        $this->set('posts', $this->paginate());
+        $categoryId = $this->Post->Category->find('list');
+        $this->set(compact('categoryId'));
     }
 
     public function view($id = null) {
