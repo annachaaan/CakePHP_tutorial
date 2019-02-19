@@ -111,4 +111,4 @@ CakeLog::config('error', array(
 ));
 
 // https://github.com/cakephp/debug_kit
-CakePlugin::load(array('DebugKit', 'Upload', 'Migrations'));
+CakePlugin::load(array('DebugKit', 'Upload', 'Migrations', 'Search'));
