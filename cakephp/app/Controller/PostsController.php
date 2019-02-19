@@ -99,7 +99,7 @@ class PostsController extends AppController {
 
         // Categoryモデルを持ってくる
         $uses;
-        $this -> set('categories', $this->Category->find('list', array(
+        $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
 
