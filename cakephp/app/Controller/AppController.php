@@ -67,6 +67,6 @@ class AppController extends Controller {
     // beforeFilter()で、全てのコントローラにこいつが適用される
     public function beforeFilter() {
         // indexとviewアクションのときはログインを必要としない
-        $this->Auth->allow('index', 'view');
+        $this->Auth->allow('index', 'view', 'find');
     }
 }
