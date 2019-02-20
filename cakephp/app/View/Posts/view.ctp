@@ -1,3 +1,4 @@
+<?php echo $this->element('Admin/header'); ?>
 <h1><?php echo h($post['Post']['title']); ?></h1>
 
 <p>Tags:
