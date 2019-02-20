@@ -30,6 +30,8 @@ class PostsController extends AppController {
     public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
 
     public function index() {
+        $user = $this->Auth->user();
+        $this->set('user', $user);
         // set() を使って、コントローラからビューにデータを渡す
         // Categoryテーブルのid順に投稿が並んでしまうので order で並び順指定
         $this->set('posts', $this->Post->find('all', array(

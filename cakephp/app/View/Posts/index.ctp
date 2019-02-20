@@ -1,12 +1,5 @@
-<h1>Blog posts</h1>
-<?php echo $this->Html->link(
-    'Add post',
-    array('controller' => 'posts', 'action' => 'add')
-); ?><br>
-<?php echo $this->Html->link(
-    'Search',
-    array('controller' => 'posts', 'action' => 'find')
-); ?>
+<?php echo $this->element('Admin/header'); ?>
+
 <table>
     <tr>
         <th>No</th>
