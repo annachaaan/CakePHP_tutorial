@@ -64,6 +64,8 @@ class PostsController extends AppController {
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
+        $user = $this->Auth->user();
+        $this->set('user', $user);
         $this->set('post', $post);
     }
 
@@ -81,7 +83,30 @@ class PostsController extends AppController {
         if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
-            if ($this->Post->saveAll($this->request->data, array('deep' => true))) {
+
+// こっからimgのサンプルテスト
+            // $attachment = $this->request->data['Attachment'][0]['file_name'];
+            // if ($attachment['error'] != 0) {
+            //     unset($this->request->data['Attachment'][0]);
+            // }
+// ここまで成功なのであとはforeachでまとめちゃう
+            $i = 0;
+            foreach ($this->request->data['Attachment'] as $attachment) {
+                if ($attachment['file_name']['error'] != 0) {
+                    unset($this->request->data['Attachment'][$i]);
+                } elseif ($attachment['file_name']['error'] == 4) {
+                    $matekora = "このファイルはアップロードできません。";
+                } else {
+                    $this->request->data['Attachment'][$i]['index_num'] = $i;
+                    // debug($attachment['index_num']);
+                    // exit;
+                }
+                $i++;
+            }
+            // debug($this->request->data);
+            // exit;
+
+            if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('Your post has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -104,10 +129,10 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
-
         $this->set('tags', $this->Tag->find('list', array(
             'fields' => 'id, tagSlug',
         )));
+        $this->set('post', $post);
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;

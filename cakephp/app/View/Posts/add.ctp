@@ -12,23 +12,17 @@ echo $this->Form->input('Tag', array(
 ));
 echo $this->Form->input('title');
 echo $this->Form->input('body', array('rows' => '3'));
+// echo $this->Form->input('Attachment.0.index_num', array('type' => 'hidden'));
 echo $this->Form->input('Attachment.0.file_name', array(
     'type' => 'file',
     'label' => 'Image',
-    'multiple' => 'multiple'
+    'enctype' => 'multipart/form-data',
 ));
+// echo $this->Form->input('Attachment.1.index_num', array('type' => 'hidden'));
 echo $this->Form->input('Attachment.1.file_name', array(
     'type' => 'file',
     'label' => 'Image',
     'multiple' => 'multiple',
-    'required' => false
-));
-echo $this->Form->input(
-    'Attachment.2.file_name', array(
-        'type' => 'file',
-        'label' => 'Image',
-        'multiple' => 'multiple',
-        'required' => false
 ));
 echo $this->Form->end('Save Post');
 
