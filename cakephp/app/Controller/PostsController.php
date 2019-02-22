@@ -45,11 +45,9 @@ class PostsController extends AppController {
         )));
         $this->Prg->commonProcess();
         $this->paginate = array(
-            'conditions' => $this->Post->parseCriteria($this->passedArgs));
-
+            'conditions' => $this->Post->parseCriteria($this->passedArgs),
+        );
         $this->set('posts', $this->paginate());
-        $categoryId = $this->Post->Category->find('list');
-        $this->set(compact('categoryId'));
     }
 
     public function view($id = null) {

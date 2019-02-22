@@ -5,6 +5,11 @@
     'label' => 'カテゴリー',
     'empty' => true
 )); ?>
+<?php echo $this->Form->input('title', array(
+    'label' => 'タイトル',
+    'type' => 'text',
+    'empty' => true,
+)); ?>
 <?php echo $this->Form->end('検索'); ?>
 <p><?php echo $this->Paginator->counter(array('format' => __('total: {:count}')));?></p>
 <table>

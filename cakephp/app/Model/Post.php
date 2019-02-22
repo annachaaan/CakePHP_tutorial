@@ -5,13 +5,15 @@ class Post extends AppModel {
         'Search.Searchable'
     );
 
+    // 検索条件を設定
     public $filterArgs = array(
         'category_id' => array('type' => 'value'),
+        'title' => array('type' => 'like')
     );
 
     public $validate = array(
         'title' => array(
-            'rule' =>'notBlank'
+            // 'rule' =>'notBlank'
         ),
         'body' => array(
             'rule' => 'notBlank'
