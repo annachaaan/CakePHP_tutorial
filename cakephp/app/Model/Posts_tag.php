@@ -1,9 +1,5 @@
 <?php
 class PostsTag extends AppModel {
-    public $actsAs = array(
-        'SoftDelete'
-    );
-
     public $belongsTo = array(
         'Post' = array(
             'className' => 'Post',

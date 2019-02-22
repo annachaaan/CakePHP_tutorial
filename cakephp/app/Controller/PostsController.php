@@ -98,13 +98,9 @@ class PostsController extends AppController {
                     $matekora = "このファイルはアップロードできません。";
                 } else {
                     $this->request->data['Attachment'][$i]['index_num'] = $i;
-                    // debug($attachment['index_num']);
-                    // exit;
                 }
                 $i++;
             }
-            // debug($this->request->data);
-            // exit;
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('Your post has been saved'));
@@ -155,7 +151,10 @@ class PostsController extends AppController {
 
         if ($this->Post->delete($id, true)) {
             $this->Flash->success(__('The post with id: %s has been deleted.', h($id)));
+
+            // ここクソダサいのでなんとかしたい
             $sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+            $sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
             $this->Tag->query($sql);
             $this->autoRender = false;
         } else {
