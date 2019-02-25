@@ -40,5 +40,3 @@
         </tr>
     <?php endforeach; ?>
 </table>
-
-<!-- <?php print_r($posts[0]); ?> -->
