@@ -8,6 +8,10 @@ class Post extends AppModel {
     // 検索条件を設定
     public $filterArgs = array(
         'category_id' => array('type' => 'value'),
+        'tag_id' => array(
+            'type' => 'value',
+            'field'  => 'Tag.id',
+        ),
         'title' => array('type' => 'like')
     );
 

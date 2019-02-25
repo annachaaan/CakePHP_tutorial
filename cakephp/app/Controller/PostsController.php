@@ -19,9 +19,15 @@ class PostsController extends AppController {
     }
 
     public $components = array('Search.Prg');
-    public $presetVars = true;
-    public $paginate = array();
-
+    public $presetVars =
+    // true;
+    array(
+        'category_id' => array('type' => 'value'),
+        'tag_id' => array(
+            // 'field' => 'PostsTag.tag_id',
+            'type' => 'value'),
+        'title' => array('type' => 'value'),
+    );
     public $helpers = array('Html', 'Form');
 
     // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
@@ -43,10 +49,38 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
+        $this->set('tag_id', $this->Tag->find('list', array(
+            'fields' => 'id, tagSlug',
+        )));
+
         $this->Prg->commonProcess();
+        // debug($this->Post->parseCriteria($this->passedArgs));
+        // exit;
         $this->paginate = array(
             'conditions' => $this->Post->parseCriteria($this->passedArgs),
+            // 'recursive' => 2,
+            'joins' => array(
+                array(
+                    'table' => 'posts_tags',
+                    'alias' => 'PostsTag',
+                    'type' => 'LEFT',
+                    'conditions' => array(
+                        'Post.id = PostsTag.post_id'
+                    )
+                ),
+                array(
+                    'table' => 'tags',
+                    'alias' => 'Tag',
+                    'type' => 'LEFT',
+                    'conditions' => array(
+                        'PostsTag.tag_id = Tag.id'
+                    )
+                ),
+            )
         );
+
+        // debug($this->Post->parseCriteria($this->passedArgs));
+        // exit;
         $this->set('posts', $this->paginate());
     }
 
