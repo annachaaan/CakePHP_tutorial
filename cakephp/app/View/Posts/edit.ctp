@@ -1,3 +1,6 @@
+<!-- jqueryの読み込み -->
+<?php echo $this -> Html -> script( 'jquery-3.3.1.min', array( 'inline' => false ) ); ?>
+
 <h1>Edit Post</h1>
 <?php
 echo $this->Form->create('Post');
