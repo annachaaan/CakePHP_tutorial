@@ -1,5 +1,5 @@
 <?php echo $this->element('Admin/header'); ?>
-<h1><?php echo h($post['Post']['title']); ?></h1>
+<h1><?php echo ($post['Post']['title']); ?></h1>
 <p>Category:
     <?php echo $post['Category']['category']; ?>
 </p>
@@ -16,7 +16,7 @@
 
 <p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
 
-<p><?php echo h($post['Post']['body']); ?></p>
+<p><?php echo ($post['Post']['body']); ?></p>
 
 <p>Photos:</br>
     <?php if ($post['Attachment']): ?>
