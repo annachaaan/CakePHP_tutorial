@@ -19,13 +19,9 @@ class PostsController extends AppController {
     }
 
     public $components = array('Search.Prg');
-    public $presetVars =
-    // true;
-    array(
+    public $presetVars = array(
         'category_id' => array('type' => 'value'),
-        'tag_id' => array(
-            // 'field' => 'PostsTag.tag_id',
-            'type' => 'value'),
+        'tag_id' => array('type' => 'value'),
         'title' => array('type' => 'value'),
     );
     public $helpers = array('Html', 'Form');
@@ -54,11 +50,8 @@ class PostsController extends AppController {
         )));
 
         $this->Prg->commonProcess();
-        // debug($this->Post->parseCriteria($this->passedArgs));
-        // exit;
         $this->paginate = array(
             'conditions' => $this->Post->parseCriteria($this->passedArgs),
-            // 'recursive' => 2,
             'joins' => array(
                 array(
                     'table' => 'posts_tags',
@@ -79,15 +72,11 @@ class PostsController extends AppController {
             )
         );
 
-        // debug($this->Post->parseCriteria($this->passedArgs));
-        // exit;
         $this->set('posts', $this->paginate());
     }
 
     public function view($id = null) {
         if (!$id) {
-            // エラーを投げるのでthrow
-            // ここだけ多言語対応してる(__('...'))
             throw new NotFoundException(__('Invalid post'));
         }
 
@@ -102,7 +91,6 @@ class PostsController extends AppController {
     }
 
     public function add() {
-        // Categoryモデルを持ってくる
         $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
@@ -115,13 +103,7 @@ class PostsController extends AppController {
         if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
-
-// こっからimgのサンプルテスト
-            // $attachment = $this->request->data['Attachment'][0]['file_name'];
-            // if ($attachment['error'] != 0) {
-            //     unset($this->request->data['Attachment'][0]);
-            // }
-// ここまで成功なのであとはforeachでまとめちゃう
+// ここのif文ちょっとおかしいので頭が正常になったら直す
             $i = 0;
             foreach ($this->request->data['Attachment'] as $attachment) {
                 if ($attachment['file_name']['error'] != 0) {
@@ -152,7 +134,6 @@ class PostsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
 
-        // Categoryモデルを持ってくる
         $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
@@ -164,7 +145,22 @@ class PostsController extends AppController {
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
+
+            debug($this->request->data);
+            exit;
+
+            // ここで画像処理の振り分けをしたいけどむずい無理
             if ($this->Post->save($this->request->data)) {
+                foreach ($this->request->data['Attachment'] as $img) {
+                    if ($img['deleted'] == 1) {
+                        $this->Attachment->delete($id == $post['Attachment'][0]['post_id']);
+                        // // ダサコード
+                        // $sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+                        // $this->Attachment->query($sql);
+                        // $this->autoRender = false;
+                    }
+                }
+
                 $this->Flash->success(__('Your post has been updated'));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -185,9 +181,10 @@ class PostsController extends AppController {
             $this->Flash->success(__('The post with id: %s has been deleted.', h($id)));
 
             // ここクソダサいのでなんとかしたい
-            $sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
-            $sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
-            $this->Tag->query($sql);
+            $tag_sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+            $attachment_sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+            $this->Tag->query($tag_sql);
+            $this->Tag->query($attachment_sql);
             $this->autoRender = false;
         } else {
             $this->Flash->error(__('The post with id: %s cloud not be deleted.', h($id)));
