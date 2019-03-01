@@ -7,18 +7,15 @@ echo $this->Form->create('Post', array(
 echo $this->Form->input('category_id');
 echo $this->Form->input('Tag', array(
     'type' => 'select',
-    // multipleだとdiv解除できない...
     'multiple'=> 'checkbox',
 ));
 echo $this->Form->input('title');
 echo $this->Form->input('body', array('rows' => '3'));
-// echo $this->Form->input('Attachment.0.index_num', array('type' => 'hidden'));
 echo $this->Form->input('Attachment..file_name', array(
     'type' => 'file',
     'label' => 'Image',
     'enctype' => 'multipart/form-data',
 ));
-// echo $this->Form->input('Attachment.1.index_num', array('type' => 'hidden'));
 echo $this->Form->input('Attachment..file_name', array(
     'type' => 'file',
     'label' => 'Image',
