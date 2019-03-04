@@ -145,21 +145,28 @@ class PostsController extends AppController {
         )));
         $this->set('post', $post);
 
+
+        // ここですでに登録してある画像を呼び出す
+        $attachment_list = $this->Attachment->find('all', array(
+            'conditions' => array('Post.id' => $id),
+            // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
+            'fields' => array('')
+        ));
+
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
 
-            debug($this->request->data);
-            exit;
-
-            // ここで画像処理の振り分けをしたいけどむずい無理
-            if ($this->Post->save($this->request->data)) {
-                foreach ($this->request->data['Attachment'] as $img) {
-                    if ($img['deleted'] == 1) {
-                        $this->Attachment->delete($id == $post['Attachment'][0]['post_id']);
-                        // // ダサコード
-                        // $sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
-                        // $this->Attachment->query($sql);
-                        // $this->autoRender = false;
+                $i = 0;
+                $n = 0;
+                foreach ($this->request->data['Attachment'] as $attachment) {
+                    if (isset($attachment['file_name'])) {
+                        if ($attachment['file_name']['error'] != 0) {
+                            unset($this->request->data['Attachment'][$i]);
+                        } elseif ($attachment['file_name']['error'] == 4) {
+                            $matekora = "このファイルはアップロードできません。";
+                        } else {
+                            $this->request->data['Attachment'][$i]['index_num'] = $n;
+                            $n++;
                     }
                 }
 

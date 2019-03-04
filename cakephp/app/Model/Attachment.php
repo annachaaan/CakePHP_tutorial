@@ -26,6 +26,7 @@ class Attachment extends AppModel{
         'Post' => array(
             'className' =>'Post',
             'foreignKey' => 'post_id',
+            'dependent'    => true
         ),
     );
 }
