@@ -71,7 +71,6 @@ class PostsController extends AppController {
                 ),
             )
         );
-
         $this->set('posts', $this->paginate());
     }
 
@@ -105,13 +104,16 @@ class PostsController extends AppController {
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
 // ここのif文ちょっとおかしいので頭が正常になったら直す
             $i = 0;
+            // index_numに入れる用
+            $n = 0;
             foreach ($this->request->data['Attachment'] as $attachment) {
                 if ($attachment['file_name']['error'] != 0) {
                     unset($this->request->data['Attachment'][$i]);
                 } elseif ($attachment['file_name']['error'] == 4) {
                     $matekora = "このファイルはアップロードできません。";
                 } else {
-                    $this->request->data['Attachment'][$i]['index_num'] = $i;
+                    $this->request->data['Attachment'][$i]['index_num'] = $n;
+                    $n++;
                 }
                 $i++;
             }
