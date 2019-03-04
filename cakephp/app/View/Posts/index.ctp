@@ -49,5 +49,3 @@ array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
     <?php endforeach; ?>
     <?php unset($post); ?>
 </table>
-
-<?php print_r($posts[0]); ?>

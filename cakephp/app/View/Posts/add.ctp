@@ -11,16 +11,13 @@ echo $this->Form->input('Tag', array(
 ));
 echo $this->Form->input('title');
 echo $this->Form->input('body', array('rows' => '3'));
-echo $this->Form->input('Attachment..file_name', array(
-    'type' => 'file',
-    'label' => 'Image',
-    'enctype' => 'multipart/form-data',
-));
-echo $this->Form->input('Attachment..file_name', array(
-    'type' => 'file',
-    'label' => 'Image',
-    'multiple' => 'multiple',
-));
+for ($i = 0; $i < 3; $i++) {
+    echo $this->Form->input('Attachment..file_name', array(
+        'type' => 'file',
+        'label' => 'Image',
+        'multiple' => 'multiple',
+    ));
+}
 echo $this->Form->end('Save Post');
 
 ?>
