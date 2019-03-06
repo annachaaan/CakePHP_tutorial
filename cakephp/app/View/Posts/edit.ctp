@@ -18,24 +18,23 @@ echo $this->Form->input('body', array('rows' => '3'));
 ?>
 <table>
     <?php for ($i = 0; $i < 3; $i++) { ?>
-        <?php if (isset($post['Attachment'][$i])): ?>
+        <?php if (isset($attachment_list[$i])): ?>
             <tr>
                 <td>
                     <?php
                     echo $this->Html->image(
-                        DS . 'img' . DS . 'file_name' . DS . $post['Attachment'][$i]['dir'] . DS . $post['Attachment'][$i]['file_name'],
+                        DS . 'img' . DS . 'file_name' . DS . $attachment_list[$i]['Attachment']['dir'] . DS . $attachment_list[$i]['Attachment']['file_name'],
                         array('width'=>'100','height'=>'80')
                     );
                     ?>
                     <label>↓削除するにはチェックしてください</label>
                     <?php
-                    echo $this->Form->checkbox('Attachment.' . $post['Attachment'][$i]['index_num'] . '.deleted', array(
+                    echo $this->Form->checkbox('Attachment.' . $attachment_list[$i]['Attachment']['index_num'] . '.deleted', array(
                         'label' => '削除',
                         'hiddenField' => false
                     ));
-                    $imgId = $post['Attachment'][$i]['id'];
-                    echo $this->Form->hidden('Attachment.' . $post['Attachment'][$i]['index_num'] . '.id', array(
-                        'value' => $post['Attachment'][$i]['id']
+                    echo $this->Form->hidden('Attachment.' . $attachment_list[$i]['Attachment']['index_num'] . '.id', array(
+                        'value' => $attachment_list[$i]['Attachment']['id']
                     ));
                     ?>
                 </td>
@@ -44,7 +43,7 @@ echo $this->Form->input('body', array('rows' => '3'));
             <tr>
                 <td>
                     <?php
-                    echo $this->Form->input('Attachment.' . $i . '.file_name', array(
+                    echo $this->Form->input('Attachment..file_name', array(
                         'type' => 'file',
                         'label' => 'Image',
                         'multiple' => 'multiple',
@@ -59,5 +58,3 @@ echo $this->Form->input('body', array('rows' => '3'));
 echo $this->Form->input('id', array('type' => 'hidden'));
 echo $this->Form->end('Save Post');
 ?>
-
-<?php print_r($post['Attachment']); ?>

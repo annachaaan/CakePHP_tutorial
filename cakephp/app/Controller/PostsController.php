@@ -89,6 +89,12 @@ class PostsController extends AppController {
         $user = $this->Auth->user();
         $this->set('user', $user);
         $this->set('post', $post);
+        // viewで表示するimageリスト
+        $this->set('attachment_list', $this->Attachment->find('all', array(
+            'conditions' => array('Post.id' => $id),
+            // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
+            'fields' => array('')
+        )));
     }
 
     public function add() {
@@ -111,7 +117,6 @@ class PostsController extends AppController {
                     unset($this->request->data['Attachment'][$i]);
                 } elseif ($attachment['file_name']['error'] == 0) {
                     $this->request->data['Attachment'][$i]['index_num'] = $i;
-                    $n++;
                 } else {
                     $matekora = "このファイルはアップロードできません。";
                 }
@@ -152,6 +157,13 @@ class PostsController extends AppController {
             // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
             'fields' => array('')
         ));
+
+        // viewで表示するimageリスト
+        $this->set('attachment_list', $this->Attachment->find('all', array(
+            'conditions' => array('Post.id' => $id),
+            // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
+            'fields' => array('')
+        )));
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;

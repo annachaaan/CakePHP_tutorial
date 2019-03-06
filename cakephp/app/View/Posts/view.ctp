@@ -19,10 +19,10 @@
 <p><?php echo ($post['Post']['body']); ?></p>
 
 <p>Photos:</br>
-    <?php if ($post['Attachment']): ?>
-    <?php foreach ($post['Attachment'] as $img): ?>
+    <?php if ($attachment_list): ?>
+    <?php foreach ($attachment_list as $img): ?>
         <?php echo $this->Html->image(
-            DS . 'img' . DS . 'file_name' . DS . $img['dir'] . DS . $img['file_name'],
+            DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name'],
             array('width'=>'200','height'=>'200')
         ); ?>
     <?php endforeach; ?>
