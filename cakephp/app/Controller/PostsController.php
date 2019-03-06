@@ -26,9 +26,7 @@ class PostsController extends AppController {
     );
     public $helpers = array('Html', 'Form');
 
-    // PostsコントローラでCategoryモデルを使いたいんだ〜の呪文
-    // $this->loadModel('Category');
-    // ↑も同等
+    // `Postモデル以外のモデルを使いたいんだ〜の呪文
     public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
 
     public function index() {
@@ -111,13 +109,13 @@ class PostsController extends AppController {
             // index_numに入れる用
             $n = 0;
             foreach ($this->request->data['Attachment'] as $attachment) {
-                if ($attachment['file_name']['error'] != 0) {
+                if ($attachment['file_name']['error'] == 4) {
                     unset($this->request->data['Attachment'][$i]);
-                } elseif ($attachment['file_name']['error'] == 4) {
-                    $matekora = "このファイルはアップロードできません。";
-                } else {
+                } elseif ($attachment['file_name']['error'] == 0) {
                     $this->request->data['Attachment'][$i]['index_num'] = $n;
                     $n++;
+                } else {
+                    $matekora = "このファイルはアップロードできません。";
                 }
                 $i++;
             }
