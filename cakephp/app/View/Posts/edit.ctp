@@ -17,48 +17,42 @@ echo $this->Form->input('title');
 echo $this->Form->input('body', array('rows' => '3'));
 ?>
 <table>
-    <?php $i = 0; ?>
-    <?php if($post['Attachment']): ?>
-        <?php foreach($post['Attachment'] as $img): ?>
-            <?php $i++; ?>
+    <?php for ($i = 0; $i < 3; $i++) { ?>
+        <?php if (isset($post['Attachment'][$i])): ?>
             <tr>
-                <?php if($img['index_num'] != null): ?>
-                    <td>
-                        <?php
-                        echo $this->Html->image(
-                            DS . 'img' . DS . 'file_name' . DS . $img['dir'] . DS . $img['file_name'],
-                            array('width'=>'100','height'=>'80')
-                        );
-                        ?>
-                        <label>↓削除するにはチェックしてください</label>
-                        <?php
-                        echo $this->Form->checkbox('Attachment.' . $img['index_num'] . '.deleted', array(
-                            'label' => '削除',
-                            // 'value' => 1,
-                            'hiddenField' => false
-                        ));
-                        $imgId = $img['id'];
-                        echo $this->Form->hidden('Attachment.' . $img['index_num'] . '.id', array(
-                            'value' => $img['id']
-                        ));
-                        ?>
-                    </td>
-                <?php endif; ?>
+                <td>
+                    <?php
+                    echo $this->Html->image(
+                        DS . 'img' . DS . 'file_name' . DS . $post['Attachment'][$i]['dir'] . DS . $post['Attachment'][$i]['file_name'],
+                        array('width'=>'100','height'=>'80')
+                    );
+                    ?>
+                    <label>↓削除するにはチェックしてください</label>
+                    <?php
+                    echo $this->Form->checkbox('Attachment.' . $post['Attachment'][$i]['index_num'] . '.deleted', array(
+                        'label' => '削除',
+                        'hiddenField' => false
+                    ));
+                    $imgId = $post['Attachment'][$i]['id'];
+                    echo $this->Form->hidden('Attachment.' . $post['Attachment'][$i]['index_num'] . '.id', array(
+                        'value' => $post['Attachment'][$i]['id']
+                    ));
+                    ?>
+                </td>
             </tr>
-        <?php endforeach; ?>
-    <?php endif; ?>
-    <?php for ($i = $i; $i < 3; $i++) { ?>
-        <tr>
-            <td>
-                <?php
-                echo $this->Form->input('Attachment..file_name', array(
-                    'type' => 'file',
-                    'label' => 'Image',
-                    'multiple' => 'multiple',
-                ));
-                 ?>
-            </td>
-        </tr>
+        <?php else: ?>
+            <tr>
+                <td>
+                    <?php
+                    echo $this->Form->input('Attachment.' . $i . '.file_name', array(
+                        'type' => 'file',
+                        'label' => 'Image',
+                        'multiple' => 'multiple',
+                    ));
+                     ?>
+                </td>
+            </tr>
+        <?php endif; ?>
     <?php } ?>
 </table>
 <?php

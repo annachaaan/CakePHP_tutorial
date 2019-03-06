@@ -106,13 +106,11 @@ class PostsController extends AppController {
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
 // ここのif文ちょっとおかしいので頭が正常になったら直す
             $i = 0;
-            // index_numに入れる用
-            $n = 0;
             foreach ($this->request->data['Attachment'] as $attachment) {
                 if ($attachment['file_name']['error'] == 4) {
                     unset($this->request->data['Attachment'][$i]);
                 } elseif ($attachment['file_name']['error'] == 0) {
-                    $this->request->data['Attachment'][$i]['index_num'] = $n;
+                    $this->request->data['Attachment'][$i]['index_num'] = $i;
                     $n++;
                 } else {
                     $matekora = "このファイルはアップロードできません。";
@@ -159,17 +157,17 @@ class PostsController extends AppController {
             $this->Post->id = $id;
 
                 $i = 0;
-                $n = 0;
                 foreach ($this->request->data['Attachment'] as $attachment) {
                     if (isset($attachment['file_name'])) {
-                        if ($attachment['file_name']['error'] != 0) {
+                        if ($attachment['file_name']['error'] == 4) {
                             unset($this->request->data['Attachment'][$i]);
-                        } elseif ($attachment['file_name']['error'] == 4) {
-                            $matekora = "このファイルはアップロードできません。";
+                        } elseif ($attachment['file_name']['error'] == 0) {
+                            $this->request->data['Attachment'][$i]['index_num'] = $i;
                         } else {
-                            $this->request->data['Attachment'][$i]['index_num'] = $n;
-                            $n++;
+                            $matekora = "このファイルはアップロードできません。";
+                        }
                     }
+                    $i++;
                 }
 
                 $this->Flash->success(__('Your post has been updated'));
