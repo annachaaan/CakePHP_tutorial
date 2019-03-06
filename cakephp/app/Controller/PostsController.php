@@ -42,6 +42,10 @@ class PostsController extends AppController {
     }
 
     public function find() {
+
+        // タイトル検索の時に、Postのバリデーションを解除
+        unset($this->Post->validate['title']);
+
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
