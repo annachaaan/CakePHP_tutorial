@@ -11,7 +11,7 @@
             <header class="container-fluid">
                 <?php echo $this->Html->link(
                     'TUTORIAL',
-                    array('controller' => 'posts', 'action' => 'top')
+                    array('controller' => 'posts', 'action' => 'index')
                 ); ?>
             </header>
             <div class="container">
