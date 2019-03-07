@@ -112,16 +112,19 @@ class PostsController extends AppController {
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
 // ここのif文ちょっとおかしいので頭が正常になったら直す
             $i = 0;
-            foreach ($this->request->data['Attachment'] as $attachment) {
+            foreach ($this->request->data['Attachment'] as $key => $attachment) {
                 if ($attachment['file_name']['error'] == 4) {
-                    unset($this->request->data['Attachment'][$i]);
+                    unset($this->request->data['Attachment'][$key]);
                 } elseif ($attachment['file_name']['error'] == 0) {
-                    $this->request->data['Attachment'][$i]['index_num'] = $i;
+                    $this->request->data['Attachment'][$key]['index_num'] = $i;
+                    $i++;
                 } else {
                     $matekora = "このファイルはアップロードできません。";
+                    unset($this->request->data['Attachment'][$key]);
                 }
-                $i++;
             }
+
+            $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('Your post has been saved'));
