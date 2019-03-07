@@ -5,8 +5,7 @@ class Attachment extends AppModel{
         'Upload.Upload' => array(
             'file_name' => array(
                 'thumbnailSizes' => array(
-                    // 'thumb150' => '150x150',
-                    // 'thumb80' => '80x80',
+                    'thumb80' => '80x80',
                 ),
                 'thumbnailMethod' => 'imagick',
                 'fields' => array(
