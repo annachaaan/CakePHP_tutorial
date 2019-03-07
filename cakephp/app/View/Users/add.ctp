@@ -1,8 +1,12 @@
-<div class="users form">
-<?php echo $this->element('Admin/header'); ?>
-<?php echo $this->Form->create('User'); ?>
+<div class="main">
+    <div class="admin-link">
+        <?php echo $this->element('Admin/header'); ?>
+    </div>
+    <div class="form">
+        <h1>User Sign up</h1>
+    </div>
+    <?php echo $this->Form->create('User'); ?>
     <fieldset>
-        <legend><?php echo __('Add User'); ?></legend>
         <?php
         echo $this->Form->input('username');
         echo $this->Form->input('password');

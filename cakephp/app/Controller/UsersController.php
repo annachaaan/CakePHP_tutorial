@@ -4,6 +4,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
     public function beforeFilter() {
+        $this->layout = 'tutorialLayout';
         // ↓ AppControllerのBeforeFilterを有効にする呪文
         parent::beforeFilter();
         // ユーザー自身によるaddとlogoutアクションを有効にしておく
