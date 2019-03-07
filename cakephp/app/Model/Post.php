@@ -28,6 +28,7 @@ class Post extends AppModel {
         'Attachment' => array(
             'className' => 'Attachment',
             'foreignKey' => 'post_id',
+            'conditions' => array('Attachment.deleted' => 0)
         ),
     );
 

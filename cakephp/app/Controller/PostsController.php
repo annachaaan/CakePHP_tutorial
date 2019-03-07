@@ -151,40 +151,53 @@ class PostsController extends AppController {
         $this->set('tags', $this->Tag->find('list', array(
             'fields' => 'id, tagSlug',
         )));
-        $this->set('post', $post);
 
-
-        // ここですでに登録してある画像を呼び出す
+        // viewで表示するimageリスト
         $attachment_list = $this->Attachment->find('all', array(
-            'conditions' => array('Post.id' => $id),
+            'conditions' => array(
+                'Post.id' => $id,
+                'Attachment.deleted' => 0
+            ),
             // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
             'fields' => array('')
         ));
 
-        // viewで表示するimageリスト
-        $this->set('attachment_list', $this->Attachment->find('all', array(
-            'conditions' => array('Post.id' => $id),
-            // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
-            'fields' => array('')
-        )));
+        $this->set('post', $post);
+        // debug($attachment_list);
+        // exit;
+
+        $this->set('attachment_list', $attachment_list);
+
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
 
-                $i = 0;
-                foreach ($this->request->data['Attachment'] as $attachment) {
-                    if (isset($attachment['file_name'])) {
+            foreach ($this->request->data['Attachment'] as $key => $attachment) {
+                foreach ($attachment_list as $key_list => $att_list) {
+                    if ($key == $att_list['Attachment']['index_num']) {
+                        if (isset($attachment['deleted'])) {
+                            $this->Attachment->delete($attachment['id']);
+                            unset($this->request->data['Attachment'][$key]);
+                        }
+                    } elseif (isset($attachment['file_name'])) {
                         if ($attachment['file_name']['error'] == 4) {
-                            unset($this->request->data['Attachment'][$i]);
+                            unset($this->request->data['Attachment'][$key]);
                         } elseif ($attachment['file_name']['error'] == 0) {
-                            $this->request->data['Attachment'][$i]['index_num'] = $i;
+                            $this->request->data['Attachment'][$key]['index_num'] = $key;
                         } else {
                             $matekora = "このファイルはアップロードできません。";
+                            unset($this->request->data['Attachment'][$key]);
                         }
                     }
-                    $i++;
                 }
+            }
 
+            $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
+            foreach ($this->request->data['Attachment'] as $key => $imgIndex) {
+                $this->request->data['Attachment'][$key]['index_num'] = $key;
+            }
+
+            if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->success(__('Your post has been updated'));
                 return $this->redirect(array('action' => 'index'));
             }

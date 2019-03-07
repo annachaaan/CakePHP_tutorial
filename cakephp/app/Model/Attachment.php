@@ -1,6 +1,7 @@
 <?php
 class Attachment extends AppModel{
     public $actsAs = array(
+        'SoftDelete',
         'Upload.Upload' => array(
             'file_name' => array(
                 'thumbnailSizes' => array(
