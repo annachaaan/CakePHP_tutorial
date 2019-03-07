@@ -123,7 +123,7 @@ class PostsController extends AppController {
                     unset($this->request->data['Attachment'][$key]);
                 }
             }
-
+            // 画像ファイルがどこにinputされていても、インデックスが0から連番になるように配列を詰める
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
