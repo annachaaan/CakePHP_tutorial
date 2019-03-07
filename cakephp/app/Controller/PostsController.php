@@ -161,11 +161,7 @@ class PostsController extends AppController {
             // 'fields' => array('Attachment')にしようと思ったら、なぜか'Attachment.Attachmentになるので空にしたらいけた'
             'fields' => array('')
         ));
-
         $this->set('post', $post);
-        // debug($attachment_list);
-        // exit;
-
         $this->set('attachment_list', $attachment_list);
 
 
@@ -173,13 +169,26 @@ class PostsController extends AppController {
             $this->Post->id = $id;
 
             foreach ($this->request->data['Attachment'] as $key => $attachment) {
-                foreach ($attachment_list as $key_list => $att_list) {
-                    if ($key == $att_list['Attachment']['index_num']) {
-                        if (isset($attachment['deleted'])) {
-                            $this->Attachment->delete($attachment['id']);
-                            unset($this->request->data['Attachment'][$key]);
+                if ($attachment_list != null) {
+                    foreach ($attachment_list as $key_list => $att_list) {
+                        if ($key == $att_list['Attachment']['index_num']) {
+                            if (isset($attachment['deleted'])) {
+                                $this->Attachment->delete($attachment['id']);
+                                unset($this->request->data['Attachment'][$key]);
+                            }
+                        } elseif (isset($attachment['file_name'])) {
+                            if ($attachment['file_name']['error'] == 4) {
+                                unset($this->request->data['Attachment'][$key]);
+                            } elseif ($attachment['file_name']['error'] == 0) {
+                                $this->request->data['Attachment'][$key]['index_num'] = $key;
+                            } else {
+                                $matekora = "このファイルはアップロードできません。";
+                                unset($this->request->data['Attachment'][$key]);
+                            }
                         }
-                    } elseif (isset($attachment['file_name'])) {
+                    }
+                } else {
+                    if (isset($attachment['file_name'])) {
                         if ($attachment['file_name']['error'] == 4) {
                             unset($this->request->data['Attachment'][$key]);
                         } elseif ($attachment['file_name']['error'] == 0) {
@@ -188,6 +197,8 @@ class PostsController extends AppController {
                             $matekora = "このファイルはアップロードできません。";
                             unset($this->request->data['Attachment'][$key]);
                         }
+                    } else {
+                        unset($this->request->data['Attachment'][$key]);
                     }
                 }
             }
