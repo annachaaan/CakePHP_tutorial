@@ -26,7 +26,9 @@
   </fieldset>
   <hr>
   <?php echo $this->Form->submit('Sign Up', array(
-      'div' => false,
+      'div' => array(
+          'class' => 'text-right'
+      ),
       'class' => 'btn btn-info mb-0',
   )); ?>
 </div>
