@@ -1,19 +1,32 @@
-<div class="main">
-    <div class="admin-link">
-        <?php echo $this->element('Admin/header'); ?>
-    </div>
-    <div class="form">
-        <h1>User Sign up</h1>
-    </div>
-    <?php echo $this->Form->create('User'); ?>
-    <fieldset>
-        <?php
-        echo $this->Form->input('username');
-        echo $this->Form->input('password');
-        echo $this->Form->input('role', array(
-            'options' => array('admin' => 'Admin', 'author' => 'Author')
-        ));
-        ?>
-    </fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class="alert alert-info mt-4" role="alert">
+  <h4 class="alert-heading">Sign Up</h4>
+  <?php echo $this->Form->create('User'); ?>
+  <fieldset>
+      <?php
+      echo $this->Form->input('username', array(
+          'div' => array(
+              'class' => 'form-group'
+          ),
+          'class' => 'form-control'
+      ));
+      echo $this->Form->input('password', array(
+          'div' => array(
+              'class' => 'form-group'
+          ),
+          'class' => 'form-control'
+      ));
+      echo $this->Form->input('role', array(
+          'div' => array(
+              'class' => 'form-group'
+          ),
+          'options' => array('admin' => 'Admin', 'author' => 'Author'),
+          'class' => 'form-control'
+      ));
+      ?>
+  </fieldset>
+  <hr>
+  <?php echo $this->Form->submit('Sign Up', array(
+      'div' => false,
+      'class' => 'btn btn-info mb-0',
+  )); ?>
 </div>
