@@ -60,7 +60,7 @@
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#">POSTS</a>
+                        <a class="nav-link disabled text-white" href="#">/</a>
                     </li>
                     <?php if (isset($user)): ?>
                         <li class="nav-item">

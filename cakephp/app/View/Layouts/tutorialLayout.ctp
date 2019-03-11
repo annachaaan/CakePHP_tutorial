@@ -24,9 +24,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#">USERS</a>
-                    </li>
-                    <li class="nav-item">
                         <?php
                             echo $this->Html->link(
                                 'Sign up', array(
@@ -49,7 +46,7 @@
                          ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#">POSTS</a>
+                        <a class="nav-link disabled text-white" href="#">/</a>
                     </li>
                     <li class="nav-item">
                         <?php echo $this->Html->link(
