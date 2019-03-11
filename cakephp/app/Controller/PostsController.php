@@ -35,15 +35,6 @@ class PostsController extends AppController {
     public function index() {
         $user = $this->Auth->user();
         $this->set('user', $user);
-        // set() を使って、コントローラからビューにデータを渡す
-        // Categoryテーブルのid順に投稿が並んでしまうので order で並び順指定
-        $this->set('posts', $this->Post->find('all', array(
-            'order' => array('Post.created' => 'asc')
-        )));
-    }
-
-    public function find() {
-
         // タイトル検索の時に、Postのバリデーションを解除
         unset($this->Post->validate['title']);
 
