@@ -26,17 +26,20 @@
         <th><?php echo $this->Paginator->sort('Tag', 'タグ');?></th>
         <th><?php echo $this->Paginator->sort('created', '作成日時');?></th>
     </tr>
-    <?php foreach ($posts as $post): ?>
+
+    <?php foreach ($posts as $key => $post): ?>
         <tr>
-            <td><?php echo h($post['Post']['id']); ?></td>
-            <td><?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?></td>
+            <td><?php echo $post['Post']['id']; ?></td>
+            <td><?php echo $this->Html->link($post['Post']['title'], array(
+                'action' => 'view', $post['Post']['id'])); ?>
+            </td>
             <td><?php echo $post['Category']['category']; ?></td>
             <td>
-                <?php foreach ($post['Tag'] as $tag): ?>
+                <?php foreach ($post['Tag'] as $tag_key => $tag): ?>
                     <?php echo $tag['tagSlug']; ?>
                 <?php endforeach; ?>
             </td>
-            <td><?php echo h($post['Post']['created']); ?></td>
+            <td><?php echo $post['Post']['created']; ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

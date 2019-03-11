@@ -71,8 +71,16 @@ class PostsController extends AppController {
                         'PostsTag.tag_id = Tag.id'
                     )
                 ),
+            ),
+            // '2'にしないとCategoryが見れなくなる
+            'recursive' => 2,
+            // Postのもつtag分だけ重複するからfieldsでなくす設定
+            'fields' => array(
+                'DISTINCT *',
+
             )
         );
+
         $this->set('posts', $this->paginate());
     }
 
