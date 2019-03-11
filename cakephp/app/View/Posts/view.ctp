@@ -19,13 +19,17 @@
             <p>Photos</p>
             <div class="d-flex p-2">
                 <?php if ($attachment_list): ?>
-                    <?php foreach ($attachment_list as $img): ?>
+                    <?php foreach ($attachment_list as $key => $img): ?>
                         <p class="p-2">
-                            <?php echo $this->Html->image(
-                                DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name'],
-                                array('width'=>'200','height'=>'200',
-                                'class' => 'img-thumbnail'
-                            )); ?>
+                            <a href="<?php echo DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name']; ?>"
+                                data-lightbox="group"
+                            >
+                                <?php echo $this->Html->image(
+                                    DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name'],
+                                    array('width'=>'200','height'=>'200',
+                                    'class' => 'img-thumbnail',
+                                )); ?>
+                            </a>
                         </p>
                     <?php endforeach; ?>
                 <?php endif; ?>
