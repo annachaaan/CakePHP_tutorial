@@ -1,6 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 class PostsController extends AppController {
+
+    public $layout = "postsLayout";
+
     public function isAuthorized($user) {
         // 登録済ユーザーは投稿できる
         if ($this->action === 'add') {
@@ -72,6 +75,7 @@ class PostsController extends AppController {
                     )
                 ),
             ),
+            'order' => array('Post.created DESC'),
             // '2'にしないとCategoryが見れなくなる
             'recursive' => 2,
             // Postのもつtag分だけ重複するからfieldsでなくす設定
