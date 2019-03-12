@@ -45,7 +45,7 @@
         for ($i=$countImage++; $i < 3; $i++):
             echo $this->Form->input('Attachment.' . $i . '.file_name', array(
                 'type' => 'file',
-                'label' => 'Image',
+                'label' => false,
                 'multiple' => 'multiple',
             ));
         endfor; ?>
