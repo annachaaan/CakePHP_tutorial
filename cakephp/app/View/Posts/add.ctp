@@ -39,4 +39,5 @@
             'class' => 'text-right'),
         'class' => 'btn btn-info mb-0',
     )); ?>
+    <?php echo $this->Form->end(); ?>
 </div>
