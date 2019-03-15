@@ -13,13 +13,25 @@
     echo $this->Form->input('title', array(
         'div' => array(
             'class' => 'form-group'),
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'required' => false,
+        'error' => array(
+            'attributes' => array(
+                'wrap'=>'div',
+                'class'=>'alert-danger'
+            ))
     ));
     echo $this->Form->input('body', array(
         'rows' => '3',
         'div' => array(
             'class' => 'form-group'),
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'required' => false,
+        'error' => array(
+            'attributes' => array(
+                'wrap'=>'div',
+                'class'=>'alert-danger'
+            ))
     )); ?>
     <div class="">
         <?php foreach ($attachment_list as $key => $list): ?>

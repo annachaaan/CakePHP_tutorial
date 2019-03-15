@@ -17,20 +17,32 @@
     echo $this->Form->input('title', array(
         'div' => array(
             'class' => 'form-group'),
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'required' => false,
+        'error' => array(
+            'attributes' => array(
+                'wrap'=>'div',
+                'class'=>'alert-danger'
+            ))
     ));
     echo $this->Form->input('body', array(
         'rows' => '3',
         'div' => array(
             'class' => 'form-group'),
-        'class' => 'form-control'
+        'class' => 'form-control',
+        'required' => false,
+        'error' => array(
+            'attributes' => array(
+                'wrap'=>'div',
+                'class'=>'alert-danger'
+            ))
     ));
     for ($i = 0; $i < 3; $i++) {
         echo $this->Form->input('Attachment..file_name', array(
             'type' => 'file',
             'label' => false,
             'multiple' => 'multiple',
-            'class' => 'form-control-file'
+            'class' => 'form-control-file',
         ));
     } ?>
     <hr>

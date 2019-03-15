@@ -87,7 +87,7 @@
                         </li>
                     <?php endif; ?>
                     <?php if ($this->Html->url('', false) != '/'): ?>
-                        <li><button class="mt-4 btn btn-info search-btn" type="button" name="button">Search post</button></li>
+                        <li><button class="btn btn-info search-btn" type="button" name="button">Search post</button></li>
                     <?php endif; ?>
                     <div class="search-area alert alert-info mt-4" role="alert">
                         <h4 class="alert-heading">Search</h4>

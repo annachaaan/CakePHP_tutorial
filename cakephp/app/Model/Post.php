@@ -17,10 +17,12 @@ class Post extends AppModel {
 
     public $validate = array(
         'title' => array(
-            'rule' =>'notBlank'
+            'rule' =>'notBlank',
+            'message' => '↑頼むからタイトル入れて'
         ),
         'body' => array(
-            'rule' => 'notBlank'
+            'rule' => 'notBlank',
+            'message' => '↑投稿する気ある？'
         )
     );
 
