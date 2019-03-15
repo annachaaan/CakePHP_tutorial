@@ -22,8 +22,7 @@
                     <?php foreach ($attachment_list as $key => $img): ?>
                         <p class="p-2">
                             <a href="<?php echo DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name']; ?>"
-                                data-lightbox="group"
-                            >
+                                data-lightbox="group">
                                 <?php echo $this->Html->image(
                                     DS . 'img' . DS . 'file_name' . DS . $img['Attachment']['dir'] . DS . $img['Attachment']['file_name'],
                                     array('width'=>'200','height'=>'200',

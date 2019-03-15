@@ -72,7 +72,6 @@ class PostsController extends AppController {
             // Postのもつtag分だけ重複するからfieldsでなくす設定
             'fields' => array(
                 'DISTINCT *',
-
             )
         );
 
@@ -101,6 +100,8 @@ class PostsController extends AppController {
     }
 
     public function add() {
+        $user = $this->Auth->user();
+        $this->set('user', $user);
         $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
@@ -166,7 +167,6 @@ class PostsController extends AppController {
         ));
         $this->set('post', $post);
         $this->set('attachment_list', $attachment_list);
-
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
