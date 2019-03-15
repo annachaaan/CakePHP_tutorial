@@ -22,7 +22,7 @@
         'error' => array(
             'attributes' => array(
                 'wrap'=>'div',
-                'class'=>'alert-danger'
+                'class'=>'mt-2 p-1 alert alert-danger'
             ))
     ));
     echo $this->Form->input('body', array(
@@ -34,7 +34,7 @@
         'error' => array(
             'attributes' => array(
                 'wrap'=>'div',
-                'class'=>'alert-danger'
+                'class'=>'mt-2 p-1 alert alert-danger'
             ))
     ));
     for ($i = 0; $i < 3; $i++) {
