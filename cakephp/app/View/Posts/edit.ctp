@@ -19,7 +19,7 @@
             'attributes' => array(
                 'wrap'=>'div',
                 'class'=>'mt-2 p-1 alert alert-danger'
-            ))
+        )),
     ));
     echo $this->Form->input('body', array(
         'rows' => '3',
@@ -31,7 +31,7 @@
             'attributes' => array(
                 'wrap'=>'div',
                 'class'=>'mt-2 p-1 alert alert-danger'
-            ))
+        ))
     )); ?>
     <div class="">
         <?php foreach ($attachment_list as $key => $list): ?>

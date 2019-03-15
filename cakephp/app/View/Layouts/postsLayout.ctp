@@ -97,7 +97,8 @@
                         )); ?>
                         <?php echo $this->Form->input('category_id', array(
                             'label' => 'カテゴリー',
-                            'empty' => true
+                            'empty' => true,
+                            'value' => ''
                         )); ?>
                         <?php echo $this->Form->input('tag_id', array(
                             'label' => 'タグ',
@@ -111,7 +112,10 @@
                             'empty' => true,
                             'div' => array(
                                 'class' => 'form-group'),
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'empty' => true,
+                            'value' => '',
+                            'validate' => false
                         )); ?>
                         <hr>
                         <?php echo $this->Form->submit('Search', array(
