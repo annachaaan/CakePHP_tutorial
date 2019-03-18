@@ -115,7 +115,7 @@
                             'class' => 'form-control',
                             'empty' => true,
                             'value' => '',
-                            'validate' => false
+                            'required' => false
                         )); ?>
                         <hr>
                         <?php echo $this->Form->submit('Search', array(
