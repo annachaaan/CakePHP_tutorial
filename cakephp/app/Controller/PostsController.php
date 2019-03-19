@@ -44,6 +44,7 @@ class PostsController extends AppController {
 
         $this->Prg->commonProcess();
         $this->paginate = array(
+            'limit' => 5,
             'conditions' => $this->Post->parseCriteria($this->passedArgs),
             'joins' => array(
                 array(

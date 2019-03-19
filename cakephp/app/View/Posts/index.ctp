@@ -88,3 +88,22 @@
         </tr>
     <?php endforeach; ?>
 </table>
+
+<div class="paginator">
+        <?php
+        echo $this->Paginator->prev(
+            '« Previous',//表示される文字列
+            null,//リンクタグに加えるオプション（配列指定）
+            null,//リンク無効時の文字列（デフォルト値：null）
+            array('class' => 'disabled')//リンク無効時にタグに加えるオプションの指定
+        );
+        ?>
+        <?php
+        echo $this->Paginator->next(
+            'Next »',
+            null,
+            null,
+            array('class' => 'disabled')
+        );
+        ?>
+</div>
