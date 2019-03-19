@@ -45,7 +45,11 @@ class AppController extends Controller {
             'authError' => 'Did you really think you are allowed to see that?',
             'authenticate' => array(
                 'Form' => array(
-                    'passwordHasher' => 'Blowfish'
+                    'passwordHasher' => 'Blowfish',
+                    'fields' => array(
+                        'username' => 'email',
+                        'password' => 'password'
+                    )
                 )
             ),
             'authorize' => array('Controller'),

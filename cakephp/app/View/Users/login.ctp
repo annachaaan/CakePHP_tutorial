@@ -9,15 +9,6 @@
   </legend>
   <fieldset>
       <?php
-      echo $this->Form->input('username', array(
-          'div' => array(
-              'class' => 'form-group'),
-          'class' => 'form-control',
-          'error' => array(
-              'attributes' => array(
-                  'wrap'=>'div',
-                  'class'=>'mt-2 p-1 alert alert-danger')),
-      ));
       echo $this->Form->input('password', array(
           'div' => array(
               'class' => 'form-group'),
@@ -26,7 +17,17 @@
               'attributes' => array(
                   'wrap'=>'div',
                   'class'=>'mt-2 p-1 alert alert-danger')),
-      )); ?>
+      ));
+      echo $this->Form->input('email', array(
+          'div' => array(
+              'class' => 'form-group'),
+          'class' => 'form-control',
+          'type' => 'email',
+          'error' => array(
+              'attributes' => array(
+                  'wrap'=>'div',
+                  'class'=>'mt-2 p-1 alert alert-danger')),
+    )); ?>
   </fieldset>
   <hr>
   <?php echo $this->Form->submit('Sign In', array(
