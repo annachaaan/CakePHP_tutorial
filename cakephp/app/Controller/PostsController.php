@@ -33,8 +33,6 @@ class PostsController extends AppController {
     public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
 
     public function index() {
-        $user = $this->Auth->user();
-        $this->set('user', $user);
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
@@ -86,8 +84,6 @@ class PostsController extends AppController {
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $user = $this->Auth->user();
-        $this->set('user', $user);
         $this->set('post', $post);
         // viewで表示するimageリスト
         $this->set('attachment_list', $this->Attachment->find('all', array(
@@ -98,8 +94,6 @@ class PostsController extends AppController {
     }
 
     public function add() {
-        $user = $this->Auth->user();
-        $this->set('user', $user);
         $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
