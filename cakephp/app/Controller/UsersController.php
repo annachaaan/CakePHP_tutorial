@@ -8,7 +8,7 @@ class UsersController extends AppController {
         // ↓ AppControllerのBeforeFilterを有効にする呪文
         parent::beforeFilter();
         // ユーザー自身によるaddとlogoutアクションを有効にしておく
-        $this->Auth->allow('add', 'logout');
+        $this->Auth->allow('add', 'logout', 'edit');
     }
 
     public function login() {
@@ -53,6 +53,8 @@ class UsersController extends AppController {
     }
 
     public function edit($id = null) {
+        $user = $this->Auth->user();
+        $this->set('user', $user);
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));

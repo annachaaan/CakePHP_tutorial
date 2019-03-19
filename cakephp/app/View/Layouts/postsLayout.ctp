@@ -38,6 +38,17 @@
                                     'class' => 'nav-link text-light'
                             )); ?>
                         </li>
+                        <li class="nav-item">
+                            <?php
+                            echo $this->Html->link(
+                                'Edit', array(
+                                    'controller' => 'users',
+                                    'action' => 'edit',
+                                    $user['id']
+                                ) , array(
+                                    'class' => 'nav-link text-light'
+                            )); ?>
+                        </li>
                     <?php else: ?>
                         <li class="nav-item">
                             <?php
@@ -137,3 +148,5 @@
         </footer>
     </body>
 </html>
+
+<!-- <?php debug($user); ?> -->
