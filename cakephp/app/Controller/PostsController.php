@@ -35,9 +35,6 @@ class PostsController extends AppController {
     public function index() {
         $user = $this->Auth->user();
         $this->set('user', $user);
-        // タイトル検索の時に、Postのバリデーションを解除
-        unset($this->Post->validate['title']);
-
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));

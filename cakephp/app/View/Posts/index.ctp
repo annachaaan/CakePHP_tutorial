@@ -14,7 +14,7 @@
     <?php echo $this->Form->input('title', array(
         'label' => 'タイトル',
         'type' => 'text',
-        'empty' => true,
+        'required' => false,
         'div' => array(
             'class' => 'form-group'),
         'class' => 'form-control'
@@ -41,15 +41,16 @@
 
     <?php foreach ($posts as $key => $post): ?>
         <tr class="text-center">
-            <td class="align-middle"><?php echo $post['Post']['id']; ?>
-            </td>
-            <td class="align-middle　text-secondary"><?php echo $this->Html->link($post['Post']['title'],
-                array(
-                    'action' => 'view', $post['Post']['id']
-                ),
-                array(
+            <td class="align-middle"><?php echo $post['Post']['id']; ?></td>
+            <td class="align-middle　text-secondary">
+                <?php echo $this->Html->link($post['Post']['title'],
+                    array(
+                        'action' => 'view',
+                        $post['Post']['id']
+                    ),
+                    array(
                     'class' => 'text-info'
-                )); ?>
+                    )); ?>
             </td>
             <td class="align-middle"><?php echo $post['Category']['category']; ?></td>
             <td class="align-middle">
@@ -63,10 +64,11 @@
                         'Edit',
                         array(
                             'action' => 'edit',
-                            $post['Post']['id']),
+                            $post['Post']['id']
+                        ),
                         array(
                             'class' => 'btn btn-sm btn-outline-info'
-                    )); ?>
+                        )); ?>
                 <?php
                     // postLink() を使うと、
                     // 投稿記事の削除を行う POST リクエストをするための JavaScript を使うリンクが生成される
@@ -74,11 +76,13 @@
                         'Delete',
                         array(
                             'action' => 'delete',
-                            $post['Post']['id']),
+                            $post['Post']['id']
+                        ),
                         array(
-                            'class' => 'btn btn-sm btn-outline-danger'),
+                            'class' => 'btn btn-sm btn-outline-danger'
+                        ),
                         'Are you sure?'
-                    ); ?>
+                        ); ?>
             </td>
             <td class="align-middle"><?php echo $post['Post']['created']; ?></td>
         </tr>
