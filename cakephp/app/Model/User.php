@@ -13,8 +13,14 @@ class User extends AppModel {
             'message' => 'A password is required'
         ),
         'email' => array(
-            'rule' => array('email', true),
-            'message' => 'A email is required'
+            'rule1' => array(
+                'rule' => array('email', true),
+                'message' => 'A email is required'
+            ),
+            'rule2' => array(
+                'rule' => 'isUnique',
+                'message' => 'Already used this email'
+            ),
         ),
         'postel_code' => array(
             'rule' => 'notBlank',
