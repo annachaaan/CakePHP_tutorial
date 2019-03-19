@@ -14,12 +14,6 @@
             'div' => array(
                 'class' => 'form-group'),
                 'class' => 'form-control'
-            ));
-        echo $this->Form->input('role', array(
-            'div' => array(
-                'class' => 'form-group'),
-                'options' => array('admin' => 'Admin', 'author' => 'Author'),
-                'class' => 'form-control'
             )); ?>
         <span class="p-country-name" style="display:none;">Japan</span>
         <?php
