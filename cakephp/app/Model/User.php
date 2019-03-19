@@ -5,16 +5,20 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel {
     public $validate = array(
         'username' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'A username is required'
-            )
+            'rule' => 'notBlank',
+            'message' => 'A username is required'
         ),
         'password' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'A password is required'
-            )
+            'rule' => 'notBlank',
+            'message' => 'A password is required'
+        ),
+        'email' => array(
+            'rule' => array('email', true),
+            'message' => 'A email is required'
+        ),
+        'postel_code' => array(
+            'rule' => 'notBlank',
+            'message' => 'A postel code is required'
         ),
         'role' => array(
             'valid' => array(

@@ -1,19 +1,38 @@
 <div class="alert alert-info mt-4" role="alert">
     <h4 class="alert-heading">Sign Up</h4>
     <?php echo $this->Form->create('User', array(
-        'class' => 'h-adr'
+        'class' => 'h-adr',
+        'novalidate' => true
     )); ?>
     <fieldset>
         <?php
         echo $this->Form->input('username', array(
             'div' => array(
                 'class' => 'form-group'),
-                'class' => 'form-control'
+            'class' => 'form-control',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
             ));
         echo $this->Form->input('password', array(
             'div' => array(
                 'class' => 'form-group'),
-                'class' => 'form-control'
+            'class' => 'form-control',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
+            ));
+        echo $this->Form->input('email', array(
+            'div' => array(
+                'class' => 'form-group'),
+            'class' => 'form-control',
+            'type' => 'email',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
             )); ?>
         <span class="p-country-name" style="display:none;">Japan</span>
         <?php
@@ -22,6 +41,10 @@
             'size' => 8,
             'maxlength' => 8,
             'label' => '〒',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
             'div' => array(
                 'class' => 'form-group'),
         ));
@@ -31,12 +54,20 @@
             'div' => array(
                 'class' => 'form-group'),
             'label' => 'Adress(auto)',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
         ));
         echo $this->Form->input('adress_manual', array(
             'class' => 'p-street-address p-extended-address form-control',
             'div' => array(
                 'class' => 'form-group'),
-            'label' => 'Adress'
+            'label' => 'Adress',
+            'error' => array(
+                'attributes' => array(
+                    'wrap'=>'div',
+                    'class'=>'mt-2 p-1 alert alert-danger')),
         ));
          ?>    </fieldset>
     <hr>

@@ -18,7 +18,6 @@
         'div' => array(
             'class' => 'form-group'),
         'class' => 'form-control',
-        'required' => false,
         'error' => array(
             'attributes' => array(
                 'wrap'=>'div',
@@ -30,7 +29,6 @@
         'div' => array(
             'class' => 'form-group'),
         'class' => 'form-control',
-        'required' => false,
         'error' => array(
             'attributes' => array(
                 'wrap'=>'div',
