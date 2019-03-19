@@ -5,6 +5,32 @@
     <div class="text-secondary">
         <div class="alert alert-info" role="alert">
             <h3 class="alert-heading mt-2 mb-2"><?php echo ($post['Post']['title']); ?></h3>
+            <?php if ($user['id'] == $post['Post']['user_id']): ?>
+                <?php
+                    echo $this->Html->link(
+                        'Edit',
+                        array(
+                            'action' => 'edit',
+                            $post['Post']['id']
+                        ),
+                        array(
+                            'class' => 'btn btn-sm btn-outline-info'
+                        )); ?>
+                <?php
+                    // postLink() を使うと、
+                    // 投稿記事の削除を行う POST リクエストをするための JavaScript を使うリンクが生成される
+                    echo $this->Form->postLink(
+                        'Delete',
+                        array(
+                            'action' => 'delete',
+                            $post['Post']['id']
+                        ),
+                        array(
+                            'class' => 'btn btn-sm btn-outline-danger'
+                        ),
+                        'Are you sure?'
+                    ); ?>
+            <?php endif; ?>
             <p><?php echo $post['Category']['category']; ?></p>
             <p><?php if ($post['Tag']): ?>
                 <?php foreach ($post['Tag'] as $tag): ?>
