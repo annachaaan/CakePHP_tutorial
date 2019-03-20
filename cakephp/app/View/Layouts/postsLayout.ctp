@@ -10,20 +10,12 @@
         <link rel="stylesheet" href="/css/lightbox.css">
         <script type="text/javascript" src="/js/lightbox.js"></script>
         <meta charset="utf-8">
-        <title>TUTORIAL</title>
+        <title>SHISHA PAGE</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-            <?php echo $this->Html->link(
-                'TUTORIAL', array(
-                    'controller' => 'posts',
-                    'action' => 'index'
-                ),array (
-                    'class' => 'navbar-brand text-light',
-                ));
-            ?>
+        <nav class="navbar navbar-expand-lg">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
-                <span class="navbar-toggler-icon text-white"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -35,7 +27,7 @@
                                     'controller' => 'users',
                                     'action' => 'logout'
                                 ) , array(
-                                    'class' => 'nav-link text-light'
+                                    'class' => 'nav-link'
                             )); ?>
                         </li>
                         <li class="nav-item">
@@ -46,7 +38,7 @@
                                     'action' => 'edit',
                                     $user['id']
                                 ) , array(
-                                    'class' => 'nav-link text-light'
+                                    'class' => 'nav-link'
                             )); ?>
                         </li>
                     <?php else: ?>
@@ -57,7 +49,7 @@
                                     'controller' => 'users',
                                     'action' => 'add'
                                 ), array(
-                                    'class' => 'nav-link text-light'
+                                    'class' => 'nav-link'
                             )); ?>
                         </li>
                         <li class="nav-item">
@@ -67,22 +59,12 @@
                                     'controller' => 'users',
                                     'action' => 'login'
                                 ), array(
-                                    'class' => 'nav-link text-light'
+                                    'class' => 'nav-link'
                             )); ?>
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#">/</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php
-                        echo $this->Html->link(
-                            'Post top',array(
-                                'controller' => 'posts',
-                                'action' => 'index'
-                            ), array(
-                                'class' => 'nav-link text-light'
-                        )); ?>
+                        <a class="nav-link disabled" href="#">/</a>
                     </li>
                     <?php if (isset($user)): ?>
                         <li class="nav-item">
@@ -93,7 +75,7 @@
                                     'controller' => 'posts',
                                     'action' => 'add'
                                 ), array(
-                                    'class' => 'nav-link text-light'
+                                    'class' => 'nav-link'
                             )); ?>
                         </li>
                     <?php endif; ?>
@@ -141,6 +123,14 @@
             </div>
         </nav>
         <div class="container">
+            <?php echo $this->Html->link(
+                'SHISHA PAGE', array(
+                    'controller' => 'posts',
+                    'action' => 'index'
+                ),array (
+                    'class' => 'navbar-brand',
+                ));
+            ?>
     	    <?php echo $this->fetch('content'); ?>
         </div>
         <footer class="p-3 text-center">

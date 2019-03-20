@@ -7,18 +7,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
         <meta charset="utf-8">
-        <title>TUTORIAL</title>
+        <title>SHISHA PAGE</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-            <?php echo $this->Html->link(
-                'TUTORIAL', array(
-                    'controller' => 'posts',
-                    'action' => 'index'
-                ),array (
-                    'class' => 'navbar-brand text-light',
-                ));
-            ?>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
                 <span class="navbar-toggler-icon text-white"></span>
             </button>
@@ -46,23 +38,18 @@
                                 ));
                          ?>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled text-white" href="#">/</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php echo $this->Html->link(
-                            'Post top',array(
-                                'controller' => 'posts',
-                                'action' => 'index'
-                            ), array(
-                                'class' => 'nav-link text-light'
-                            ));
-                        ?>
-                    </li>
                 </ul>
             </div>
         </nav>
         <div class="container">
+            <?php echo $this->Html->link(
+                'SHISHA PAGE', array(
+                    'controller' => 'posts',
+                    'action' => 'index'
+                ),array (
+                    'class' => 'navbar-brand text-light',
+                ));
+            ?>
     	    <?php echo $this->fetch('content'); ?>
         </div>
         <footer class="p-3 text-center">
