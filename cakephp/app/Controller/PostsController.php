@@ -78,6 +78,12 @@ class PostsController extends AppController {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }
+        $this->set('categories', $this->Category->find('list', array(
+            'fields' => 'id, category',
+        )));
+        $this->set('tags', $this->Tag->find('list', array(
+            'fields' => 'id, tagSlug',
+        )));
 
         // 一つの投稿記事を取得するので、afindByID()を使用
         $post = $this->Post->findById($id);
