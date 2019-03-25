@@ -1,0 +1,41 @@
+.navbar ul li{ 	
+    display: inline;
+ }
+
+.btn-wrapper {position: relative;}
+
+.btn-wrapper .bnrL {
+    z-index: 1;
+    position: fixed;
+    top: 50px;
+    left: -300px;
+    width: 300px;
+    height: 400px;
+    background: #eee;
+}
+
+.btn-wrapper .bnrL ul {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-wrapper .bnrL li {
+    margin: 0 0 20px;
+}
+
+.btn-wrapper .bnrL button {
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    width: 50px;
+    height: 200px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: #eee;
+}
