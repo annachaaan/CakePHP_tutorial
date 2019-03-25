@@ -116,7 +116,7 @@
                             )); ?>
                             <?php echo $this->Form->end(); ?>
                         </ul>
-                        <button class="btn" type="button" name="button">test</button>
+                        <button class="btn" type="button" name="button">search</button>
                     </div>
                 </div>
             <?php endif; ?>

@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="info col-md-9">
+    <div class="secondary">
         <p class="mt-2"><?php echo $this->Paginator->counter(array('format' => __('total: {:count}')));?></p>
-        <table class="table table-striped table-bordered mt-0">
-            <tr class="table-info text-center">
-                <th class="align-middle"><?php echo $this->Paginator->sort('id', 'ID', array('class' => 'text-info'));?></th>
-                <th class="align-middle"><?php echo $this->Paginator->sort('title', 'Title', array('class' => 'text-info'));?></th>
-                <th class="align-middle"><?php echo $this->Paginator->sort('category_id', 'Category', array('class' => 'text-info'));?></th>
-                <th class="align-middle"><?php echo $this->Paginator->sort('Tag', 'Tag', array('class' => 'text-info'));?></th>
-                <th class="align-middle"><?php echo $this->Paginator->sort('created', 'Created', array('class' => 'text-info'));?></th>
+        <table class="table table-striped table-bordered">
+            <tr class="table-secondary text-center">
+                <th class="align-middle"><?php echo $this->Paginator->sort('id', 'ID', array('class' => 'text-secondary'));?></th>
+                <th class="align-middle"><?php echo $this->Paginator->sort('title', 'Title', array('class' => 'text-secondary'));?></th>
+                <th class="align-middle"><?php echo $this->Paginator->sort('category_id', 'Category', array('class' => 'text-secondary'));?></th>
+                <th class="align-middle"><?php echo $this->Paginator->sort('Tag', 'Tag', array('class' => 'text-secondary'));?></th>
+                <th class="align-middle"><?php echo $this->Paginator->sort('created', 'Created', array('class' => 'text-secondary'));?></th>
             </tr>
 
             <?php foreach ($posts as $key => $post): ?>
@@ -20,7 +20,7 @@
                                 $post['Post']['id']
                             ),
                             array(
-                            'class' => 'text-info'
+                            'class' => 'text-secondary'
                             )); ?>
                     </td>
                     <td class="align-middle"><?php echo $post['Category']['category']; ?></td>
@@ -53,34 +53,38 @@
                 ?>
         </div>
     </div>
-    <div class="alert alert-info mt-5 col-3" role="alert">
-        <h4 class="alert-heading">Search</h4>
-        <?php echo $this->Form->create('Post'); ?>
-        <?php echo $this->Form->input('category_id', array(
-            'label' => 'カテゴリー',
-            'empty' => true
-        )); ?>
-        <?php echo $this->Form->input('tag_id', array(
-            'label' => 'タグ',
-            'type' => 'select',
-            'multiple' => 'checkbox',
-            'options' => $tag_id
-        )); ?>
-        <?php echo $this->Form->input('title', array(
-            'label' => 'タイトル',
-            'type' => 'text',
-            'required' => false,
-            'div' => array(
-                'class' => 'form-group'),
-            'class' => 'form-control'
-        )); ?>
-        <hr>
-        <?php echo $this->Form->submit('Search', array(
-            'div' => array(
-                'class' => 'text-right'),
-            'class' => 'btn btn-info mb-0',
-            'name' => 'search'
-        )); ?>
-        <?php echo $this->Form->end(); ?>
+    <div class="btn-wrapper">
+        <div class="bnrL">
+            <ul>
+                <?php echo $this->Form->create('Post'); ?>
+                <?php echo $this->Form->input('category_id', array(
+                    'label' => 'カテゴリー',
+                    'empty' => true
+                )); ?>
+                <?php echo $this->Form->input('tag_id', array(
+                    'label' => 'タグ',
+                    'type' => 'select',
+                    'multiple' => 'checkbox',
+                    'options' => $tag_id
+                )); ?>
+                <?php echo $this->Form->input('title', array(
+                    'label' => 'タイトル',
+                    'type' => 'text',
+                    'required' => false,
+                    'div' => array(
+                        'class' => 'form-group'),
+                    'class' => 'form-control'
+                )); ?>
+                <hr>
+                <?php echo $this->Form->submit('Search', array(
+                    'div' => array(
+                        'class' => 'text-right'),
+                    'class' => 'btn btn-secondary mb-0',
+                    'name' => 'search'
+                )); ?>
+                <?php echo $this->Form->end(); ?>
+            </ul>
+            <button class="btn" type="button" name="button">search</button>
+        </div>
     </div>
 </div>

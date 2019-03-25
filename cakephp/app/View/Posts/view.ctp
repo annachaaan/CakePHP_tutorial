@@ -3,7 +3,7 @@
         <p class="d-flex flex-row-reverse mb-0"><small><?php echo $post['Post']['created']; ?></small></p>
     </div>
     <div class="text-secondary">
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-secondary" role="alert">
             <h3 class="alert-heading mt-2 mb-2"><?php echo ($post['Post']['title']); ?></h3>
             <?php if ($user['id'] == $post['Post']['user_id']): ?>
                 <?php
