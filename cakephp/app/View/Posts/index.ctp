@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="secondary">
+<div class="center-block">
+    <div class="secondary row">
         <p class="mt-2"><?php echo $this->Paginator->counter(array('format' => __('total: {:count}')));?></p>
         <table class="table table-striped table-bordered">
             <tr class="table-secondary text-center">
@@ -9,9 +9,8 @@
                 <th class="align-middle"><?php echo $this->Paginator->sort('Tag', 'Tag', array('class' => 'text-secondary'));?></th>
                 <th class="align-middle"><?php echo $this->Paginator->sort('created', 'Created', array('class' => 'text-secondary'));?></th>
             </tr>
-
-            <?php foreach ($posts as $key => $post): ?>
-                <tr class="text-center">
+                <?php foreach ($posts as $key => $post): ?>
+                    <tr class="text-center">
                     <td class="align-middle"><?php echo $post['Post']['id']; ?></td>
                     <td class="align-middle　text-secondary">
                         <?php echo $this->Html->link($post['Post']['title'],
@@ -33,8 +32,7 @@
                 </tr>
             <?php endforeach; ?>
         </table>
-
-        <div class="paginator">
+            <div class="paginator">
                 <?php
                 echo $this->Paginator->prev(
                     '« Previous',//表示される文字列
