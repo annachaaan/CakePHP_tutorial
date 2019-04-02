@@ -3,20 +3,20 @@ App::uses('AppController', 'Controller');
 class PostelcodesController extends AppController {
 
     public function index() {
-        // if ($this->request->is('post')) {
+        if ($this->request->is('post')) {
+            $this->Postelcode->create();
             $csv = $this->request->data['Postelcodes']['csvfile'];
-            debug(WWW_ROOT . 'files/csvs');
-            // exit;
-            //イメージ保存先パス
-            $csv_save_path = WWW_ROOT . 'files/csvs';
+            //フォルダ保存先パス
+            $csv_save_path =  WWW_ROOT . 'files/csvs';
             $tmp_file = $csv['tmp_name'];
 
-            //イメージの保存処理
+            //フォルダの保存処理
             if (file_exists($tmp_file)) {
-                move_uploaded_file($tmp_file, $csv_save_path);
+                move_uploaded_file($tmp_file, $csv_save_path . DS . $csv['name']);
             } else {
-                echo 'nothing';
+                echo 'anything';
             }
+        }
     }
 
     // public function import() {
