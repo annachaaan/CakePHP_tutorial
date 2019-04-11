@@ -3,6 +3,7 @@
 /app/Config/database.php
 /app/tmp
 /app/webroot/img/file_name
+/app/webroot/files/csvs
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors

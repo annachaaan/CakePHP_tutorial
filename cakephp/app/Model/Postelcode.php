@@ -5,4 +5,17 @@ class Postelcode extends AppModel {
             'delimiter'  => ',',
         ),
     );
+
+    public $validate = array(
+        'csvfile' => array(
+            'name' => array(
+                'rule' => array(
+                    'extension', array(
+                        'csv', 'CSV'
+                    )
+                ),
+                'message' => 'のんのんのん'
+            )
+        ),
+    );
 }
