@@ -72,6 +72,6 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->set('user', $this->Auth->user());
         // indexとviewアクションのときはログインを必要としない
-        $this->Auth->allow('index', 'view');
+        $this->Auth->allow('index', 'view', 'search_ajax');
     }
 }

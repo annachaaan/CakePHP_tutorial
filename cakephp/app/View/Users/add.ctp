@@ -36,11 +36,12 @@
             )); ?>
         <span class="p-country-name" style="display:none;">Japan</span>
         <?php
-        echo $this->Form->input('postel_code', array(
-            'class' => 'p-postal-code form-control',
-            'size' => 8,
-            'maxlength' => 8,
-            'label' => '〒',
+        echo $this->Form->input('zipcode', array(
+            'class' => 'form-control',
+            'id' => 'zipcode',
+            'size' => 7,
+            'maxlength' => 7,
+            'label' => '〒郵便番号(ハイフンなし)',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
@@ -49,27 +50,29 @@
                 'class' => 'form-group'),
         ));
         echo $this->Form->input('adress_auto', array(
-            'class' => 'p-region p-locality form-control',
-            'readonly',
+            'class' => 'form-control',
+            'id' => 'adress',
             'div' => array(
                 'class' => 'form-group'),
-            'label' => 'Adress(auto)',
+            'label' => '都道府県市区町村',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
                     'class'=>'mt-2 p-1 alert alert-danger')),
         ));
         echo $this->Form->input('adress_manual', array(
-            'class' => 'p-street-address p-extended-address form-control',
+            'class' => 'form-control',
+            'id' => 'others',
             'div' => array(
                 'class' => 'form-group'),
-            'label' => 'Adress',
+            'label' => 'それ以降',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
                     'class'=>'mt-2 p-1 alert alert-danger')),
         ));
-         ?>    </fieldset>
+         ?>    
+    </fieldset>
     <hr>
     <?php echo $this->Form->submit('Sign Up', array(
         'div' => array(

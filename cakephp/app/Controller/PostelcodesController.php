@@ -63,4 +63,34 @@ class PostelcodesController extends AppController {
             }
         }
     }
+
+    /** 
+     * 郵便番号から、住所を補助入力するAjax
+     */
+    public function search_ajax() {
+
+        // htmlを描画させないようにする(search_ajax.ctp探さないようにするため)
+        $this->autoRender = false;
+
+        // ajax通信のみ許可
+        if ($this->request->is('ajax')) {
+            if(isset($this->request->data['zipcode'])){
+                $zipcode = $this->request->data['zipcode'];
+                
+                // 入力欄の郵便番号からpostelcodesテーブル内を検索
+                $seach_code = $this->Postelcode->query("
+                    select id, pref, city, street FROM `postelcodes` 
+                    where zipcode = {$zipcode};
+                ");
+                
+                // 取得した配列を日本語対応JSON型にチェンジ
+                $json_change = json_encode($seach_code, JSON_UNESCAPED_UNICODE);
+                echo $json_change;
+                exit;
+
+            } else {
+                echo 'FAIL TO AJAX REQUEST';
+            }
+        }
+    }
 }
