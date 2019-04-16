@@ -8,7 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 	    <script type="text/javascript" src="/js/search.js"></script>
         <meta charset="utf-8">
-        <title>SHISHA PAGE</title>
+        <title>PAGE</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -44,7 +44,7 @@
         </nav>
         <div class="container">
             <?php echo $this->Html->link(
-                'SHISHA PAGE', array(
+                'PAGE', array(
                     'controller' => 'posts',
                     'action' => 'index'
                 ),array (

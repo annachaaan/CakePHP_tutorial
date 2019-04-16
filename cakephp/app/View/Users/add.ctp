@@ -65,7 +65,7 @@
             'id' => 'others',
             'div' => array(
                 'class' => 'form-group'),
-            'label' => 'それ以降',
+            'label' => '番地以降',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',

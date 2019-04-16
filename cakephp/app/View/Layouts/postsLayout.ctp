@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/css/master.css">
         <script type="text/javascript" src="/js/lightbox.js"></script>
         <meta charset="utf-8">
-        <title>SHISHA PAGE</title>
+        <title>PAGE</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg">
@@ -70,7 +70,7 @@
         </nav>
         <div class="container">
             <?php echo $this->Html->link(
-                'SHISHA PAGE', array(
+                'PAGE', array(
                     'controller' => 'posts',
                     'action' => 'index'
                 ),array (
