@@ -36,7 +36,6 @@ $(function(){
                                     tagF = '</option>'
                                     list[i] = tagS + json[i].postelcodes.pref + json[i].postelcodes.city + json[i].postelcodes.street + tagE;
                                 }
-                                console.log(list);
                                 pref = json[0].postelcodes.pref;
                                 city = json[0].postelcodes.city;
 
@@ -44,7 +43,7 @@ $(function(){
                                 list = list.join("");
                                 // プルダウン作成
                                 $('#adress').replaceWith('<input id="adress" list="select" autocomplete="on" type="text" name="data[User][adress_auto]" class="form-control"><datalist id="select">' + list + '</datalist>');
-                                $('#adress').val(pref + city);
+                                $('#adress').val(pref + city).after('<p>プルダウンから、番地より前の住所を選択してください</p>');
                             }
                         }
                     })
