@@ -100,7 +100,6 @@ class PostsController extends AppController {
     }
 
     public function add() {
-        $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
@@ -146,7 +145,6 @@ class PostsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
 
-        $uses;
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
