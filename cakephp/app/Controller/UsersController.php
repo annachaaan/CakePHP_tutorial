@@ -43,8 +43,15 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
-                return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+                $id = $this->User->id;
+                $this->request->data['User'] = array_merge(
+                    $this->request->data['User'], array(
+                        'id' => $id
+                    )
+                );
+                unset($this->request->data['User']['password']);
+                $this->Auth->login($this->request->data['User']);
+                return $this->redirect('/');
             }
             $this->Flash->error(
                 __('The user could not be saved. Please, try again.')
