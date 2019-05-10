@@ -45,11 +45,31 @@
                     <div class="nav-item">
                         <?php
                         echo $this->Html->link(
-                            'UserEdit(未機能)',
+                            'UserEdit',
                             array(
                                 'controller' => 'users',
                                 'action' => 'edit',
                                 $user['id']
+                            )
+                        ); ?>
+                    </div>
+                    <div class="nav-item">
+                        <?php
+                        echo $this->Html->link(
+                            'Add post',
+                            array(
+                                'controller' => 'posts',
+                                'action' => 'add'
+                            )
+                        ); ?>
+                    </div>
+                    <div class="nav-item">
+                        <?php
+                        echo $this->Html->link(
+                            'CSVImport',
+                            array(
+                                'controller' => 'postelcodes',
+                                'action' => 'index'
                             )
                         ); ?>
                     </div>
@@ -71,18 +91,6 @@
                             array(
                                 'controller' => 'users',
                                 'action' => 'login'
-                            )
-                        ); ?>
-                    </div>
-                <?php endif; ?>
-                <?php if (isset($user)) : ?>
-                    <div class="nav-item">
-                        <?php
-                        echo $this->Html->link(
-                            'Add post',
-                            array(
-                                'controller' => 'posts',
-                                'action' => 'add'
                             )
                         ); ?>
                     </div>
