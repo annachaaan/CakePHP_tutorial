@@ -39,8 +39,7 @@
         echo $this->Form->input('zipcode', array(
             'class' => 'form-control',
             'id' => 'zipcode',
-            'size' => 7,
-            'maxlength' => 7,
+            // 'maxlength' => 7,
             'label' => '〒郵便番号(ハイフンなし)',
             'error' => array(
                 'attributes' => array(
