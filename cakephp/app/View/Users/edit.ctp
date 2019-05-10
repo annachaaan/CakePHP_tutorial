@@ -1,5 +1,5 @@
 <div class="alert alert-info mt-4" role="alert">
-    <h4 class="alert-heading">Sign Up</h4>
+    <h4 class="alert-heading">Edit User</h4>
     <?php echo $this->Form->create('User', array(
         'class' => 'h-adr',
         'novalidate' => true
@@ -14,22 +14,11 @@
                 'attributes' => array(
                     'wrap'=>'div',
                     'class'=>'mt-2 p-1 alert alert-danger')),
-            ));
-        echo $this->Form->input('password', array(
-            'div' => array(
-                'class' => 'form-group'),
-                'class' => 'form-control',
-                'error' => array(
-                    'attributes' => array(
-                        'wrap'=>'div',
-                        'class'=>'mt-2 p-1 alert alert-danger')),
             )); ?>
         <span class="p-country-name" style="display:none;">Japan</span>
         <?php
-        echo $this->Form->input('postel_code', array(
+        echo $this->Form->input('zipcode', array(
             'class' => 'p-postal-code form-control',
-            'size' => 8,
-            'maxlength' => 8,
             'label' => '〒',
             'div' => array(
                 'class' => 'form-group'),
@@ -61,7 +50,9 @@
         ));
          ?>    </fieldset>
     <hr>
-    <?php echo $this->Form->submit('Sign Up', array(
+    <?php 
+    echo $this->Form->input('id', array('type' => 'hidden'));
+    echo $this->Form->submit('Edit', array(
         'div' => array(
             'class' => 'text-right'),
             'class' => 'btn btn-info mb-0',

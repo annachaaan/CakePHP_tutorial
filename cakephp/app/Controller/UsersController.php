@@ -8,7 +8,17 @@ class UsersController extends AppController {
         // ↓ AppControllerのBeforeFilterを有効にする呪文
         parent::beforeFilter();
         // ユーザー自身によるaddとlogoutアクションを有効にしておく
-        $this->Auth->allow('add', 'logout', 'edit');
+        $this->Auth->allow('add', 'logout');
+    }
+
+    public function isAuthorized($user)
+    {
+        // Check that the $user is equal to the current user.
+        $id = $this->request->params['pass'][0];
+        if ($id == $user['id']) {
+            return true;
+        }
+        return false;
     }
 
     public function login() {
@@ -37,6 +47,7 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         $this->set('user', $this->User->findById($id));
+        $this->set('auth', $this->Auth->user('id'));
     }
 
     public function add() {
@@ -69,7 +80,7 @@ class UsersController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect('/users/view/'.$this->request->data['User']['id']);
             }
             $this->Flash->error(
                 __('The user could not be saved. Please, try again.')
@@ -80,7 +91,7 @@ class UsersController extends AppController {
         }
     }
 
-    public function delete($id = null) {
+    public function delete($id, $cascade = true) {
         // Prior to 2.5 use
         // $this->request->onlyAllow('post');
 
@@ -90,12 +101,12 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        if ($this->User->delete()) {
+        if ($this->User->delete($id)) {
             $this->Flash->success(__('User deleted'));
-            return $this->redirect(array('action' => 'index'));
+            return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
         }
         $this->Flash->error(__('User was not deleted'));
-        return $this->redirect(array('action' => 'index'));
+        // return $this->redirect(array('action' => 'index'));
     }
 
 }
