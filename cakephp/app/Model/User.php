@@ -22,16 +22,20 @@ class User extends AppModel {
                 'message' => 'Already used this email'
             ),
         ),
-        'postel_code' => array(
-            'rule' => 'notBlank',
-            'message' => 'A postel code is required'
+        'zipcode' => array(
+            'rule' => array(
+                'custom', '/^[0-9]{3}-?[0-9]{4}$/',
+                'notBlank'
         ),
-        'role' => array(
-            'valid' => array(
-                'rule' => array('inList', array('admin', 'author')),
-                'message' => 'Please enter a valid role',
-                'allowEmpty' => false
-            )
+            'message' => 'A postal code is required'
+        ),
+        'adress_auto' => array(
+            'rule' => 'notBlank',
+            'message' => 'A postal code is required'
+        ),
+        'adress_manual' => array(
+            'rule' => 'notBlank',
+            'message' => 'A postal code is required'
         )
     );
 
