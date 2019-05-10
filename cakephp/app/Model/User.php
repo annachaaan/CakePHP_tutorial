@@ -23,11 +23,14 @@ class User extends AppModel {
             ),
         ),
         'zipcode' => array(
-            'rule' => array(
-                'custom', '/^[0-9]{3}-?[0-9]{4}$/',
-                'notBlank'
-        ),
-            'message' => 'A postal code is required'
+            'rule1' => array(
+                'rule' => 'notBlank',
+                'message' => 'A postalcode is required'
+            ),
+            'rule2' => array(
+                'rule' => array('custom', '/^[0-9]{7}$/'),
+                'message' => 'You can input [0000000]',
+            )
         ),
         'adress_auto' => array(
             'rule' => 'notBlank',

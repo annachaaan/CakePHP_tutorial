@@ -40,7 +40,7 @@
             'class' => 'form-control',
             'id' => 'zipcode',
             // 'maxlength' => 7,
-            'label' => '〒郵便番号(ハイフンなし)',
+            'label' => '〒郵便番号(ハイフンなしの数字7文字で入力して下さい)',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
