@@ -103,7 +103,7 @@ class UsersController extends AppController {
         }
         if ($this->User->delete($id)) {
             $this->Flash->success(__('User deleted'));
-            return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
+            return $this->redirect($this->Auth->logout());
         }
         $this->Flash->error(__('User was not deleted'));
         // return $this->redirect(array('action' => 'index'));
