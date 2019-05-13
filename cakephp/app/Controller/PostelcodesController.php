@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 class PostelcodesController extends AppController {
 
-    public $layout = "postsLayout";
+    public $layout = "main";
 
     /**
      * 郵便番号CSVをインポート、postelcodesテーブルを書き換える

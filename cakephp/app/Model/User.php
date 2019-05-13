@@ -46,6 +46,14 @@ class User extends AppModel {
         )
     );
 
+    public $hasMany = array(
+        'Post' => array(
+            'className' => 'Post',
+            'foreignKey' => 'user_id',
+            'dependent' => true
+        ),
+    );
+
     // ↓ beforeSave この関数に保存の前処理のロジックを置く
     // この関数はモデルのデータがバリデーションに成功した後、 データが保存される前に実行
     public function beforeSave($options = array()) {

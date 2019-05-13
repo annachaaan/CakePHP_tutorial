@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 class PostsController extends AppController {
 
-    public $layout = "postsLayout";
+    public $layout = "main";
 
     public function isAuthorized($user) {
         // 登録済ユーザーは投稿できる

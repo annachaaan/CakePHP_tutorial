@@ -1,5 +1,5 @@
-<div class="alert alert-info mt-4" role="alert">
-    <h4 class="alert-heading">Edit User</h4>
+<div class="mt-4"">
+    <h4 class="title">Edit User</h4>
     <?php echo $this->Form->create('User', array(
         'class' => 'h-adr',
         'novalidate' => true

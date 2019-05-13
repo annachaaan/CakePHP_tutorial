@@ -30,7 +30,8 @@ class Post extends AppModel {
         'Attachment' => array(
             'className' => 'Attachment',
             'foreignKey' => 'post_id',
-            'conditions' => array('Attachment.deleted' => 0)
+            'conditions' => array('Attachment.deleted' => 0),
+            'dependent' => true
         ),
     );
 
@@ -38,7 +39,7 @@ class Post extends AppModel {
         'Category' => array(
             'className' => 'Category',
             'foreignKey' => 'category_id',
-            'dependent'    => true
+            'dependent' => true
         )
     );
 
@@ -49,7 +50,7 @@ class Post extends AppModel {
             'foreignKey' => 'post_id',
             'associationForeignKey' => 'tag_id',
             'unique' => true,
-            'dependent'    => true
+            'dependent' => true
         )
     );
 
