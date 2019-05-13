@@ -1,37 +1,93 @@
-.btn-wrapper {position: relative;}
-
-.btn-wrapper .bnrL {
-    z-index: 1;
+/* サイドオープン時にメインコンテンツを覆う部分 */
+.overlay {
+    content: '';
+    visibility: hidden;
     position: fixed;
-    top: 50px;
-    left: -300px;
-    width: 300px;
-    height: 400px;
-    background: #eee;
-}
-
-.btn-wrapper .bnrL ul {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.btn-wrapper .bnrL li {
-    margin: 0 0 20px;
-}
-
-.btn-wrapper .bnrL button {
-    z-index: 1;
-    position: absolute;
-    top: 0px;
-    left: 300px;
-    width: 50px;
-    height: 200px;
+    top: 0;
+    left: 0;
     display: block;
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: #eee;
-}
+    width: 100%;
+    height: 100%;
+    background: #00000000;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    z-index: 3;
+  }
+  .overlay::after {
+    visibility: hidden;
+    position: fixed;
+    top: 40%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 50px;
+    color: #ffffff00;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+  .side-open .overlay {
+    visibility: visible;
+    cursor: pointer;
+    background: #000000b3;
+  }
+  .side-open .overlay::after {
+    visibility: visible;
+    color: #ffffffcc;
+  }
+  
+  /* サイドメニュー */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    padding-top: 100px;
+    padding-right: 20px;
+    text-align: left;
+    font-size: 13px;
+    background: #F8F8F8;
+    z-index: 1;
+  }
+  
+  /* 開閉用ボタン */
+  .side-menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    background: #666363;
+    cursor: pointer;
+    z-index: 4;
+  }
+  
+  /* メインコンテンツ */
+  .wrapper {
+    margin: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* text-align: center; */
+    font-size: 13px;
+    background: #F8F8F8;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    z-index: 2;
+  }
+
+  .main {
+      padding:0px 50px;
+  }
+  
+  /* サイドメニューオープン */
+  .side-open .wrapper,
+  .side-open .overlay {
+    -webkit-transform: translate3d(-300px, 0, 0);
+    transform: translate3d(-300px, 0, 0);
+  }

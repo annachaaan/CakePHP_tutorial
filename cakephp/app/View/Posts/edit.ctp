@@ -1,5 +1,4 @@
-<div class="alert alert-secondary mt-4" role="alert">
-    <h4 class="alert-heading">Edit Post</h4>
+<div class="post-area">
     <?php
     echo $this->Form->create('Post', array(
         'type' => 'file',
@@ -15,11 +14,6 @@
             'class' => 'form-group'),
         'class' => 'form-control',
         'required' => false,
-        'error' => array(
-            'attributes' => array(
-                'wrap'=>'div',
-                'class'=>'mt-2 p-1 alert alert-danger'
-        )),
     ));
     echo $this->Form->input('body', array(
         'rows' => '3',
@@ -27,11 +21,7 @@
             'class' => 'form-group'),
         'class' => 'form-control',
         'required' => false,
-        'error' => array(
-            'attributes' => array(
-                'wrap'=>'div',
-                'class'=>'mt-2 p-1 alert alert-danger'
-        ))
+        
     )); ?>
     <div class="">
         <?php foreach ($attachment_list as $key => $list): ?>
@@ -54,13 +44,13 @@
         <?php
         endforeach;
         $countImage = count($attachment_list);
-        for ($i=$countImage++; $i < 3; $i++):
+        for ($i=$countImage++; $i < 3; $i++) { 
             echo $this->Form->input('Attachment.' . $i . '.file_name', array(
                 'type' => 'file',
                 'label' => false,
                 'multiple' => 'multiple',
             ));
-        endfor; ?>
+        } ?>
     </div>
     <hr>
     <?php
@@ -68,7 +58,7 @@
     echo $this->Form->submit('Save Post', array(
         'div' => array(
             'class' => 'text-right'),
-        'class' => 'btn btn-secondary mb-0',
+        'class' => 'btn btn-secondary',
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>

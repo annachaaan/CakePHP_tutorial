@@ -1,5 +1,5 @@
-<div class="alert alert-secondary mt-4" role="alert">
-    <h4 class="alert-heading">Add Post</h4>
+<div class="mt-4">
+    <h4 class="title">Add Post</h4>
     <?php
     echo $this->Form->create('Post', array(
         'type' => 'file',

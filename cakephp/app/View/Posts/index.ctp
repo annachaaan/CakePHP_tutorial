@@ -44,42 +44,4 @@
         );
         ?>
     </div>
-
-    <!-- 検索機能 -->
-    <div class="btn-wrapper">
-        <div class="bnrL">
-            <ul>
-                <?php echo $this->Form->create('Post'); ?>
-                <?php echo $this->Form->input('category_id', array(
-                    'label' => 'カテゴリー',
-                    'empty' => true
-                )); ?>
-                <?php echo $this->Form->input('tag_id', array(
-                    'label' => 'タグ',
-                    'type' => 'select',
-                    'multiple' => 'checkbox',
-                    'options' => $tag_id
-                )); ?>
-                <?php echo $this->Form->input('title', array(
-                    'label' => 'タイトル',
-                    'type' => 'text',
-                    'required' => false,
-                    'div' => array(
-                        'class' => 'form-group'
-                    ),
-                    'class' => 'form-control'
-                )); ?>
-                <hr>
-                <?php echo $this->Form->submit('Search', array(
-                    'div' => array(
-                        'class' => 'text-right'
-                    ),
-                    'class' => 'btn btn-secondary mb-0',
-                    'name' => 'search'
-                )); ?>
-                <?php echo $this->Form->end(); ?>
-            </ul>
-            <button class="btn" type="button" name="button">search</button>
-        </div>
-    </div>
 </div>
