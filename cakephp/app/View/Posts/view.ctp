@@ -5,32 +5,10 @@
     <div class="">
         <h3 class="mt-2 mb-2"><?php echo ($post['Post']['title']); ?></h3>
         <div class="btn-form d-flex flex-row-reverse">
-            <?php if ($user['id'] == $post['Post']['user_id']) : ?>
-                <?php
-                echo $this->Html->link(
-                    'Edit',
-                    array(
-                        'action' => 'edit',
-                        $post['Post']['id']
-                    ),
-                    array(
-                        'class' => 'btn btn-sm btn-outline-info'
-                    )
-                );
-                // postLink() を使うと、
-                // 投稿記事の削除を行う POST リクエストをするための JavaScript を使うリンクが生成される
-                echo $this->Form->postLink(
-                    'Delete',
-                    array(
-                        'action' => 'delete',
-                        $post['Post']['id']
-                    ),
-                    array(
-                        'class' => 'btn btn-sm btn-danger'
-                    ),
-                    'Are you sure?'
-                ); ?>
-            <?php endif; ?>
+            <?php
+            if ($user['id'] == $post['Post']['user_id']) {
+                echo $this->element('btn', ['id' => $post['Post']['id']]);
+            } ?>
         </div>
         <p><?php echo $post['Category']['category']; ?></p>
         <p><?php if ($post['Tag']) : ?>
