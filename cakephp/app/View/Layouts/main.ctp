@@ -22,7 +22,6 @@
 <body>
     <!-- サイドメニュー -->
     <?php echo $this->element('search'); ?>
-
     <div class="wrapper">
         <div id="title">
             <?php echo $this->Html->link(
@@ -35,6 +34,8 @@
             <p>testtesttesttesttesttest</p>
         </div>
         <div class="main">
+            <!-- フラッシュメッセージ -->
+            <?php echo $this->Flash->render();?>
             <?php echo $this->fetch('content'); ?>
         </div>
         <footer class="p-3 text-center">

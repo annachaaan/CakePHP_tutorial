@@ -128,10 +128,12 @@ class PostsController extends AppController {
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->success(__('Your post has been saved'));
+                $this->Flash->set('記事が投稿されました！', array(
+                    'element' => 'success'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->error(__('Unable to add your post'));
+            $this->Flash->set('入力欄を確認してください', array(
+                'element' => 'error'));
         }
     }
 
@@ -208,10 +210,12 @@ class PostsController extends AppController {
             }
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->success(__('Your post has been updated'));
+                $this->Flash->set($this->request->data['Post']['title'].'：記事が更新されました', array(
+                    'element' => 'success'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->error(__('Unable to update your post'));
+            $this->Flash->set('更新内容を確認してください', array(
+                'element' => 'error'));
         }
 
         if (!$this->request->data) {
@@ -225,7 +229,8 @@ class PostsController extends AppController {
         }
 
         if ($this->Post->delete($id, true)) {
-            $this->Flash->success(__('The post with id: %s has been deleted.', h($id)));
+            $this->Flash->set($this->request->data['Post']['title'].'：記事を削除しました', array(
+                'element' => 'success'));
 
             // ここクソダサいのでなんとかしたい
             $tag_sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
@@ -234,7 +239,8 @@ class PostsController extends AppController {
             $this->Tag->query($attachment_sql);
             $this->autoRender = false;
         } else {
-            $this->Flash->error(__('The post with id: %s cloud not be deleted.', h($id)));
+            $this->Flash->set('削除できませんでした', array(
+                'element' => 'error'));
         }
         return $this->redirect(array('action' => 'index'));
     }

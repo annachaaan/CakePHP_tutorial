@@ -42,19 +42,23 @@ class UsersController extends AppController
                     'message' => 'A email is required'
                 ),
             );
-
             if ($this->User->validates(array('fieldList' => array('password', 'email')))) {
                 if ($this->Auth->login()) {
+                    $this->Flash->set('こんにちは, '.$this->Auth->user('username').'さん', array(
+                        'element' => 'success'));
                     $this->redirect($this->Auth->redirectUrl());
                 } else {
-                    $this->Flash->error(__('Invalid username or password, try again'));
+                    $this->Flash->set('The user has been faild.', array(
+                        'element' => 'error'));
                 }
-            }
+            } 
         }
     }
 
     public function logout()
     {
+        $this->Flash->set('ログアウトされました', array(
+            'element' => 'success'));
         $this->redirect($this->Auth->logout());
     }
 
@@ -95,11 +99,12 @@ class UsersController extends AppController
                 );
                 unset($this->request->data['User']['password']);
                 $this->Auth->login($this->request->data['User']);
+                $this->Flash->set('こんにちは, '.$this->Auth->user('username').'さん', array(
+                    'element' => 'success'));
                 return $this->redirect('/');
             }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Flash->set('登録できませんでした', array(
+                'element' => 'error'));
         }
     }
 
@@ -113,12 +118,12 @@ class UsersController extends AppController
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
+                $this->Flash->set('ユーザー情報が更新されました', array(
+                    'element' => 'success'));
                 return $this->redirect('/users/view/' . $this->request->data['User']['id']);
             }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Flash->set('入力内容を確認してください', array(
+                'element' => 'error'));
         } else {
             $this->request->data = $this->User->findById($id);
             unset($this->request->data['User']['password']);
@@ -137,10 +142,11 @@ class UsersController extends AppController
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->User->delete($id)) {
-            $this->Flash->success(__('User deleted'));
+            $this->Flash->set('退会しました', array(
+                'element' => 'success'));
             return $this->redirect($this->Auth->logout());
         }
-        $this->Flash->error(__('User was not deleted'));
-        // return $this->redirect(array('action' => 'index'));
+        $this->Flash->set('退会できませんでした', array(
+            'element' => 'error'));
     }
 }

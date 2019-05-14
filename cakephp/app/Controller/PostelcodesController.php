@@ -16,16 +16,15 @@ class PostelcodesController extends AppController
         if ($this->request->is('post')) {
             $this->Postelcode->create();
             $csv = $this->request->data['Postelcodes']['csvfile'];
-
-            if ($csv['type'] == "text/csv" && mime_content_type($csv['tmp_name']) == "text/plain") {
                 //フォルダ保存先パス
                 $csv_save_path =  WWW_ROOT . 'files/csvs';
                 $encoded_path = WWW_ROOT . 'files/csvs/encoded';
                 $tmp_file = $csv['tmp_name'];
 
+                if (file_exists($tmp_file)) {
                 //フォルダの保存処理
                 // ファイル有無のチェック
-                if (file_exists($tmp_file)) {
+                if ($csv['type'] == "text/csv" && mime_content_type($csv['tmp_name']) == "text/plain") {
 
                     // 現在の年月日時間を取得
                     $date_time = date("Y_m_d_H_i");
@@ -61,10 +60,15 @@ class PostelcodesController extends AppController
                     $this->Postelcode->query($delete_sql);
                     $this->Postelcode->query($data_sql);
 
-                    $this->Flash->set(__('OK. CSVs changed complete.', true));
+                    $this->Flash->set('アップロード完了', array(
+                        'element' => 'success'));
                 } else {
-                    $this->Flash->set(__('Failed to import data. Please, try again.', true));
+                    $this->Flash->set('ファイル形式が違います', array(
+                        'element' => 'error'));
                 }
+            } else {
+                $this->Flash->set('ファイルを選択してください', array(
+                    'element' => 'error'));
             }
         }
     }
