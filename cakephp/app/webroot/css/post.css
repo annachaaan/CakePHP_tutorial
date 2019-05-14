@@ -19,7 +19,7 @@ li {
 
 #title {
     margin: 0px;
-    padding: 40px;
+    padding: 70px;
     text-align: center;
     font-size: 20px;
     /* タイトルだけフォント違うのはあり...? */
@@ -37,6 +37,7 @@ li {
 }
 
 section {
+    text-align: center;
     margin: 20px auto;
 }
 
@@ -54,7 +55,27 @@ section {
 }
 
 .post-tag {
-    display: flex;
     font-size: 12px;
 }
 
+.post-body {
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px; 
+}
+
+.title p{
+    margin: auto 50px;
+}
+
+.text h3 {
+    margin: auto 50px;
+}
+
+.text .btn-form {
+    margin: auto 50px; 
+}
+
+.text p {
+    margin: auto 50px;
+}

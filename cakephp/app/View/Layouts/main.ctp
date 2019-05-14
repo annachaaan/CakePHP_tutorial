@@ -34,6 +34,7 @@
             <p>testtesttesttesttesttest</p>
         </div>
         <div class="main">
+        <hr>
             <!-- フラッシュメッセージ -->
             <?php echo $this->Flash->render();?>
             <?php echo $this->fetch('content'); ?>

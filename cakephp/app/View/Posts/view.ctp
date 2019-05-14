@@ -1,8 +1,8 @@
 <div class="post-area">
-    <div class="title mb-4">
+    <div class="title">
         <p class="d-flex flex-row-reverse mb-0"><small><?php echo $post['Post']['created']; ?></small></p>
     </div>
-    <div class="">
+    <div class="text">
         <h3 class="post-title"><?php echo ($post['Post']['title']); ?></h3>
         <div class="btn-form d-flex flex-row-reverse">
             <?php
@@ -17,7 +17,7 @@
                 <?php endforeach; ?>
             <?php endif; ?></p>
         <hr>
-        <p class="mt-4"><?php echo (nl2br(h($post['Post']['body']))); ?></p>
+        <p class="post-body"><?php echo (nl2br(h($post['Post']['body']))); ?></p>
         <hr>
         <?php if ($attachment_list) : ?>
             <p>Photos</p>
