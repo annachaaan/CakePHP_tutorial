@@ -75,7 +75,7 @@ class UsersController extends AppController
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        $this->set('user', $this->User->findById($id));
+        $this->set('loginuser', $this->User->findById($id));
         $this->set('auth', $this->Auth->user('id'));
     }
 
@@ -110,8 +110,8 @@ class UsersController extends AppController
 
     public function edit($id = null)
     {
-        $user = $this->Auth->user();
-        $this->set('user', $user);
+        $loginuser = $this->Auth->user();
+        $this->set('loginuser', $loginuser);
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));

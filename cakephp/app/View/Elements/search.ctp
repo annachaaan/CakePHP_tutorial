@@ -8,25 +8,14 @@
         <?php if (isset($user)) : ?>
             <li>
                 <?php
-                if (false !== strpos($this->Html->url(), 'users')) {
-                    echo $this->Html->link(
-                        'MyPage',
-                        array(
-                            'controller' => 'users',
-                            'action' => 'view',
-                            $user['User']['id']
-                        )
-                    );
-                } else {
-                    echo $this->Html->link(
-                        'MyPage',
-                        array(
-                            'controller' => 'users',
-                            'action' => 'view',
-                            $user['id']
-                        )
-                    );
-                } ?>
+                echo $this->Html->link(
+                    'MyPage',
+                    array(
+                        'controller' => 'users',
+                        'action' => 'view',
+                        $user['id']
+                    )
+                ); ?>
             </li>
             <li>
                 <?php
@@ -96,7 +85,7 @@
                         'empty' => true,
                         'value' => ''
                     )); ?>
-                    <?php 
+                    <?php
                     if ($this->Html->url() == '/') {
                         echo $this->Form->input('tag_id', array(
                             'label' => 'タグ',
