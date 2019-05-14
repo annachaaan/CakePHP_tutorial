@@ -25,7 +25,16 @@ class UsersController extends AppController
 
     public function login()
     {
+        // ログインしているユーザーは前のページに飛ばされる
+        $user = $this->Auth->user();
+        if (isset($user)) {
+            return $this->redirect($this->referer(null, true));
+        }
+
         if ($this->request->is('post')) {
+
+            // バリデーションをコントローラから呼び出し
+            // rule2はユニークなemailからnotBlankに変更
             $this->User->set($this->request->data);
             $this->User->validate['email'] = array(
                 'rule2' => array(
@@ -68,6 +77,12 @@ class UsersController extends AppController
 
     public function add()
     {
+        // ログインしているユーザーは前のページに飛ばされる
+        $user = $this->Auth->user();
+        if (isset($user)) {
+            return $this->redirect($this->referer(null, true));
+        }
+
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
