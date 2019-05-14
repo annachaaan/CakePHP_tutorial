@@ -1,5 +1,5 @@
-<div class="alert alert-info mt-4" role="alert">
-  <h4 class="alert-heading">Sign In</h4>
+<div class="mt-4">
+  <h4 class="title">Sign In</h4>
   <?php echo $this->Flash->render('auth'); ?>
   <?php echo $this->Form->create('User', array(
       'novalidate' => true
@@ -33,6 +33,6 @@
   <?php echo $this->Form->submit('Sign In', array(
       'div' => array(
           'class' => 'text-right'),
-      'class' => 'btn btn-info mb-0',
+      'class' => 'btn btn-secondary mb-0',
   )); ?>
 </div>

@@ -1,5 +1,5 @@
-<div class="alert alert-info mt-4" role="alert">
-    <h4 class="alert-heading">Sign Up</h4>
+<div class="mt-4">
+    <h4 class="title">Sign Up</h4>
     <?php echo $this->Form->create('User', array(
         'class' => 'h-adr',
         'novalidate' => true
@@ -39,7 +39,6 @@
         echo $this->Form->input('zipcode', array(
             'class' => 'form-control',
             'id' => 'zipcode',
-            // 'maxlength' => 7,
             'label' => '〒郵便番号(ハイフンなしの数字7文字で入力して下さい)',
             'error' => array(
                 'attributes' => array(
@@ -76,7 +75,7 @@
     <?php echo $this->Form->submit('Sign Up', array(
         'div' => array(
             'class' => 'text-right'),
-            'class' => 'btn btn-info mb-0',
+            'class' => 'btn btn-secondary mb-0',
         )); ?>
     <?php echo $this->Form->end(); ?>
 </div>
