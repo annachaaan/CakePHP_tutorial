@@ -139,4 +139,6 @@
 </nav>
 
 <!-- 開閉用ボタン -->
-<div class="side-menu-btn" id="js__sideMenuBtn"></div>
+<div class="side-menu-btn" id="js__sideMenuBtn">
+    <p>MENU</p>
+</div>

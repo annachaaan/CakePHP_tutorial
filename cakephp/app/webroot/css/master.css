@@ -56,15 +56,19 @@
   /* 開閉用ボタン */
   .side-menu-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 20px;
+    top: 15px;
+    right: 15px;
+    width: 46px;
+    height: 26px;
     border-radius: 5px;
     padding: 5px;
-    background: #666363;
+    background: #F8F8F8;
     cursor: pointer;
     z-index: 4;
+  }
+
+  .side-menu-btn p {
+    font-size:12px;
   }
   
   /* メインコンテンツ */
