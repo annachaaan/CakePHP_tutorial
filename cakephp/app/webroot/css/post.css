@@ -79,3 +79,7 @@ section {
 .text p {
     margin: auto 50px;
 }
+
+footer {
+    margin: 50px;
+}
