@@ -13,7 +13,7 @@
         <p class="post-category"><?php echo $post['Category']['category']; ?></p>
         <p class="post-tag"><?php if ($post['Tag']) : ?>
                 <?php foreach ($post['Tag'] as $tag) : ?>
-                    <?php echo $tag['tagSlug']; ?>
+                    <?php echo $tag['tag']; ?>
                 <?php endforeach; ?>
             <?php endif; ?></p>
         <hr>

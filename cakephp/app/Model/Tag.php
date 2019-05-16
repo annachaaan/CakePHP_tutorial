@@ -10,4 +10,12 @@ class Tag extends AppModel {
             'dependent' =>true
         )
     );
+
+    public $belongsTo = array(
+        'Category' => array(
+            'className' => 'Category',
+            'foreignKey' => 'category_id',
+            'dependent' => true
+        )
+    );
 }

@@ -5,5 +5,9 @@ class Category extends AppModel {
             'className' => 'Post',
             'foreignKey' => 'category_id',
         ),
+        'Tags' => array(
+            'className' => 'Tag',
+            'foreignKey' => 'category_id',
+        ),
     );
 }

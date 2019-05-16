@@ -19,7 +19,7 @@
             </div>
             <div class="post-tag">
                 <?php foreach ($post['Tag'] as $tag_key => $tag) : ?>
-                    <?php echo $tag['tagSlug']; ?>
+                    <?php echo $tag['tag']; ?>
                 <?php endforeach; ?>
             </div>
         </section>
