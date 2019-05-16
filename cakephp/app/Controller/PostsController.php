@@ -31,16 +31,16 @@ class PostsController extends AppController {
 
     // `Postモデル以外のモデルを使いたいんだ〜の呪文
     public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
-
+    
     public function index() {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
-        $this->set('tag_id', $this->Tag->find('list', array(
-            'fields' => 'id, tagSlug',
+        $this->set('tags', $this->Tag->find('list', array(
+            'fields' => 'id, tag',
         )));
-
         $this->Prg->commonProcess();
+
         $this->paginate = array(
             'limit' => 5,
             'conditions' => $this->Post->parseCriteria($this->passedArgs),
@@ -82,7 +82,7 @@ class PostsController extends AppController {
             'fields' => 'id, category',
         )));
         $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tagSlug',
+            'fields' => 'id, tag',
         )));
 
         // 一つの投稿記事を取得するので、afindByID()を使用
@@ -104,7 +104,7 @@ class PostsController extends AppController {
             'fields' => 'id, category',
         )));
         $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tagSlug',
+            'fields' => 'id, tag',
         )));
         // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
         // ポストされたデータの内容をチェックするためのものではない
@@ -151,7 +151,7 @@ class PostsController extends AppController {
             'fields' => 'id, category',
         )));
         $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tagSlug',
+            'fields' => 'id, tag',
         )));
 
         // viewで表示するimageリスト

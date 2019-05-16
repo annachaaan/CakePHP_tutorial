@@ -85,22 +85,11 @@
                         'empty' => true,
                         'value' => ''
                     )); ?>
-                    <?php
-                    if ($this->Html->url() == '/') {
-                        echo $this->Form->input('tag_id', array(
-                            'label' => 'タグ',
-                            'type' => 'select',
-                            'multiple' => 'checkbox',
-                            'options' => $tag_id
-                        ));
-                    } else {
-                        echo $this->Form->input('tag_id', array(
-                            'label' => 'タグ',
-                            'type' => 'select',
-                            'multiple' => 'checkbox',
-                            // 'options' => $tag_id
-                        ));
-                    } ?>
+                    <?php echo $this->Form->input('tag_id', array(
+                        'label' => 'タグ',
+                        'type' => 'select',
+                        'multiple' => 'checkbox'
+                    )); ?>
                     <?php echo $this->Form->input('title', array(
                         'label' => 'タイトル',
                         'type' => 'text',
