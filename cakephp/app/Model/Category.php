@@ -5,9 +5,17 @@ class Category extends AppModel {
             'className' => 'Post',
             'foreignKey' => 'category_id',
         ),
-        'Tags' => array(
+    );
+
+    public $hasAndBelongsToMany = array(
+        'Tag' => array(
             'className' => 'Tag',
+            'joinTable' => 'categories_tags',
             'foreignKey' => 'category_id',
+            'associationForeignKey' => 'tag_id',
+            'unique' => true,
+            'dependent' =>true
         ),
     );
+
 }

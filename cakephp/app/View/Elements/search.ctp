@@ -73,6 +73,8 @@
                 ); ?>
             </li>
         <?php endif; ?>
+
+        <!-- 検索欄はPostsControllerのみ -->
         <?php if (false !== strpos($this->name, 'Posts')) : ?>
             <li id="search-menu">記事検索
                 <ul id="search-item">

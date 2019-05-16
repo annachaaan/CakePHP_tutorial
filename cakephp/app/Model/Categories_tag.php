@@ -1,9 +1,9 @@
 <?php
-class PostsTag extends AppModel {
+class CategoriesTag extends AppModel {
     public $belongsTo = array(
-        'Post' => array(
-            'className' => 'Post',
-            'foreignKey' => 'post_id',
+        'Category' => array(
+            'className' => 'Category',
+            'foreignKey' => 'category_id',
             'dependent' =>true
         ),
 

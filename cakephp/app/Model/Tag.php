@@ -8,14 +8,14 @@ class Tag extends AppModel {
             'associationForeignKey' => 'post_id',
             'unique' => true,
             'dependent' =>true
-        )
-    );
-
-    public $belongsTo = array(
+        ),
         'Category' => array(
             'className' => 'Category',
-            'foreignKey' => 'category_id',
-            'dependent' => true
-        )
+            'joinTable' => 'categories_tags',
+            'foreignKey' => 'tag_id',
+            'associationForeignKey' => 'category_id',
+            'unique' => true,
+            'dependent' =>true
+        ),
     );
 }
