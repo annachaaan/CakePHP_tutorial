@@ -31,7 +31,7 @@ class PostsController extends AppController {
 
     // `Postモデル以外のモデルを使いたいんだ〜の呪文
     public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
-    
+
     public function index() {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
@@ -126,6 +126,9 @@ class PostsController extends AppController {
             }
             // 画像ファイルがどこにinputされていても、インデックスが0から連番になるように配列を詰める
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
+
+            debug($this->request->data);
+            exit;
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set('記事が投稿されました！', array(

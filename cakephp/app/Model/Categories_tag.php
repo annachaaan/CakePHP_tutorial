@@ -1,5 +1,7 @@
 <?php
 class CategoriesTag extends AppModel {
+    public $actsAs = array('SoftDelete');
+
     public $belongsTo = array(
         'Category' => array(
             'className' => 'Category',

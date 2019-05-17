@@ -49,6 +49,17 @@
                     )
                 ); ?>
             </li>
+            <!-- 管理者 -->
+            <li>
+                <?php
+                echo $this->Html->link(
+                    'Category&Tag Edit',
+                    array(
+                        'controller' => 'categories',
+                        'action' => 'index'
+                    )
+                ); ?>
+            </li>
 
         <?php else : ?>
             <!-- ゲスト -->

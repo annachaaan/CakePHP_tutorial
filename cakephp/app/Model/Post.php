@@ -50,7 +50,11 @@ class Post extends AppModel {
             'foreignKey' => 'post_id',
             'associationForeignKey' => 'tag_id',
             'unique' => true,
-            'dependent' => true
+            'dependent' => true,
+            'conditions' => array(
+                'PostsTag.tag_id = Tag.id',
+                'Tag.deleted_date' => ""
+            )
         )
     );
 
