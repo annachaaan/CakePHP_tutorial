@@ -114,9 +114,6 @@ class CategoriesController extends AppController {
             // $this->request->data['Category']['category'] viewににこれが表示されない
             $this->Flash->set($this->request->data['Category']['category'].'：カテゴリーを削除しました', array(
                 'element' => 'success'));
-
-                $category_tag = 'UPDATE categories_tags SET deleted = 1, deleted_date = NOW() WHERE category_id = ' . $id;
-                $this->Category->query($category_tag);
                 $this->autoRender = false;
         } else {
             $this->Flash->set('削除できませんでした', array(

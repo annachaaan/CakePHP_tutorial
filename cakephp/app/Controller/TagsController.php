@@ -77,13 +77,12 @@ class TagsController extends AppController {
         }
 
         $this->Tag->id = $id;
-        if ($this->Tag->delete($id)) {
+        if ($this->Tag->delete($id, $cascade = true)) {
             // $this->request->data['Tag']['tag'] viewににこれが表示されない
             $this->Flash->set($this->request->data('Tag.tag').'：タグを削除しました', array(
                 'element' => 'success'));
 
-                $category_tag = 'UPDATE categories_tags SET deleted = 1, deleted_date = NOW() WHERE tag_id = ' . $id;
-                $this->Tag->query($category_tag);
+                
                 $this->autoRender = false;
         } else {
             $this->Flash->set('削除できませんでした', array(

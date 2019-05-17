@@ -1,6 +1,6 @@
 <?php
 class Tag extends AppModel {
-    public $actsAs = array('SoftDelete');
+    // public $actsAs = array('SoftDelete');
 
     public $validate = array(
         'tag' => array(

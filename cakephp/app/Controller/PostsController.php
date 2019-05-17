@@ -127,9 +127,6 @@ class PostsController extends AppController {
             // 画像ファイルがどこにinputされていても、インデックスが0から連番になるように配列を詰める
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
 
-            debug($this->request->data);
-            exit;
-
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set('記事が投稿されました！', array(
                     'element' => 'success'));
@@ -236,9 +233,7 @@ class PostsController extends AppController {
                 'element' => 'success'));
 
             // ここクソダサいのでなんとかしたい
-            $tag_sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
             $attachment_sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
-            $this->Tag->query($tag_sql);
             $this->Tag->query($attachment_sql);
             $this->autoRender = false;
         } else {

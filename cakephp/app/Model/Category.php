@@ -31,10 +31,6 @@ class Category extends AppModel {
             'associationForeignKey' => 'tag_id',
             'unique' => true,
             'dependent' =>true,
-            'conditions' => array(
-                'CategoriesTag.tag_id = Tag.id',
-                'Tag.deleted_date' => ""
-            )
         ),
     );
 
