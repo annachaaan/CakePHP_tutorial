@@ -103,9 +103,6 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
-        $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag',
-        )));
         // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
         // ポストされたデータの内容をチェックするためのものではない
         if ($this->request->is('post')) {

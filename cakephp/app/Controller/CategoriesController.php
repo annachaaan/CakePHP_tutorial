@@ -25,7 +25,6 @@ class CategoriesController extends AppController {
                     'type' => 'LEFT',
                     'conditions' => array(
                         'Category.id = CategoriesTag.category_id',
-                        'CategoriesTag.deleted_date' => "",
                     )
                 ),
                 array(
@@ -34,11 +33,12 @@ class CategoriesController extends AppController {
                     'type' => 'LEFT',
                     'conditions' => array(
                         'CategoriesTag.tag_id = Tag.id',
-                        'Tag.deleted_date' => ""
                     )
-                ),
-                
+                ),  
             ),
+            'fields' => array(
+                'DISTINCT *',
+            )
         )));
     }
 
@@ -75,10 +75,10 @@ class CategoriesController extends AppController {
             throw new NotFoundException(__('Invalid category'));
         }
 
-        // $categoryがない場合
         $category = $this->Category->findById($id);
         $this->set('category', $category);
 
+        // $categoryがない場合
         if (!$category) {
             throw new NotFoundException(__('Invalid category'));
         }
@@ -122,4 +122,30 @@ class CategoriesController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    // 選択されたカテゴリーから、選択可能範囲のタグを返す
+    public function ajax() {
+        $this->autoRender = false;
+
+        // ajax通信のみ許可
+        if ($this->request->is('ajax')) {
+            if (isset($this->request->data['categoryId'])) {
+                // 選択したカテゴリー情報を$PostCategoryIdへ
+                $categoryId = $this->request->data['categoryId'];
+
+                $categoryTag = $this->Category->query("
+                    select tags.id, tags.tag from tags 
+                    join categories_tags 
+                    on categories_tags.tag_id = tags.id 
+                    where category_id = {$categoryId};"
+                );
+
+                // 取得した配列を日本語対応JSON型にチェンジ
+                $json_change = json_encode($categoryTag, JSON_UNESCAPED_UNICODE);
+                echo $json_change;
+                exit;
+            } else {
+                echo 'FAIL TO AJAX REQUEST';
+            }
+        }
+    }
 }

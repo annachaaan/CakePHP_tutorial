@@ -1,11 +1,11 @@
 <?php
 class Category extends AppModel {
-    public $actsAs = array('SoftDelete');
+    // public $actsAs = array('SoftDelete');
 
     public $validate = array(
         'category' => array(
             'rule1' => array(
-                'rule' =>'notBlank',
+                'rule' =>'notEmpty',
                 'message' => 'A Category is required.'
             ),
             'rule2' => array(
@@ -31,6 +31,10 @@ class Category extends AppModel {
             'associationForeignKey' => 'tag_id',
             'unique' => true,
             'dependent' =>true,
+            'conditions' => array(
+                'CategoriesTag.tag_id = Tag.id',
+            )
+
         ),
     );
 

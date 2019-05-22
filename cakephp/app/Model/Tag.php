@@ -31,6 +31,10 @@ class Tag extends AppModel {
             'associationForeignKey' => 'category_id',
             'unique' => true,
             'dependent' =>true,
+            'conditions' => array(
+                'CategoriesTag.category_id = Category.id',
+            )
+
         ),
     );
 }

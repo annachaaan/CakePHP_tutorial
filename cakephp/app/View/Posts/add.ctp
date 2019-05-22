@@ -7,33 +7,42 @@
     ));
     echo $this->Form->input('category_id', array(
         'div' => array(
-            'class' => 'form-group'),
-         'class' => 'form-control'
+            'class' => 'form-group'
+        ),
+        'class' => 'form-control',
+        'id' => 'categoryId',
+        'empty' => 'カテゴリーを選択してください',
+        'required',
     ));
     echo $this->Form->input('Tag', array(
         'type' => 'select',
-        'multiple'=> 'checkbox',
+        'multiple' => 'checkbox',
+        // 'class' => 'tog-form'
     ));
     echo $this->Form->input('title', array(
         'div' => array(
-            'class' => 'form-group'),
+            'class' => 'form-group'
+        ),
         'class' => 'form-control',
         'error' => array(
             'attributes' => array(
-                'wrap'=>'div',
-                'class'=>'mt-2 p-1 alert alert-danger'
-            ))
+                'wrap' => 'div',
+                'class' => 'mt-2 p-1 alert alert-danger'
+            )
+        )
     ));
     echo $this->Form->input('body', array(
         'rows' => '3',
         'div' => array(
-            'class' => 'form-group'),
+            'class' => 'form-group'
+        ),
         'class' => 'form-control',
         'error' => array(
             'attributes' => array(
-                'wrap'=>'div',
-                'class'=>'mt-2 p-1 alert alert-danger'
-            ))
+                'wrap' => 'div',
+                'class' => 'mt-2 p-1 alert alert-danger'
+            )
+        )
     ));
     for ($i = 0; $i < 3; $i++) {
         echo $this->Form->input('Attachment..file_name', array(
@@ -46,8 +55,10 @@
     <hr>
     <?php echo $this->Form->submit('Save Post', array(
         'div' => array(
-            'class' => 'text-right'),
+            'class' => 'text-right'
+        ),
         'class' => 'btn btn-secondary mb-0',
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>
+
