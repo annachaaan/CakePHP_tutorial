@@ -44,24 +44,24 @@ class PostsController extends AppController {
         $this->paginate = array(
             'limit' => 5,
             'conditions' => $this->Post->parseCriteria($this->passedArgs),
-            'joins' => array(
-                array(
-                    'table' => 'posts_tags',
-                    'alias' => 'PostsTag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'Post.id = PostsTag.post_id'
-                    )
-                ),
-                array(
-                    'table' => 'tags',
-                    'alias' => 'Tag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'PostsTag.tag_id = Tag.id'
-                    )
-                ),
-            ),
+            // 'joins' => array(
+            //     array(
+            //         'table' => 'posts_tags',
+            //         'alias' => 'PostsTag',
+            //         'type' => 'LEFT',
+            //         'conditions' => array(
+            //             'Post.id = PostsTag.post_id'
+            //         )
+            //     ),
+            //     array(
+            //         'table' => 'tags',
+            //         'alias' => 'Tag',
+            //         'type' => 'LEFT',
+            //         'conditions' => array(
+            //             'PostsTag.tag_id = Tag.id'
+            //         )
+            //     ),
+            // ),
             'order' => array('Post.created DESC'),
             // '2'にしないとCategoryが見れなくなる
             'recursive' => 2,
