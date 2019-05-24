@@ -17,29 +17,7 @@ class CategoriesController extends AppController {
 
     public function index() {
         
-        $this->set('categories', $this->Category->find('all', array(
-            'joins' => array(
-                array(
-                    'table' => 'categories_tags',
-                    'alias' => 'CategoriesTag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'Category.id = CategoriesTag.category_id',
-                    )
-                ),
-                array(
-                    'table' => 'tags',
-                    'alias' => 'Tag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'CategoriesTag.tag_id = Tag.id',
-                    )
-                ),  
-            ),
-            'fields' => array(
-                'DISTINCT *',
-            )
-        )));
+        $this->set('categories', $this->paginate());
     }
 
     public function add() {
@@ -47,14 +25,10 @@ class CategoriesController extends AppController {
         // 対応するタグを選択
         // 新規タグを作成することも可能
 
-        $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag',
-        )));
-
         if ($this->request->is('post')) {
             $this->Category->create();
 
-            if ($this->Category->saveAll($this->request->data, array('deep' => true))) {
+            if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set('カテゴリー：'.$this->request->data['Category']['category'], array(
                     'element' => 'success'));
                 return $this->redirect(array('controller' => 'Categories', 'action' => 'index'));
@@ -67,7 +41,7 @@ class CategoriesController extends AppController {
     public function edit($id = null) {
         // カテゴリーに対応するタグを編集
         $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag',
+            'fields' => 'id, tag', 'category_id',
         )));
 
         // $ifがない場合

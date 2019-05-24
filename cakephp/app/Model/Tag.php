@@ -15,6 +15,14 @@ class Tag extends AppModel {
         )
     );
 
+    public $belongsTo = array(
+        'Category' => array(
+            'className' => 'Category',
+            'foreignKey' => 'category_id',
+            'dependent' => true
+        )
+    );
+
     public $hasAndBelongsToMany = array(
         'Post' => array(
             'className' => 'Post',
@@ -22,19 +30,10 @@ class Tag extends AppModel {
             'foreignKey' => 'tag_id',
             'associationForeignKey' => 'post_id',
             'unique' => true,
-            'dependent' =>true
-        ),
-        'Category' => array(
-            'className' => 'Category',
-            'joinTable' => 'categories_tags',
-            'foreignKey' => 'tag_id',
-            'associationForeignKey' => 'category_id',
-            'unique' => true,
             'dependent' =>true,
-            'conditions' => array(
-                'CategoriesTag.category_id = Category.id',
-            )
-
+            // 'conditions' => array(
+            //     'PostsTag.post_id = Post.id',
+            // )
         ),
     );
 }

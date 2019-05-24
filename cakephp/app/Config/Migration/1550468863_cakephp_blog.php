@@ -41,17 +41,6 @@ class CakephpBlog extends CakeMigration {
 					),
 					'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
 				),
-				'categories_tags' => array(
-					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => true, 'key' => 'primary'),
-					'category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 11),
-					'tag_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 11),
-					'deleted' => array('type' => 'tinyint', 'null' => false, 'default' => '0'),
-					'deleted_date' => array('type' => 'datetime', 'null' => true, 'default' => null),
-					'indexes' => array(
-						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-					),
-					'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
-				),
 				'postelcodes' => array(
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => true, 'key' => 'primary'),
 					'jiscode' => array('type' => 'varchar', 'null' => false, 'default' => null, 'length' => 255),
@@ -104,6 +93,7 @@ class CakephpBlog extends CakeMigration {
 				),
 				'tags' => array(
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => true, 'key' => 'primary'),
+					'category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => false),
 					'tag' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),

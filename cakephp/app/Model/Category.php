@@ -5,7 +5,7 @@ class Category extends AppModel {
     public $validate = array(
         'category' => array(
             'rule1' => array(
-                'rule' =>'notEmpty',
+                'rule' =>'notBlank',
                 'message' => 'A Category is required.'
             ),
             'rule2' => array(
@@ -17,25 +17,13 @@ class Category extends AppModel {
 
 
     public $hasMany = array(
-        'Posts' => array(
+        'Post' => array(
             'className' => 'Post',
             'foreignKey' => 'category_id',
         ),
-    );
-
-    public $hasAndBelongsToMany = array(
         'Tag' => array(
             'className' => 'Tag',
-            'joinTable' => 'categories_tags',
-            'foreignKey' => 'category_id',
-            'associationForeignKey' => 'tag_id',
-            'unique' => true,
-            'dependent' =>true,
-            'conditions' => array(
-                'CategoriesTag.tag_id = Tag.id',
-            )
-
-        ),
+            'foreignKey' => 'category_id'
+        )
     );
-
 }
