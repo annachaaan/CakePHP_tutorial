@@ -21,18 +21,7 @@
             <!-- このタグリストをアコーディオンにしたい（クリックしたらタグが見れる） -->
             <ul>
             <?php foreach ($category['Tag'] as $key => $tag) : ?>
-                <li>
-                <?php 
-                echo $this->Html->link(
-                    $tag['tag'],
-                    array(
-                        'controller' => 'Tags',
-                        'action' => 'edit',
-                        $tag['id']
-                    )
-                );
-            ?>
-                </li>
+                <li><?php echo $tag['tag']; ?></li>
             <?php endforeach; ?>
             </ul>
         </li>
