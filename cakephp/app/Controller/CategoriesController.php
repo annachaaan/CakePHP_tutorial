@@ -39,11 +39,6 @@ class CategoriesController extends AppController {
     }
 
     public function edit($id = null) {
-        // カテゴリーに対応するタグを編集
-        $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag', 'category_id',
-        )));
-
         // $ifがない場合
         if (!$id) {
             throw new NotFoundException(__('Invalid category'));

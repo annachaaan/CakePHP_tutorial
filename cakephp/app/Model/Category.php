@@ -1,6 +1,6 @@
 <?php
 class Category extends AppModel {
-    // public $actsAs = array('SoftDelete');
+    public $actsAs = array('SoftDelete');
 
     public $validate = array(
         'category' => array(

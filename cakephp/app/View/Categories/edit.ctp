@@ -16,14 +16,17 @@
                     'class'=>'mt-2 p-1 alert alert-danger')),
             )); ?>
         <?php
-        echo $this->Form->input('Tag', array(
-            'type' => 'select',
-            'multiple'=> 'checkbox',
+        echo $this->Form->input('Tag.0.tag', array(
+            'div' => array(
+                'class' => 'form-group'),
+            'class' => 'form-control',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
                     'class'=>'mt-2 p-1 alert alert-danger')),
-        )); ?>   
+        )); 
+        echo $this->Form->input('Tag.0.id', array('type' => 'hidden'));
+        ?>   
     </fieldset>
     <hr>
     <?php 
