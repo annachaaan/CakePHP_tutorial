@@ -1,6 +1,5 @@
 <div>
     <?php echo $this->Html->link('New Category', array('controller' => 'Categories', 'action' => 'add')); ?>
-    <?php echo $this->Html->link('New Tag', array('controller' => 'Tags', 'action' => 'add')); ?>
 </div>
 
 <div>

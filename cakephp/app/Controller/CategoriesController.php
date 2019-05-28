@@ -28,6 +28,12 @@ class CategoriesController extends AppController {
         if ($this->request->is('post')) {
             $this->Category->create();
 
+            foreach ($this->request->data['Tag'] as $key => $tag) {
+                if (!($tag['tag'])) {
+                    unset($this->request->data['Tag'][$key]);
+                }
+            }
+            
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set('カテゴリー：'.$this->request->data['Category']['category'], array(
                     'element' => 'success'));

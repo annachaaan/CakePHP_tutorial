@@ -15,20 +15,24 @@
                 'class' => 'mt-2 p-1 alert alert-danger'
             )
         ),
-    ));
-    echo $this->Form->input('Tag..tag', array(
-        'div' => array(
-            'class' => 'form-group'
-        ),
-        'class' => 'form-control',
-        'error' => array(
-            'attributes' => array(
-                'wrap' => 'div',
-                'class' => 'mt-2 p-1 alert alert-danger'
-            )
-        ),
     )); ?>
-
+    <div class="tag-form">
+        <?php
+            echo $this->Form->input('Tag..tag', array(
+                'div' => array(
+                    'class' => 'form-group'
+                ),
+                'class' => 'form-control',
+                'error' => array(
+                    'attributes' => array(
+                        'wrap' => 'div',
+                        'class' => 'mt-2 p-1 alert alert-danger'
+                    )
+                ),
+            ));
+        ?>
+    </div>
+    <input type="button" value="Add more Tags" id="tag-btn">
     <hr>
     <?php echo $this->Form->submit('Save Category', array(
         'div' => array(
@@ -38,3 +42,11 @@
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>
+<script>
+$(function () {
+    var tagform = '<div class="form-group"><input name="data[Tag][][tag]" class="form-control" maxlength="255" type="text" id="TagTag"></div>'
+    $('#tag-btn').on('click', function() {
+        $('.tag-form').append(tagform);
+    });
+});
+</script>
