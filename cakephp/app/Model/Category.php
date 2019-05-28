@@ -23,7 +23,11 @@ class Category extends AppModel {
         ),
         'Tag' => array(
             'className' => 'Tag',
-            'foreignKey' => 'category_id'
+            'foreignKey' => 'category_id',
+            'conditions' => array(
+                // 論理削除自体はコントローラでDB入力されるが、deleted=1のデータも呼ばれるのでここで制限
+                'deleted' => 0
+            )
         )
     );
 }

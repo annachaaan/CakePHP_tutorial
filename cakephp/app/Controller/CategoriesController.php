@@ -33,7 +33,7 @@ class CategoriesController extends AppController {
                     unset($this->request->data['Tag'][$key]);
                 }
             }
-            
+
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set('カテゴリー：'.$this->request->data['Category']['category'], array(
                     'element' => 'success'));
@@ -62,11 +62,18 @@ class CategoriesController extends AppController {
             $this->Category->id = $id;
 
             foreach ($this->request->data['Tag'] as $key => $tag) {
-                if ($tag['deleted'] == 1) {
-                    $tag_id = $category['Tag'][$key];
-                    $this->Tag->delete($tag_id);
-                    unset($this->request->data['Tag'][$key]);
+                if (isset($tag['deleted'])) {
+                    if ($tag['deleted'] == 1) {
+                        $tag_id = $category['Tag'][$key];
+                        $this->Tag->delete($tag_id);
+                        unset($this->request->data['Tag'][$key]);
+                    } 
+                } else {
+                    if (!($tag['tag'])) {
+                        unset($this->request->data['Tag'][$key]);
+                    }
                 }
+
             }
 
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
