@@ -5,29 +5,38 @@
         'novalidate' => true
     )); ?>
     <fieldset>
+        <label>Category</label>
         <?php
         echo $this->Form->input('category', array(
             'div' => array(
                 'class' => 'form-group'),
+            'label' => false,
             'class' => 'form-control',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
                     'class'=>'mt-2 p-1 alert alert-danger')),
-            )); ?>
+            )); ?> 
 
+        <label>Tag</label>
         <?php
             foreach ($category['Tag'] as $key => $tag) {
                 echo $this->Form->input('Tag.' . $key . '.tag', array(
                     'div' => array(
                         'class' => 'form-group'),
+                    'label' => false,
                     'class' => 'form-control',
                     'error' => array(
                         'attributes' => array(
                             'wrap'=>'div',
                             'class'=>'mt-2 p-1 alert alert-danger')),
                 )); 
+        ?>
+        <label>削除する場合はチェック⇨</label>
+        <?php 
+                echo $this->Form->checkbox('Tag.' . $key . '.deleted');
                 echo $this->Form->input('Tag.' . $key . '.id', array('type' => 'hidden'));
+                echo $this->Form->input('Tag.' . $key . '.category_id', array('type' => 'hidden'));
             }
         ?>
     </fieldset>

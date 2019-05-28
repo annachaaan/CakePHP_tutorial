@@ -55,6 +55,14 @@ class CategoriesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $this->Category->id = $id;
 
+            foreach ($this->request->data['Tag'] as $key => $tag) {
+                if ($tag['deleted'] == 1) {
+                    $tag_id = $category['Tag'][$key];
+                    $this->Tag->delete($tag_id);
+                    unset($this->request->data['Tag'][$key]);
+                }
+            }
+
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
                 $this->Flash->set($this->request->data['Category']['category'].'：カテゴリー内容が更新されました', array(
                     'element' => 'success'));
