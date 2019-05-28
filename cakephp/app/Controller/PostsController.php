@@ -168,7 +168,7 @@ class PostsController extends AppController {
 
             foreach ($this->request->data['Attachment'] as $key => $attachment) {
                 if ($attachment_list != null) {
-                    foreach ($attachment_list as $key_list => $att_list) {
+                    foreach ($attachment_list as $key => $att_list) {
                         if ($key == $att_list['Attachment']['index_num']) {
                             if (isset($attachment['deleted'])) {
                                 $this->Attachment->delete($attachment['id']);
@@ -202,7 +202,7 @@ class PostsController extends AppController {
             }
 
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
-            foreach ($this->request->data['Attachment'] as $key => $imgIndex) {
+            foreach ($this->request->data['Attachment'] as $key) {
                 $this->request->data['Attachment'][$key]['index_num'] = $key;
             }
 

@@ -124,9 +124,8 @@ class CategoriesController extends AppController {
 
                 $categoryTag = $this->Category->query("
                     select tags.id, tags.tag from tags 
-                    join categories_tags 
-                    on categories_tags.tag_id = tags.id 
-                    where category_id = {$categoryId};"
+                    where category_id = {$categoryId}
+                    and deleted = 0;"
                 );
 
                 // 取得した配列を日本語対応JSON型にチェンジ
