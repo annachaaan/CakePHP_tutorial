@@ -31,9 +31,6 @@ class Tag extends AppModel {
             'associationForeignKey' => 'post_id',
             'unique' => true,
             'dependent' =>true,
-            // 'conditions' => array(
-            //     'PostsTag.post_id = Post.id',
-            // )
         ),
     );
 }

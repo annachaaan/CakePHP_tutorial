@@ -7,7 +7,7 @@
     echo $this->Form->input('category_id');
     echo $this->Form->input('Tag', array(
         'type' => 'select',
-        'multiple'=> 'checkbox',
+        'multiple' => 'checkbox',
     ));
     echo $this->Form->input('title', array(
         'div' => array(
@@ -23,7 +23,7 @@
         'required' => false,
         
     )); ?>
-    <div class="">
+    <div>
         <?php foreach ($attachment_list as $key => $list): ?>
             <p>
                 <?php

@@ -17,7 +17,6 @@
     echo $this->Form->input('Tag', array(
         'type' => 'select',
         'multiple' => 'checkbox',
-        // 'class' => 'tog-form'
     ));
     echo $this->Form->input('title', array(
         'div' => array(

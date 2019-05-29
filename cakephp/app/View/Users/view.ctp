@@ -1,5 +1,5 @@
 <div class="m-4">
-    <div class="title">
+    <div class="profile">
         <h3 class="mt-2 mb-2"><?php echo ('name:' . $loginuser['User']['username']); ?></h3>
         <div class="btn-form d-flex flex-row-reverse">
         <?php
