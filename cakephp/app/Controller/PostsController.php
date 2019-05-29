@@ -147,8 +147,13 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
+
+        // 初期に選択されているカテゴリー内で選択できるタグを表示
         $this->set('tags', $this->Tag->find('list', array(
             'fields' => 'id, tag',
+            'conditions' => array(
+                'Tag.category_id' => $post['Category']['id']
+            ),
         )));
 
         // viewで表示するimageリスト

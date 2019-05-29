@@ -4,9 +4,15 @@
         'type' => 'file',
         'enctype' => 'multipart/form-data'
     ));
-    echo $this->Form->input('category_id');
+    echo $this->Form->input('category_id', array(
+        'div' => array(
+            'class' => 'form-group'
+        ),
+        'class' => 'form-control',
+        'id' => 'categoryId',
+        'required',
+    ));
     echo $this->Form->input('Tag', array(
-        'type' => 'select',
         'multiple' => 'checkbox',
     ));
     echo $this->Form->input('title', array(
