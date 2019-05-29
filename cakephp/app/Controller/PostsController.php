@@ -122,7 +122,7 @@ class PostsController extends AppController {
         )));
 
         // 初期に選択されているカテゴリー内で選択できるタグを表示
-        $this->set('poststags', $this->Tag->find('list', array(
+        $this->set('tags', $this->Tag->find('list', array(
             'fields' => 'id, tag',
             'conditions' => array(
                 'Tag.category_id' => $post['Category']['id']

@@ -103,14 +103,7 @@
                         'class' => 'form-control',
                         'id' => 'search',
                     )); ?>
-                    <?php echo $this->Form->input('tag_id', array(
-                        'label' => 'タグ',
-                        'multiple' => 'checkbox',
-                        'div' => array(
-                            'id' => 'select-tag',
-                        ),
-                        'id' => 'check'
-                    )); ?>
+                    <div class="input select" id="select-tag"><label for="check">タグ</label></div>
                     <?php echo $this->Form->input('title', array(
                         'label' => 'タイトル',
                         'type' => 'text',
