@@ -96,12 +96,20 @@
                     <?php echo $this->Form->input('category_id', array(
                         'label' => 'カテゴリー',
                         'empty' => true,
-                        'value' => ''
+                        'value' => '',
+                        'div' => array(
+                            'class' => 'form-group'
+                        ),
+                        'class' => 'form-control',
+                        'id' => 'search',
                     )); ?>
                     <?php echo $this->Form->input('tag_id', array(
                         'label' => 'タグ',
-                        'type' => 'select',
-                        'multiple' => 'checkbox'
+                        'multiple' => 'checkbox',
+                        'div' => array(
+                            'id' => 'select-tag',
+                        ),
+                        'id' => 'check'
                     )); ?>
                     <?php echo $this->Form->input('title', array(
                         'label' => 'タイトル',

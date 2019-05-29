@@ -2,6 +2,9 @@
 App::uses('AppController', 'Controller');
 class PostsController extends AppController {
 
+    // 
+    // Element/main.ctp読み込み
+    // 
     public $layout = "main";
 
     public function isAuthorized($user) {
@@ -21,12 +24,12 @@ class PostsController extends AppController {
         return parent::isAuthorized($user);
     }
 
+    // 
+    // Searchプラグイン
+    //
     public $components = array('Search.Prg');
-    public $presetVars = array(
-        'category_id' => array('type' => 'value'),
-        'tag_id' => array('type' => 'value'),
-        'title' => array('type' => 'value'),
-    );
+    public $presetVars = true;
+
     public $helpers = array('Html', 'Form');
 
     // `Postモデル以外のモデルを使いたいんだ〜の呪文
@@ -36,39 +39,12 @@ class PostsController extends AppController {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
-        $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag',
-        )));
         $this->Prg->commonProcess();
 
         $this->paginate = array(
             'limit' => 5,
-            'conditions' => $this->Post->parseCriteria($this->passedArgs),
-            'joins' => array(
-                array(
-                    'table' => 'posts_tags',
-                    'alias' => 'PostsTag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'Post.id = PostsTag.post_id'
-                    )
-                ),
-                array(
-                    'table' => 'tags',
-                    'alias' => 'Tag',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'PostsTag.tag_id = Tag.id'
-                    )
-                ),
-            ),
             'order' => array('Post.created DESC'),
-            // '2'にしないとCategoryが見れなくなる
-            'recursive' => 2,
-            // Postのもつtag分だけ重複するからfieldsでなくす設定
-            'fields' => array(
-                'DISTINCT *',
-            )
+            'conditions' => $this->Post->parseCriteria($this->passedArgs),
         );
 
         $this->set('posts', $this->paginate());
@@ -80,9 +56,6 @@ class PostsController extends AppController {
         }
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
-        )));
-        $this->set('tags', $this->Tag->find('list', array(
-            'fields' => 'id, tag',
         )));
 
         // 一つの投稿記事を取得するので、afindByID()を使用
@@ -149,7 +122,7 @@ class PostsController extends AppController {
         )));
 
         // 初期に選択されているカテゴリー内で選択できるタグを表示
-        $this->set('tags', $this->Tag->find('list', array(
+        $this->set('poststags', $this->Tag->find('list', array(
             'fields' => 'id, tag',
             'conditions' => array(
                 'Tag.category_id' => $post['Category']['id']

@@ -17,6 +17,9 @@
     echo $this->Form->input('Tag', array(
         'type' => 'select',
         'multiple' => 'checkbox',
+        'div' => array(
+            'id' => 'select'
+        ),
     ));
     echo $this->Form->input('title', array(
         'div' => array(

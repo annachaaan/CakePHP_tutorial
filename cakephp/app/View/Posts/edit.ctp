@@ -12,8 +12,12 @@
         'id' => 'categoryId',
         'required',
     ));
-    echo $this->Form->input('Tag', array(
+    echo $this->Form->input('poststag', array(
         'multiple' => 'checkbox',
+        'label' => 'Tag', 
+        'div' => array(
+            'id' => 'select'
+        ),
     ));
     echo $this->Form->input('title', array(
         'div' => array(
