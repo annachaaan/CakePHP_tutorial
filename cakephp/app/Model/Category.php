@@ -20,13 +20,16 @@ class Category extends AppModel {
         'Post' => array(
             'className' => 'Post',
             'foreignKey' => 'category_id',
+            'conditions' => array(
+                'Post.deleted' => 0
+            ),
         ),
         'Tag' => array(
             'className' => 'Tag',
             'foreignKey' => 'category_id',
             'conditions' => array(
                 // 論理削除自体はコントローラでDB入力されるが、deleted=1のデータも呼ばれるのでここで制限
-                'deleted' => 0
+                'Tag.deleted' => 0
             )
         )
     );

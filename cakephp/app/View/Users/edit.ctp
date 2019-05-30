@@ -22,6 +22,7 @@
             'label' => '〒',
             'div' => array(
                 'class' => 'form-group'),
+            'id' => 'zipcode',
             'error' => array(
                 'attributes' => array(
                     'wrap'=>'div',
@@ -32,6 +33,7 @@
             'readonly',
             'div' => array(
                 'class' => 'form-group'),
+            'id' => 'adress',
             'label' => 'Adress(auto)',
             'error' => array(
                 'attributes' => array(

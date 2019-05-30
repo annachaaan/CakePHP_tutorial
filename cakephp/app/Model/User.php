@@ -50,7 +50,10 @@ class User extends AppModel {
         'Post' => array(
             'className' => 'Post',
             'foreignKey' => 'user_id',
-            'dependent' => true
+            'dependent' => true,
+            'conditions' => array(
+                'Post.deleted' => 0
+            ),
         ),
     );
 
