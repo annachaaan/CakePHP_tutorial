@@ -12,7 +12,7 @@ class Post extends AppModel {
             'type' => 'value',
             'field'  => 'Tag.id',
         ),
-        'title' => array('type' => 'like')
+        'title' => array('type' => 'like'),
     );
 
     public $validate = array(
@@ -56,9 +56,6 @@ class Post extends AppModel {
             'associationForeignKey' => 'tag_id',
             'unique' => true,
             'dependent' => true,
-            'conditions' => array(
-                'Tag.deleted' => 0
-            ),
         )
     );
 
