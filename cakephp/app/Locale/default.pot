@@ -17,15 +17,76 @@ msgstr ""
 msgid "You do not have permission"
 msgstr ""
 
-#: Controller/CategoriesController.php:49;57
+#: Controller/CategoriesController.php:36
+msgid "Updated category"
+msgstr ""
+
+#: Controller/CategoriesController.php:41;85
+msgid "Couldn't update category"
+msgstr ""
+
+#: Controller/CategoriesController.php:51;59
 msgid "Invalid category"
 msgstr ""
 
-#: Controller/PostsController.php:55;64;112;117
+#: Controller/CategoriesController.php:80
+msgid "Updated category："
+msgstr ""
+
+#: Controller/CategoriesController.php:128
+msgid "Deleted category"
+msgstr ""
+
+#: Controller/CategoriesController.php:133
+msgid "Couldn't delete category"
+msgstr ""
+
+#: Controller/PostelcodesController.php:63
+msgid "Uploaded CSVfile"
+msgstr ""
+
+#: Controller/PostelcodesController.php:67
+msgid "Invalid CSVfile"
+msgstr ""
+
+#: Controller/PostelcodesController.php:72
+#: View/Postelcodes/index.ctp:26
+msgid "Select CSVfile"
+msgstr ""
+
+#: Controller/PostsController.php:50;54;110;115
 msgid "Invalid post"
 msgstr ""
 
-#: Controller/UsersController.php:76;117;142
+#: Controller/PostsController.php:86;159;173
+msgid "Invalid image"
+msgstr ""
+
+#: Controller/PostsController.php:96
+msgid "Updated post！"
+msgstr ""
+
+#: Controller/PostsController.php:101;195
+msgid "Couldn't update post"
+msgstr ""
+
+#: Controller/PostsController.php:190
+msgid "Updated post："
+msgstr ""
+
+#: Controller/PostsController.php:212
+msgid "：Deleted post"
+msgstr ""
+
+#: Controller/PostsController.php:228
+msgid "Couldn't delete post"
+msgstr ""
+
+#: Controller/UsersController.php:47
+msgid "Hello, "
+msgstr ""
+
+#: Controller/UsersController.php:79;122;149
 msgid "Invalid user"
 msgstr ""
 
@@ -41,202 +102,212 @@ msgstr ""
 msgid "No filename after parsing. Function %s returned an invalid filename"
 msgstr ""
 
-#: View/Groups/add.ctp:4
-msgid "Add Group"
+#: View/Categories/add.ctp:3
+#: View/Categories/index.ctp:2
+msgid "New Category"
 msgstr ""
 
-#: View/Groups/add.ctp:9
-#: View/Groups/edit.ctp:10
-#: View/Widgets/add.ctp:11
-#: View/Widgets/edit.ctp:12
-msgid "Submit"
+#: View/Categories/add.ctp:14
+#: View/Categories/edit.ctp:10
+#: View/Elements/search.ctp:98
+#: View/Posts/add.ctp:14
+#: View/Posts/edit.ctp:13
+msgid "Category"
 msgstr ""
 
-#: View/Groups/add.ctp:12
-#: View/Groups/edit.ctp:13
-#: View/Groups/index.ctp:10;44
-#: View/Groups/view.ctp:27;51
-#: View/Widgets/add.ctp:14
-#: View/Widgets/edit.ctp:15
-#: View/Widgets/index.ctp:10;44
-#: View/Widgets/view.ctp:27
-msgid "Actions"
+#: View/Categories/add.ctp:29
+#: View/Categories/edit.ctp:26
+#: View/Elements/search.ctp:108
+#: View/Posts/add.ctp:24
+#: View/Posts/edit.ctp:18
+msgid "Tag"
 msgstr ""
 
-#: View/Groups/add.ctp:15
-#: View/Groups/edit.ctp:17
-#: View/Groups/view.ctp:31
-msgid "List Groups"
+#: View/Categories/add.ctp:39
+#: View/Categories/edit.ctp:68
+msgid "Add more Tags"
 msgstr ""
 
-#: View/Groups/add.ctp:16
-#: View/Groups/edit.ctp:18
-#: View/Groups/index.ctp:47
-#: View/Groups/view.ctp:33
-msgid "List Users"
+#: View/Categories/add.ctp:41
+msgid "Save Category"
 msgstr ""
 
-#: View/Groups/add.ctp:17
-#: View/Groups/edit.ctp:19
-#: View/Groups/index.ctp:48
-#: View/Groups/view.ctp:34;76
-msgid "New User"
+#: View/Categories/edit.ctp:3
+msgid "Edit Category"
 msgstr ""
 
-#: View/Groups/edit.ctp:4
-#: View/Groups/view.ctp:29
-msgid "Edit Group"
+#: View/Categories/edit.ctp:43
+msgid "Check to delete Tag"
 msgstr ""
 
-#: View/Groups/edit.ctp:16
-#: View/Groups/index.ctp:23
-#: View/Groups/view.ctp:67
-#: View/Widgets/edit.ctp:18
-#: View/Widgets/index.ctp:23
-msgid "Delete"
+#: View/Categories/edit.ctp:51
+msgid "New Tag"
 msgstr ""
 
-#: View/Groups/edit.ctp:16
-#: View/Groups/index.ctp:23
-#: View/Groups/view.ctp:30;67
-#: View/Widgets/edit.ctp:18
-#: View/Widgets/index.ctp:23
-#: View/Widgets/view.ctp:30
-msgid "Are you sure you want to delete # %s?"
-msgstr ""
-
-#: View/Groups/index.ctp:2
-msgid "Groups"
-msgstr ""
-
-#: View/Groups/index.ctp:21
-#: View/Groups/view.ctp:65
-#: View/Widgets/index.ctp:21
-msgid "View"
-msgstr ""
-
-#: View/Groups/index.ctp:22
-#: View/Groups/view.ctp:66
-#: View/Widgets/index.ctp:22
+#: View/Categories/edit.ctp:78
+#: View/Elements/btn.ctp:5
+#: View/Users/edit.ctp:69
 msgid "Edit"
 msgstr ""
 
-#: View/Groups/index.ctp:32
-#: View/Widgets/index.ctp:32
-msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+#: View/Elements/btn.ctp:17
+msgid "Delete"
 msgstr ""
 
-#: View/Groups/index.ctp:37
-#: View/Widgets/index.ctp:37
-msgid "previous"
+#: View/Elements/btn.ctp:25
+msgid "Are you sure?"
 msgstr ""
 
-#: View/Groups/index.ctp:39
-#: View/Widgets/index.ctp:39
-msgid "next"
+#: View/Elements/search.ctp:12
+msgid "MyPage"
 msgstr ""
 
-#: View/Groups/index.ctp:46
-#: View/Groups/view.ctp:32
-msgid "New Group"
+#: View/Elements/search.ctp:23
+msgid "Addpost"
 msgstr ""
 
-#: View/Groups/view.ctp:2
-msgid "Group"
+#: View/Elements/search.ctp:33
+msgid "Logout"
 msgstr ""
 
-#: View/Groups/view.ctp:4;42
-#: View/Widgets/view.ctp:4
-msgid "Id"
+#: View/Elements/search.ctp:45
+msgid "CSVImport"
 msgstr ""
 
-#: View/Groups/view.ctp:9
-#: View/Widgets/view.ctp:9
-msgid "Name"
+#: View/Elements/search.ctp:56
+msgid "Category&Tag Edit"
 msgstr ""
 
-#: View/Groups/view.ctp:14;47
-msgid "Created"
+#: View/Elements/search.ctp:69
+#: View/Users/add.ctp:2
+msgid "Sign up"
 msgstr ""
 
-#: View/Groups/view.ctp:19;48
-msgid "Modified"
+#: View/Elements/search.ctp:79
+msgid "Sign in"
 msgstr ""
 
-#: View/Groups/view.ctp:30
-msgid "Delete Group"
+#: View/Elements/search.ctp:91
+msgid "Search post"
 msgstr ""
 
-#: View/Groups/view.ctp:38
-msgid "Related Users"
+#: View/Elements/search.ctp:111
+#: View/Posts/edit.ctp:27
+msgid "Title"
 msgstr ""
 
-#: View/Groups/view.ctp:43
+#: View/Elements/search.ctp:127
+msgid "Search"
+msgstr ""
+
+#: View/Elements/search.ctp:139
+msgid "Menu"
+msgstr ""
+
+#: View/Postelcodes/index.ctp:20
+msgid "Import CSVfile"
+msgstr ""
+
+#: View/Postelcodes/index.ctp:29
+msgid "Import"
+msgstr ""
+
+#: View/Posts/add.ctp:2
+msgid "Add Post"
+msgstr ""
+
+#: View/Posts/add.ctp:15
+msgid "Select category"
+msgstr ""
+
+#: View/Posts/add.ctp:45
+#: View/Posts/edit.ctp:35
+msgid "Body"
+msgstr ""
+
+#: View/Posts/add.ctp:62
+#: View/Posts/edit.ctp:71
+msgid "Save Post"
+msgstr ""
+
+#: View/Posts/edit.ctp:47
+msgid "Check to delete Image"
+msgstr ""
+
+#: View/Posts/edit.ctp:50
+msgid "delete image"
+msgstr ""
+
+#: View/Posts/view.ctp:23
+msgid "Images"
+msgstr ""
+
+#: View/Users/add.ctp:14
+#: View/Users/edit.ctp:14
 msgid "Username"
 msgstr ""
 
-#: View/Groups/view.ctp:44
+#: View/Users/add.ctp:27
+#: View/Users/login.ctp:17
 msgid "Password"
 msgstr ""
 
-#: View/Groups/view.ctp:45
-msgid "Group Id"
+#: View/Users/add.ctp:40
+#: View/Users/login.ctp:30
+msgid "Email"
 msgstr ""
 
-#: View/Groups/view.ctp:46
-msgid "Role"
+#: View/Users/add.ctp:57
+msgid "〒Zipcode(Use number, only)"
 msgstr ""
 
-#: View/Groups/view.ctp:49
-msgid "Deleted"
+#: View/Users/add.ctp:71
+msgid "Prefectures"
 msgstr ""
 
-#: View/Groups/view.ctp:50
-msgid "Deleted Date"
+#: View/Users/add.ctp:85
+#: View/Users/edit.ctp:57
+msgid "Other"
+msgstr ""
+
+#: View/Users/add.ctp:96
+msgid "Sign Up"
+msgstr ""
+
+#: View/Users/edit.ctp:2
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/edit.ctp:26
+msgid "〒Zipcode"
+msgstr ""
+
+#: View/Users/edit.ctp:44
+msgid "Prefecture"
+msgstr ""
+
+#: View/Users/login.ctp:2;41
+msgid "Sign In"
 msgstr ""
 
 #: View/Users/login.ctp:8
 msgid "Please enter your username and password"
 msgstr ""
 
-#: View/Widgets/add.ctp:4
-msgid "Add Widget"
+#: View/Users/view.ctp:3
+msgid "Username : "
 msgstr ""
 
-#: View/Widgets/add.ctp:17
-#: View/Widgets/edit.ctp:19
-#: View/Widgets/view.ctp:31
-msgid "List Widgets"
+#: View/Users/view.ctp:10
+msgid "Email : "
 msgstr ""
 
-#: View/Widgets/edit.ctp:4
-#: View/Widgets/view.ctp:29
-msgid "Edit Widget"
+#: View/Users/view.ctp:13
+msgid "Adress : 〒"
 msgstr ""
 
-#: View/Widgets/index.ctp:2
-msgid "Widgets"
-msgstr ""
-
-#: View/Widgets/index.ctp:46
-#: View/Widgets/view.ctp:32
-msgid "New Widget"
-msgstr ""
-
-#: View/Widgets/view.ctp:2
-msgid "Widget"
-msgstr ""
-
-#: View/Widgets/view.ctp:14
-msgid "Part No"
-msgstr ""
-
-#: View/Widgets/view.ctp:19
-msgid "Quantity"
-msgstr ""
-
-#: View/Widgets/view.ctp:30
-msgid "Delete Widget"
+#: View/Users/view.ctp:18
+msgid "My Posts"
 msgstr ""
 
 #: Model/Category.php:validation for field category
@@ -247,16 +318,12 @@ msgstr ""
 msgid "Already used this Category."
 msgstr ""
 
-#: Model/Group.php:validation for field name
-msgid "notBlank"
-msgstr ""
-
 #: Model/Post.php:validation for field title
-msgid "↑頼むからタイトル入れて"
+msgid "Title is required"
 msgstr ""
 
 #: Model/Post.php:validation for field body
-msgid "↑投稿する気ある？"
+msgid "Body is required"
 msgstr ""
 
 #: Model/User.php:validation for field username
