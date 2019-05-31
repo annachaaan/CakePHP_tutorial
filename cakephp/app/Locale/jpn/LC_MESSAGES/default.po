@@ -1,0 +1,345 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: 2019-05-31 17:43+0900\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"POT-Creation-Date: \n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Language: ja_JP\n"
+
+#: Controller/AppController.php:67
+msgid "You do not have permission"
+msgstr "権限がありません"
+
+#: Controller/CategoriesController.php:36
+msgid "Updated category"
+msgstr "カテゴリーを更新しました"
+
+#: Controller/CategoriesController.php:41;85
+msgid "Couldn't update category"
+msgstr "更新できませんでした"
+
+#: Controller/CategoriesController.php:51;59
+msgid "Invalid category"
+msgstr "無効なカテゴリーです"
+
+#: Controller/CategoriesController.php:80
+msgid "Updated category："
+msgstr "カテゴリーを更新しました："
+
+#: Controller/CategoriesController.php:128
+msgid "Deleted category"
+msgstr "カテゴリーを削除しました"
+
+#: Controller/CategoriesController.php:133
+msgid "Couldn't delete category"
+msgstr "このカテゴリーは削除できません"
+
+#: Controller/PostelcodesController.php:63
+msgid "Uploaded CSVfile"
+msgstr "CSVファイルをアップロードしました"
+
+#: Controller/PostelcodesController.php:67
+msgid "Invalid CSVfile"
+msgstr "無効なファイルです"
+
+#: Controller/PostelcodesController.php:72 View/Postelcodes/index.ctp:26
+msgid "Select CSVfile"
+msgstr "CSVファイルを選択してください"
+
+#: Controller/PostsController.php:50;54;110;115
+msgid "Invalid post"
+msgstr "この記事は無効です"
+
+#: Controller/PostsController.php:86;159;173
+msgid "Invalid image"
+msgstr "このimageファイルは無効です"
+
+#: Controller/PostsController.php:96
+msgid "Updated post！"
+msgstr "記事を更新しました"
+
+#: Controller/PostsController.php:101;195
+msgid "Couldn't update post"
+msgstr "記事を更新できませんでした"
+
+#: Controller/PostsController.php:190
+msgid "Updated post："
+msgstr "記事を更新しました："
+
+#: Controller/PostsController.php:212
+msgid "：Deleted post"
+msgstr "：記事を削除しました"
+
+#: Controller/PostsController.php:228
+msgid "Couldn't delete post"
+msgstr "記事を削除できませんでした"
+
+#: Controller/UsersController.php:47
+msgid "Hello, "
+msgstr "こんにちは、"
+
+#: Controller/UsersController.php:79;122;149
+msgid "Invalid user"
+msgstr "無効なユーザーです"
+
+#: Plugin/Upload/Console/Command/ThumbnailShell.php:34
+msgid "Which model would you like to regenerate thumbnails for?"
+msgstr ""
+
+#: Plugin/Upload/Console/Command/ThumbnailShell.php:39
+msgid "<error>"
+msgstr ""
+
+#: Plugin/Upload/Model/Behavior/UploadBehavior.php:1091
+msgid "No filename after parsing. Function %s returned an invalid filename"
+msgstr ""
+
+#: View/Categories/add.ctp:3 View/Categories/index.ctp:2
+msgid "New Category"
+msgstr "カテゴリーを追加"
+
+#: View/Categories/add.ctp:14 View/Categories/edit.ctp:10
+#: View/Elements/search.ctp:98 View/Posts/add.ctp:14 View/Posts/edit.ctp:13
+msgid "Category"
+msgstr "カテゴリー"
+
+#: View/Categories/add.ctp:29 View/Categories/edit.ctp:26
+#: View/Elements/search.ctp:108 View/Posts/add.ctp:24 View/Posts/edit.ctp:18
+msgid "Tag"
+msgstr "タグ"
+
+#: View/Categories/add.ctp:39 View/Categories/edit.ctp:68
+msgid "Add more Tags"
+msgstr "さらにタグを追加"
+
+#: View/Categories/add.ctp:41
+msgid "Save Category"
+msgstr "更新"
+
+#: View/Categories/edit.ctp:3
+msgid "Edit Category"
+msgstr "更新"
+
+#: View/Categories/edit.ctp:43
+msgid "Check to delete Tag"
+msgstr "削除するタグをチェック"
+
+#: View/Categories/edit.ctp:51
+msgid "New Tag"
+msgstr "タグを追加"
+
+#: View/Categories/edit.ctp:78 View/Elements/btn.ctp:5 View/Users/edit.ctp:69
+msgid "Edit"
+msgstr "編集"
+
+#: View/Elements/btn.ctp:17
+msgid "Delete"
+msgstr "削除"
+
+#: View/Elements/btn.ctp:25
+msgid "Are you sure?"
+msgstr "削除してもいいですか"
+
+#: View/Elements/search.ctp:12
+msgid "MyPage"
+msgstr "マイページ"
+
+#: View/Elements/search.ctp:23
+msgid "Addpost"
+msgstr "記事を投稿"
+
+#: View/Elements/search.ctp:33
+msgid "Logout"
+msgstr "サインアウト"
+
+#: View/Elements/search.ctp:45
+msgid "CSVImport"
+msgstr "CSVファイルインポート"
+
+#: View/Elements/search.ctp:56
+msgid "Category&Tag Edit"
+msgstr "カテゴリーとタグの編集"
+
+#: View/Elements/search.ctp:69 View/Users/add.ctp:2
+msgid "Sign up"
+msgstr "サインアップ"
+
+#: View/Elements/search.ctp:79
+msgid "Sign in"
+msgstr "サインイン"
+
+#: View/Elements/search.ctp:91
+msgid "Search post"
+msgstr "記事検索"
+
+#: View/Elements/search.ctp:111 View/Posts/edit.ctp:27
+msgid "Title"
+msgstr "タイトル"
+
+#: View/Elements/search.ctp:127
+msgid "Search"
+msgstr "検索"
+
+#: View/Elements/search.ctp:139
+msgid "Menu"
+msgstr "メニュー"
+
+#: View/Postelcodes/index.ctp:20
+msgid "Import CSVfile"
+msgstr "CSVファイルを選択してください"
+
+#: View/Postelcodes/index.ctp:29
+msgid "Import"
+msgstr "インポート"
+
+#: View/Posts/add.ctp:2
+#, fuzzy
+msgid "Add Post"
+msgstr "さらにタグを追加"
+
+#: View/Posts/add.ctp:15
+msgid "Select category"
+msgstr "CSVファイルを選択してください"
+
+#: View/Posts/add.ctp:45 View/Posts/edit.ctp:35
+msgid "Body"
+msgstr "本文"
+
+#: View/Posts/add.ctp:62 View/Posts/edit.ctp:71
+#, fuzzy
+msgid "Save Post"
+msgstr "更新"
+
+#: View/Posts/edit.ctp:47
+#, fuzzy
+msgid "Check to delete Image"
+msgstr "削除するタグをチェック"
+
+#: View/Posts/edit.ctp:50
+#, fuzzy
+msgid "delete image"
+msgstr "削除"
+
+#: View/Posts/view.ctp:23
+msgid "Images"
+msgstr "画像"
+
+#: View/Users/add.ctp:14 View/Users/edit.ctp:14
+msgid "Username"
+msgstr "ユーザーネーム"
+
+#: View/Users/add.ctp:27 View/Users/login.ctp:17
+msgid "Password"
+msgstr "パスワード"
+
+#: View/Users/add.ctp:40 View/Users/login.ctp:30
+msgid "Email"
+msgstr "メールアドレス"
+
+#: View/Users/add.ctp:57
+msgid "〒Zipcode(Use number, only)"
+msgstr "〒郵便番号（半角数字のみ使用可能）"
+
+#: View/Users/add.ctp:71
+msgid "Prefectures"
+msgstr "都道府県"
+
+#: View/Users/add.ctp:85 View/Users/edit.ctp:57
+msgid "Other"
+msgstr "以降"
+
+#: View/Users/add.ctp:96
+#, fuzzy
+msgid "Sign Up"
+msgstr "サインアップ"
+
+#: View/Users/edit.ctp:2
+#, fuzzy
+msgid "Edit User"
+msgstr "編集"
+
+#: View/Users/edit.ctp:26
+msgid "〒Zipcode"
+msgstr "〒郵便番号"
+
+#: View/Users/edit.ctp:44
+msgid "Prefecture"
+msgstr "都道府県"
+
+#: View/Users/login.ctp:2;41
+#, fuzzy
+msgid "Sign In"
+msgstr "サインイン"
+
+#: View/Users/login.ctp:8
+msgid "Please enter your username and password"
+msgstr "ユーザー名とパスワードを入力してください"
+
+#: View/Users/view.ctp:3
+msgid "Username : "
+msgstr "ユーザーネーム："
+
+#: View/Users/view.ctp:10
+msgid "Email : "
+msgstr "メールアドレス；"
+
+#: View/Users/view.ctp:13
+msgid "Adress : 〒"
+msgstr "住所：〒"
+
+#: View/Users/view.ctp:18
+msgid "My Posts"
+msgstr "記事一覧"
+
+#: Model/Category.php:validation for field category
+msgid "A Category is required."
+msgstr "カテゴリーは必須項目です"
+
+#: Model/Category.php:validation for field category
+msgid "Already used this Category."
+msgstr "このカテゴリーはすでに登録されています"
+
+#: Model/Post.php:validation for field title
+msgid "Title is required"
+msgstr "タイトルは必須項目です"
+
+#: Model/Post.php:validation for field body
+msgid "Body is required"
+msgstr "本文は必須項目です"
+
+#: Model/User.php:validation for field username
+msgid "A username is required"
+msgstr "ユーザーネームは必須項目です"
+
+#: Model/User.php:validation for field password
+msgid "A password is required"
+msgstr "パスワードは必須項目です"
+
+#: Model/User.php:validation for field email
+msgid "A email is required"
+msgstr "メールアドレスは必須項目です"
+
+#: Model/User.php:validation for field email
+msgid "Already used this email"
+msgstr "このメールアドレスはすでに使用されています"
+
+#: Model/User.php:validation for field zipcode
+msgid "A postalcode is required"
+msgstr "住所は必須項目です"
+
+#: Model/User.php:validation for field zipcode
+msgid "You can input [0000000]"
+msgstr "半角数字のみ入力可能です"
+
+#: Model/User.php:validation for field adress_auto;validation adress_manual
+msgid "A postal code is required"
+msgstr "住所は必須項目です"
