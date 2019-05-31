@@ -2,7 +2,7 @@
 
 <?php
 echo $this->Html->link(
-    'Edit',
+    __('Edit'),
     array(
         'action' => 'edit',
         $id
@@ -14,7 +14,7 @@ echo $this->Html->link(
 // postLink() を使うと、
 // 投稿記事の削除を行う POST リクエストをするための JavaScript を使うリンクが生成される
 echo $this->Form->postLink(
-    'Delete',
+    __('Delete'),
     array(
         'action' => 'delete',
         $id
@@ -22,5 +22,5 @@ echo $this->Form->postLink(
     array(
         'class' => 'btn btn-sm btn-danger'
     ),
-    'Are you sure?'
+    __('Are you sure?')
 );

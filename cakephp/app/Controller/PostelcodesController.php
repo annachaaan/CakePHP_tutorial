@@ -16,12 +16,12 @@ class PostelcodesController extends AppController
         if ($this->request->is('post')) {
             $this->Postelcode->create();
             $csv = $this->request->data['Postelcodes']['csvfile'];
-                //フォルダ保存先パス
-                $csv_save_path =  WWW_ROOT . 'files/csvs';
-                $encoded_path = WWW_ROOT . 'files/csvs/encoded';
-                $tmp_file = $csv['tmp_name'];
+            //フォルダ保存先パス
+            $csv_save_path =  WWW_ROOT . 'files/csvs';
+            $encoded_path = WWW_ROOT . 'files/csvs/encoded';
+            $tmp_file = $csv['tmp_name'];
 
-                if (file_exists($tmp_file)) {
+            if (file_exists($tmp_file)) {
                 //フォルダの保存処理
                 // ファイル有無のチェック
                 if ($csv['type'] == "text/csv" && mime_content_type($csv['tmp_name']) == "text/plain") {
@@ -60,15 +60,18 @@ class PostelcodesController extends AppController
                     $this->Postelcode->query($delete_sql);
                     $this->Postelcode->query($data_sql);
 
-                    $this->Flash->set('アップロード完了', array(
-                        'element' => 'success'));
+                    $this->Flash->set(__('Uploaded CSVfile'), array(
+                        'element' => 'success'
+                    ));
                 } else {
-                    $this->Flash->set('ファイル形式が違います', array(
-                        'element' => 'error'));
+                    $this->Flash->set(__('Invalid CSVfile'), array(
+                        'element' => 'error'
+                    ));
                 }
             } else {
-                $this->Flash->set('ファイルを選択してください', array(
-                    'element' => 'error'));
+                $this->Flash->set(__('Select CSVfile'), array(
+                    'element' => 'error'
+                ));
             }
         }
     }

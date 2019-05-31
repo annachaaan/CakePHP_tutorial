@@ -44,21 +44,24 @@ class UsersController extends AppController
             );
             if ($this->User->validates(array('fieldList' => array('password', 'email')))) {
                 if ($this->Auth->login()) {
-                    $this->Flash->set('こんにちは, '.$this->Auth->user('username').'さん', array(
-                        'element' => 'success'));
+                    $this->Flash->set(__('Hello, ') . $this->Auth->user('username'), array(
+                        'element' => 'success'
+                    ));
                     $this->redirect($this->Auth->redirectUrl());
                 } else {
                     $this->Flash->set('The user has been faild.', array(
-                        'element' => 'error'));
+                        'element' => 'error'
+                    ));
                 }
-            } 
+            }
         }
     }
 
     public function logout()
     {
         $this->Flash->set('ログアウトされました', array(
-            'element' => 'success'));
+            'element' => 'success'
+        ));
         $this->redirect($this->Auth->logout());
     }
 
@@ -99,12 +102,14 @@ class UsersController extends AppController
                 );
                 unset($this->request->data['User']['password']);
                 $this->Auth->login($this->request->data['User']);
-                $this->Flash->set('こんにちは, '.$this->Auth->user('username').'さん', array(
-                    'element' => 'success'));
+                $this->Flash->set('こんにちは, ' . $this->Auth->user('username') . 'さん', array(
+                    'element' => 'success'
+                ));
                 return $this->redirect('/');
             }
             $this->Flash->set('登録できませんでした', array(
-                'element' => 'error'));
+                'element' => 'error'
+            ));
         }
     }
 
@@ -119,11 +124,13 @@ class UsersController extends AppController
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
                 $this->Flash->set('ユーザー情報が更新されました', array(
-                    'element' => 'success'));
+                    'element' => 'success'
+                ));
                 return $this->redirect('/users/view/' . $this->request->data['User']['id']);
             }
             $this->Flash->set('入力内容を確認してください', array(
-                'element' => 'error'));
+                'element' => 'error'
+            ));
         } else {
             $this->request->data = $this->User->findById($id);
             unset($this->request->data['User']['password']);
@@ -143,10 +150,12 @@ class UsersController extends AppController
         }
         if ($this->User->delete($id)) {
             $this->Flash->set('退会しました', array(
-                'element' => 'success'));
+                'element' => 'success'
+            ));
             return $this->redirect($this->Auth->logout());
         }
         $this->Flash->set('退会できませんでした', array(
-            'element' => 'error'));
+            'element' => 'error'
+        ));
     }
 }

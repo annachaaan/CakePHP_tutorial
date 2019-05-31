@@ -1,5 +1,5 @@
 <div class="mt-4">
-    <h4 class="title">Add Post</h4>
+    <h4 class="title"><?php echo __('Add Post'); ?></h4>
     <?php
     echo $this->Form->create('Post', array(
         'type' => 'file',
@@ -11,7 +11,8 @@
         ),
         'class' => 'form-control',
         'id' => 'categoryId',
-        'empty' => 'カテゴリーを選択してください',
+        'label' => __('Category'),
+        'empty' => __('Select category'),
         'required',
     ));
     echo $this->Form->input('Tag', array(
@@ -20,12 +21,14 @@
         'div' => array(
             'id' => 'select'
         ),
+        'label' => __('Tag')
     ));
     echo $this->Form->input('title', array(
         'div' => array(
             'class' => 'form-group'
         ),
         'class' => 'form-control',
+        'label' => 'Title',
         'error' => array(
             'attributes' => array(
                 'wrap' => 'div',
@@ -39,6 +42,7 @@
             'class' => 'form-group'
         ),
         'class' => 'form-control',
+        'label' => __('Body'),
         'error' => array(
             'attributes' => array(
                 'wrap' => 'div',
@@ -55,7 +59,7 @@
         ));
     } ?>
     <hr>
-    <?php echo $this->Form->submit('Save Post', array(
+    <?php echo $this->Form->submit(__('Save Post'), array(
         'div' => array(
             'class' => 'text-right'
         ),
@@ -63,4 +67,3 @@
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>
-

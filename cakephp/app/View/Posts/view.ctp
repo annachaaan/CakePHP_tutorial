@@ -20,7 +20,7 @@
         <p class="post-body"><?php echo (nl2br(h($post['Post']['body']))); ?></p>
         <hr>
         <?php if ($attachment_list) : ?>
-            <p>Photos</p>
+            <p><?php echo __('Images'); ?></p>
             <div class="d-flex">
                 <?php foreach ($attachment_list as $key => $img) : ?>
                     <p class="p-2">

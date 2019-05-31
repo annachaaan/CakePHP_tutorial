@@ -10,11 +10,12 @@
         ),
         'class' => 'form-control',
         'id' => 'categoryId',
+        'label' => __('Category'),
         'required',
     ));
     echo $this->Form->input('Tag', array(
         'multiple' => 'checkbox',
-        'label' => 'Tag', 
+        'label' => __('Tag'), 
         'div' => array(
             'id' => 'select'
         ),
@@ -23,6 +24,7 @@
         'div' => array(
             'class' => 'form-group'),
         'class' => 'form-control',
+        'label' => __('Title'),
         'required' => false,
     ));
     echo $this->Form->input('body', array(
@@ -30,6 +32,7 @@
         'div' => array(
             'class' => 'form-group'),
         'class' => 'form-control',
+        'label' => __('Body'),
         'required' => false,
         
     )); ?>
@@ -41,10 +44,10 @@
                     DS . 'img' . DS . 'file_name' . DS . $list['Attachment']['dir'] . DS . $list['Attachment']['file_name'],
                         array('width'=>'100','height'=>'80', 'class' => 'img-thumbnail'
                 )); ?>
-                <label>削除しちゃう？→</label>
+                <label><?php echo __('Check to delete Image'); ?></label>
                 <?php
                 echo $this->Form->checkbox('Attachment.' . $list['Attachment']['index_num'] . '.deleted', array(
-                    'label' => '削除',
+                    'label' => __('delete image'),
                     'hiddenField' => false
                 ));
                 echo $this->Form->hidden('Attachment.' . $list['Attachment']['index_num'] . '.id', array(
@@ -65,7 +68,7 @@
     <hr>
     <?php
     echo $this->Form->input('id', array('type' => 'hidden'));
-    echo $this->Form->submit('Save Post', array(
+    echo $this->Form->submit(__('Save Post'), array(
         'div' => array(
             'class' => 'text-right'),
         'class' => 'btn btn-secondary',

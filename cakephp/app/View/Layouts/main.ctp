@@ -10,7 +10,7 @@
     <script type="text/javascript" src="/js/search.js"></script>
     <script type="text/javascript" src="/js/category.js"></script>
     <script type="text/javascript" src="/js/category-search.js"></script>
-    <script type="text/javascript" src="/js/postalcode.js"></script>    
+    <script type="text/javascript" src="/js/postalcode.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.1.0/jquery.sidebar.min.js"></script>
     <link rel="stylesheet" href="/css/lightbox.css">
     <link rel="stylesheet" href="/css/post.css">
@@ -35,9 +35,9 @@
             <p>testtesttesttesttesttest</p>
         </div>
         <div class="main">
-        <hr>
+            <hr>
             <!-- フラッシュメッセージ -->
-            <?php echo $this->Flash->render();?>
+            <?php echo $this->Flash->render(); ?>
             <?php echo $this->fetch('content'); ?>
         </div>
         <footer class="p-3 text-center">
@@ -45,4 +45,5 @@
         </footer>
     </div>
 </body>
+
 </html>

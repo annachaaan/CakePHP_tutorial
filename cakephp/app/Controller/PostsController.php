@@ -1,21 +1,21 @@
 <?php
 App::uses('AppController', 'Controller');
-class PostsController extends AppController {
-
-    // 
-    // Element/main.ctp読み込み
-    // 
+class PostsController extends AppController
+{
     public $layout = "main";
+    public $helpers = array('Html', 'Form');
+    public $uses = ['Post', 'Category', 'Tag', 'Attachment', 'PostsTag'];
 
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
         // 登録済ユーザーは投稿できる
         if ($this->action === 'add') {
-           return true;
+            return true;
         }
 
         // 投稿のオーナーは編集削除ができる
         if (in_array($this->action, array('edit', 'delete'))) {
-            $postId = (int) $this->request->params['pass'][0];
+            $postId = (int)$this->request->params['pass'][0];
             // isOwnedByメソッドはPost.phpに記載
             if ($this->Post->isOwnedBy($postId, $user['id'])) {
                 return true;
@@ -24,18 +24,12 @@ class PostsController extends AppController {
         return parent::isAuthorized($user);
     }
 
-    // 
     // Searchプラグイン
-    //
     public $components = array('Search.Prg');
     public $presetVars = true;
 
-    public $helpers = array('Html', 'Form');
-
-    // `Postモデル以外のモデルを使いたいんだ〜の呪文
-    public $uses = ['Post', 'Category', 'Tag', 'Attachment', 'PostsTag'];
-
-    public function index() {
+    public function index()
+    {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
@@ -50,20 +44,20 @@ class PostsController extends AppController {
         $this->set('posts', $this->paginate());
     }
 
-    public function view($id = null) {
+    public function view($id = null)
+    {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $this->set('categories', $this->Category->find('list', array(
-            'fields' => 'id, category',
-        )));
-
-        // 一つの投稿記事を取得するので、afindByID()を使用
         $post = $this->Post->findById($id);
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
+
         $this->set('post', $post);
+        $this->set('categories', $this->Category->find('list', array(
+            'fields' => 'id, category',
+        )));
         // viewで表示するimageリスト
         $this->set('attachment_list', $this->Attachment->find('all', array(
             'conditions' => array('Post.id' => $id),
@@ -72,16 +66,15 @@ class PostsController extends AppController {
         )));
     }
 
-    public function add() {
+    public function add()
+    {
         $this->set('categories', $this->Category->find('list', array(
             'fields' => 'id, category',
         )));
-        // $this->request->is()はリクエストメソッドを指定する一つの引数を持つ
-        // ポストされたデータの内容をチェックするためのものではない
         if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
-// ここのif文ちょっとおかしいので頭が正常になったら直す
+            // ここのif文ちょっとおかしいので頭が正常になったら直す
             $i = 0;
             foreach ($this->request->data['Attachment'] as $key => $attachment) {
                 if ($attachment['file_name']['error'] == 4) {
@@ -90,7 +83,9 @@ class PostsController extends AppController {
                     $this->request->data['Attachment'][$key]['index_num'] = $i;
                     $i++;
                 } else {
-                    $matekora = "このファイルはアップロードできません。";
+                    $this->Flash->set(__('Invalid image'), array(
+                        'element' => 'error'
+                    ));
                     unset($this->request->data['Attachment'][$key]);
                 }
             }
@@ -98,16 +93,19 @@ class PostsController extends AppController {
             $this->request->data['Attachment'] = array_values($this->request->data['Attachment']);
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->set('記事が投稿されました！', array(
-                    'element' => 'success'));
+                $this->Flash->set(__('Updated post！') . $this->request->data['Post']['title'], array(
+                    'element' => 'success'
+                ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->set('入力欄を確認してください', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't update post"), array(
+                'element' => 'error'
+            ));
         }
     }
 
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }
@@ -158,7 +156,9 @@ class PostsController extends AppController {
                             } elseif ($attachment['file_name']['error'] == 0) {
                                 $this->request->data['Attachment'][$key]['index_num'] = $key;
                             } else {
-                                $matekora = "このファイルはアップロードできません。";
+                                $this->Flash->set(__('Invalid image'), array(
+                                    'element' => 'error'
+                                ));
                                 unset($this->request->data['Attachment'][$key]);
                             }
                         }
@@ -170,7 +170,9 @@ class PostsController extends AppController {
                         } elseif ($attachment['file_name']['error'] == 0) {
                             $this->request->data['Attachment'][$key]['index_num'] = $key;
                         } else {
-                            $matekora = "このファイルはアップロードできません。";
+                            $this->Flash->set(__('Invalid image'), array(
+                                'element' => 'error'
+                            ));
                             unset($this->request->data['Attachment'][$key]);
                         }
                     } else {
@@ -185,12 +187,14 @@ class PostsController extends AppController {
             }
 
             if ($this->Post->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->set($this->request->data['Post']['title'].'：記事が更新されました', array(
-                    'element' => 'success'));
+                $this->Flash->set(__('Updated post：') . $this->request->data['Post']['title'], array(
+                    'element' => 'success'
+                ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->set('更新内容を確認してください', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't update post"), array(
+                'element' => 'error'
+            ));
         }
 
         if (!$this->request->data) {
@@ -198,16 +202,16 @@ class PostsController extends AppController {
         }
     }
 
-    public function delete($id, $cascade = true) {
+    public function delete($id, $cascade = true)
+    {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
 
         if ($this->Post->delete($id, true)) {
-            $this->Flash->set($this->request->data['Post']['title'].'：記事を削除しました', array(
-                'element' => 'success'));
-
-            
+            $this->Flash->set($this->request->data['Post']['title'] . __('：Deleted post'), array(
+                'element' => 'success'
+            ));
 
             // ここクソダサい
             // Attathment削除
@@ -221,8 +225,9 @@ class PostsController extends AppController {
 
             $this->autoRender = false;
         } else {
-            $this->Flash->set('削除できませんでした', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't delete post"), array(
+                'element' => 'error'
+            ));
         }
         return $this->redirect(array('action' => 'index'));
     }

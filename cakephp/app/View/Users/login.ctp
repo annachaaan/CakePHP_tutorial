@@ -1,5 +1,5 @@
 <div class="mt-4">
-    <h4 class="title">Sign In</h4>
+    <h4 class="title"><?php __('Sign In'); ?></h4>
     <?php echo $this->Flash->render('auth'); ?>
     <?php echo $this->Form->create('User', array(
         'novalidate' => true
@@ -14,6 +14,7 @@
                 'class' => 'form-group'
             ),
             'class' => 'form-control',
+            'label' => __('Password'),
             'error' => array(
                 'attributes' => array(
                     'wrap' => 'div',
@@ -26,6 +27,7 @@
                 'class' => 'form-group'
             ),
             'class' => 'form-control',
+            'label' => __('Email'),
             'type' => 'email',
             'error' => array(
                 'attributes' => array(
@@ -36,7 +38,7 @@
         )); ?>
     </fieldset>
     <hr>
-    <?php echo $this->Form->submit('Sign In', array(
+    <?php echo $this->Form->submit(__('Sign In'), array(
         'div' => array(
             'class' => 'text-right'
         ),

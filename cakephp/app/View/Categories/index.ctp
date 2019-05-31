@@ -1,12 +1,12 @@
 <div>
-    <?php echo $this->Html->link('New Category', array('controller' => 'Categories', 'action' => 'add')); ?>
+    <?php echo $this->Html->link(__('New Category'), array('controller' => 'Categories', 'action' => 'add')); ?>
 </div>
 
 <div>
     <ul>
-    <?php foreach ($categories as $key => $category) : ?>
-        <li>
-            <?php 
+        <?php foreach ($categories as $key => $category) : ?>
+            <li>
+                <?php
                 echo $this->Html->link(
                     $category['Category']['category'],
                     array(
@@ -15,16 +15,16 @@
                     )
                 );
                 echo $this->element('btn', ['id' => $category['Category']['id']]);
-            ?>
+                ?>
 
-            <!-- このタグリストをアコーディオンにしたい（クリックしたらタグが見れる） -->
-            <ul>
-            <?php foreach ($category['Tag'] as $key => $tag) : ?>
-                <li><?php echo $tag['tag']; ?></li>
-            <?php endforeach; ?>
-            </ul>
-        </li>
-        <hr>
-    <?php endforeach; ?>
+                <!-- このタグリストをアコーディオンにしたい（クリックしたらタグが見れる） -->
+                <ul>
+                    <?php foreach ($category['Tag'] as $key => $tag) : ?>
+                        <li><?php echo $tag['tag']; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+            <hr>
+        <?php endforeach; ?>
     </ul>
 </div>

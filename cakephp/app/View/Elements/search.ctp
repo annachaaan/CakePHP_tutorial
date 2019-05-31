@@ -9,7 +9,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'MyPage',
+                    __('MyPage'),
                     array(
                         'controller' => 'users',
                         'action' => 'view',
@@ -20,7 +20,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'Addpost',
+                    __('Addpost'),
                     array(
                         'controller' => 'posts',
                         'action' => 'add'
@@ -30,7 +30,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'Logout',
+                    __('Logout'),
                     array(
                         'controller' => 'users',
                         'action' => 'logout'
@@ -42,7 +42,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'CSVImport',
+                    __('CSVImport'),
                     array(
                         'controller' => 'postelcodes',
                         'action' => 'index'
@@ -53,7 +53,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'Category&Tag Edit',
+                    __('Category&Tag Edit'),
                     array(
                         'controller' => 'categories',
                         'action' => 'index'
@@ -66,7 +66,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'Sign up',
+                    __('Sign up'),
                     array(
                         'controller' => 'users',
                         'action' => 'add'
@@ -76,7 +76,7 @@
             <li>
                 <?php
                 echo $this->Html->link(
-                    'Sign in',
+                    __('Sign in'),
                     array(
                         'controller' => 'users',
                         'action' => 'login'
@@ -87,14 +87,15 @@
 
         <!-- 検索欄はPostsControllerのみ -->
         <?php if (false !== strpos($this->name, 'Posts')) : ?>
-            <li id="search-menu">記事検索
+            <li id="search-menu">
+                <?php echo __('Search post'); ?>
                 <ul id="search-item">
                     <?php echo $this->Form->create('Post', array(
                         'url' => '/',
                         'id' => array('id' => 'PostIndex')
                     )); ?>
                     <?php echo $this->Form->input('category_id', array(
-                        'label' => 'カテゴリー',
+                        'label' => __('Category'),
                         'empty' => true,
                         'value' => '',
                         'div' => array(
@@ -103,9 +104,11 @@
                         'class' => 'form-control',
                         'id' => 'search',
                     )); ?>
-                    <div class="input select" id="select-tag"><label for="check">タグ</label></div>
+                    <div class="input select" id="select-tag">
+                        <label for="check"><?php echo __('Tag'); ?></label>
+                    </div>
                     <?php echo $this->Form->input('title', array(
-                        'label' => 'タイトル',
+                        'label' => __('Title'),
                         'type' => 'text',
                         'empty' => true,
                         'div' => array(
@@ -121,6 +124,7 @@
                             'class' => 'text-right'
                         ),
                         'class' => 'btn btn-outline-secondary p-0',
+                        'label' => __('Search'),
                         'name' => 'search'
                     )); ?>
                     <?php echo $this->Form->end(); ?>
@@ -132,5 +136,5 @@
 
 <!-- 開閉用ボタン -->
 <div class="side-menu-btn" id="js__sideMenuBtn">
-    <p>MENU</p>
+    <p><?php echo __('Menu'); ?></p>
 </div>

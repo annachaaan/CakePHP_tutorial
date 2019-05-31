@@ -1,11 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 
-class CategoriesController extends AppController {
-    public function isAuthorized($user) {
+class CategoriesController extends AppController
+{
+    public function isAuthorized($user)
+    {
         // 登録済ユーザーは投稿できる
         if ($this->action === 'add' || $this->action === 'edit' || $this->action === 'delete') {
-           return true;
+            return true;
         }
         return parent::isAuthorized($user);
     }
@@ -14,16 +16,13 @@ class CategoriesController extends AppController {
 
     public $layout = "main";
 
-    public function index() {
-        
+    public function index()
+    {
         $this->set('categories', $this->paginate());
     }
 
-    public function add() {
-        // 新規カテゴリー作成
-        // 対応するタグを選択
-        // 新規タグを作成することも可能
-
+    public function add()
+    {
         if ($this->request->is('post')) {
             $this->Category->create();
 
@@ -34,16 +33,19 @@ class CategoriesController extends AppController {
             }
 
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->set('カテゴリー：'.$this->request->data['Category']['category'], array(
-                    'element' => 'success'));
+                $this->Flash->set(__("Updated category") . $this->request->data['Category']['category'], array(
+                    'element' => 'success'
+                ));
                 return $this->redirect(array('controller' => 'Categories', 'action' => 'index'));
             }
-            $this->Flash->set('入力欄を確認してください', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't update category"), array(
+                'element' => 'error'
+            ));
         }
     }
 
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         // $ifがない場合
         if (!$id) {
             throw new NotFoundException(__('Invalid category'));
@@ -66,22 +68,23 @@ class CategoriesController extends AppController {
                         $tag_id = $category['Tag'][$key];
                         $this->Tag->delete($tag_id);
                         unset($this->request->data['Tag'][$key]);
-                    } 
+                    }
                 } else {
                     if (!($tag['tag'])) {
                         unset($this->request->data['Tag'][$key]);
                     }
                 }
-
             }
 
             if ($this->Category->saveAssociated($this->request->data, array('deep' => true))) {
-                $this->Flash->set($this->request->data['Category']['category'].'：カテゴリー内容が更新されました', array(
-                    'element' => 'success'));
+                $this->Flash->set(__('Updated category：') . $this->request->data['Category']['category'] , array(
+                    'element' => 'success'
+                ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->set('更新内容を確認してください', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't update category"), array(
+                'element' => 'error'
+            ));
         }
 
         // 内容を更新しない
@@ -90,11 +93,8 @@ class CategoriesController extends AppController {
         }
     }
 
-    public function delete($id = null, $cascade = true) {
-        // カテゴリーを削除
-        // タグは削除されない
-        // タグ削除機能はまた別で作る！
-
+    public function delete($id = null, $cascade = true)
+    {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
@@ -111,13 +111,9 @@ class CategoriesController extends AppController {
             $post_ids_sql = "select posts.id from posts 
             where category_id = {$id};";
             $ids = $this->Post->query($post_ids_sql);
-            // debug($ids[0]['posts']['id']);
-            // exit;
 
             foreach ($ids as $key => $id) {
                 $id = $id['posts']['id'];
-                // debug($id);
-                // exit;
 
                 // Attathment削除
                 $attachment_sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
@@ -129,18 +125,21 @@ class CategoriesController extends AppController {
             }
 
             // $this->request->data['Category']['category'] viewににこれが表示されない
-            $this->Flash->set('カテゴリーを削除しました', array(
-                'element' => 'success'));
-                $this->autoRender = false;
+            $this->Flash->set(__("Deleted category"), array(
+                'element' => 'success'
+            ));
+            $this->autoRender = false;
         } else {
-            $this->Flash->set('削除できませんでした', array(
-                'element' => 'error'));
+            $this->Flash->set(__("Couldn't delete category"), array(
+                'element' => 'error'
+            ));
         }
         return $this->redirect(array('action' => 'index'));
     }
 
     // 選択されたカテゴリーから、選択可能範囲のタグを返す
-    public function ajax() {
+    public function ajax()
+    {
         $this->autoRender = false;
 
         // ajax通信のみ許可
@@ -149,7 +148,8 @@ class CategoriesController extends AppController {
                 // 選択したカテゴリー情報を$PostCategoryIdへ
                 $categoryId = $this->request->data['categoryId'];
 
-                $categoryTag = $this->Category->query("
+                $categoryTag = $this->Category->query(
+                    "
                     select tags.id, tags.tag from tags 
                     where category_id = {$categoryId}
                     and deleted = 0;"

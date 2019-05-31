@@ -1,11 +1,13 @@
 <div class="mt-4"">
-    <h4 class=" title">Edit Category</h4>
+    <h4 class=" title">
+    <?php echo __('Edit Category') ?>
+    </h4>
     <?php echo $this->Form->create('Category', array(
         'class' => 'h-adr',
         'novalidate' => true
     )); ?>
     <fieldset>
-        <label>Category</label>
+        <label><?php echo __('Category'); ?></label>
         <?php
         echo $this->Form->input('category', array(
             'div' => array(
@@ -21,7 +23,7 @@
             ),
         )); ?>
 
-        <label>Tag</label>
+        <label><?php echo __('Tag'); ?></label>
         <?php
         foreach ($category['Tag'] as $key => $tag) {
             echo $this->Form->input('Tag.' . $key . '.tag', array(
@@ -38,7 +40,7 @@
                 ),
             ));
             ?>
-            <label>削除する場合はチェック⇨</label>
+            <label><?php echo __('Check to delete Tag'); ?></label>
             <?php
             echo $this->Form->checkbox('Tag.' . $key . '.deleted');
             echo $this->Form->input('Tag.' . $key . '.id', array('type' => 'hidden'));
@@ -46,7 +48,7 @@
         }
         ?>
         <div class="tag-form">
-            <label>newTag</label>
+            <label><?php echo __('New Tag'); ?></label>
             <?php
             echo $this->Form->input('Tag..tag', array(
                 'div' => array(
@@ -63,7 +65,7 @@
             ));
             ?>
         </div>
-        <input type="button" value="Add more Tags" id="tag-btn">
+        <input type="button" value="<?php echo __('Add more Tags'); ?>" id="tag-btn">
     </fieldset>
     <hr>
     <?php
@@ -73,6 +75,7 @@
             'class' => 'text-right'
         ),
         'class' => 'btn btn-info mb-0',
+        'label' => __('Edit'),
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>
