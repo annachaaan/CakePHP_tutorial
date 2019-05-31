@@ -14,7 +14,7 @@
                         $category['Category']['id']
                     )
                 );
-                // echo $this->element('btn', ['id' => $category['Category']['id']]);
+                echo $this->element('btn', ['id' => $category['Category']['id']]);
             ?>
 
             <!-- このタグリストをアコーディオンにしたい（クリックしたらタグが見れる） -->

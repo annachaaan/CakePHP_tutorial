@@ -33,7 +33,7 @@ class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
 
     // `Postモデル以外のモデルを使いたいんだ〜の呪文
-    public $uses = ['Post', 'Category', 'Tag', 'Attachment'];
+    public $uses = ['Post', 'Category', 'Tag', 'Attachment', 'PostsTag'];
 
     public function index() {
         $this->set('categories', $this->Category->find('list', array(
@@ -207,9 +207,18 @@ class PostsController extends AppController {
             $this->Flash->set($this->request->data['Post']['title'].'：記事を削除しました', array(
                 'element' => 'success'));
 
-            // ここクソダサいのでなんとかしたい
+            
+
+            // ここクソダサい
+            // Attathment削除
             $attachment_sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
-            $this->Tag->query($attachment_sql);
+            $this->Attachment->query($attachment_sql);
+
+            // Posts_tag削除
+            $posts_tag_sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+            $this->PostsTag->query($posts_tag_sql);
+
+
             $this->autoRender = false;
         } else {
             $this->Flash->set('削除できませんでした', array(

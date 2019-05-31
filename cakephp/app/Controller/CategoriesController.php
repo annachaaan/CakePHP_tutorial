@@ -1,17 +1,16 @@
 <?php
 App::uses('AppController', 'Controller');
+
 class CategoriesController extends AppController {
     public function isAuthorized($user) {
         // 登録済ユーザーは投稿できる
-        if ($this->action === 'add' || $this->action === 'edit'
-        //  || $this->action === 'delete'
-         ) {
+        if ($this->action === 'add' || $this->action === 'edit' || $this->action === 'delete') {
            return true;
         }
         return parent::isAuthorized($user);
     }
 
-    public $uses = ['Category', 'Tag'];
+    public $uses = ['Category', 'Tag', 'Post', 'Attachment', 'PostsTag'];
 
     public $layout = "main";
 
@@ -91,7 +90,7 @@ class CategoriesController extends AppController {
         }
     }
 
-    public function delete($id = null) {
+    public function delete($id = null, $cascade = true) {
         // カテゴリーを削除
         // タグは削除されない
         // タグ削除機能はまた別で作る！
@@ -101,8 +100,36 @@ class CategoriesController extends AppController {
         }
 
         if ($this->Category->delete($id, true)) {
+
+            // Tag
+            $tag_sql = 'UPDATE tags SET deleted = 1, deleted_date = NOW() WHERE category_id = ' . $id;
+            $this->Tag->query($tag_sql);
+            // Post
+            $posts_sql = 'UPDATE posts SET deleted = 1, deleted_date = NOW() WHERE category_id = ' . $id;
+            $this->Post->query($posts_sql);
+
+            $post_ids_sql = "select posts.id from posts 
+            where category_id = {$id};";
+            $ids = $this->Post->query($post_ids_sql);
+            // debug($ids[0]['posts']['id']);
+            // exit;
+
+            foreach ($ids as $key => $id) {
+                $id = $id['posts']['id'];
+                // debug($id);
+                // exit;
+
+                // Attathment削除
+                $attachment_sql = 'UPDATE attachments SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+                $this->Attachment->query($attachment_sql);
+
+                // Posts_tag削除
+                $posts_tag_sql = 'UPDATE posts_tags SET deleted = 1, deleted_date = NOW() WHERE post_id = ' . $id;
+                $this->PostsTag->query($posts_tag_sql);
+            }
+
             // $this->request->data['Category']['category'] viewににこれが表示されない
-            $this->Flash->set($this->request->data['Category']['category'].'：カテゴリーを削除しました', array(
+            $this->Flash->set('カテゴリーを削除しました', array(
                 'element' => 'success'));
                 $this->autoRender = false;
         } else {

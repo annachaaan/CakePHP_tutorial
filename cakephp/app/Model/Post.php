@@ -54,6 +54,7 @@ class Post extends AppModel {
             'joinTable' => 'posts_tags',
             'foreignKey' => 'post_id',
             'associationForeignKey' => 'tag_id',
+            'with' => 'PostsTag',
             'unique' => true,
             'dependent' => true,
         )
