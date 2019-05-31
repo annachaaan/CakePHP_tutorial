@@ -1,8 +1,7 @@
 <?php
 class PostsTag extends AppModel {
     public $actsAs = array(
-        'SoftDelete',
-        'Search.Searchable'
+        'SoftDelete'
     );
 
     public $belongsTo = array(
