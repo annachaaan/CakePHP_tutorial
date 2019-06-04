@@ -208,7 +208,7 @@ msgstr "さらにタグを追加"
 
 #: View/Posts/add.ctp:15
 msgid "Select category"
-msgstr "CSVファイルを選択してください"
+msgstr "カテゴリーを選択してください"
 
 #: View/Posts/add.ctp:45 View/Posts/edit.ctp:35
 msgid "Body"
