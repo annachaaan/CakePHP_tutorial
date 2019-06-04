@@ -60,10 +60,7 @@ class Post extends AppModel {
         )
     );
 
-    public function isOwnedBy($post, $user, $role) {
-        if ($role == 'admin') {
-            return true;
-        }
+    public function isOwnedBy($post, $user) {
         return $this->field('id', array('id' => $post, 'user_id' => $user)) !== false;
     }
 }

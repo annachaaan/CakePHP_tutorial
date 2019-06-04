@@ -20,7 +20,7 @@ class UsersController extends AppController
         if ($id == $user['id']) {
             return true;
         }
-        return false;
+        return parent::isAuthorized($user);
     }
 
     public function login()
@@ -78,8 +78,8 @@ class UsersController extends AppController
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        $this->set('loginuser', $this->User->findById($id));
-        $this->set('auth', $this->Auth->user('id'));
+        $this->set('pageuser', $this->User->findById($id));
+        $this->set('auth', $this->Auth->user());
     }
 
     public function add()

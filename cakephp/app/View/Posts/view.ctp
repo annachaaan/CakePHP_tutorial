@@ -6,7 +6,7 @@
         <h3 class="post-title"><?php echo ($post['Post']['title']); ?></h3>
         <div class="btn-form d-flex flex-row-reverse">
             <?php
-            if ($user['id'] == $post['Post']['user_id']) {
+            if ($user['id'] == $post['Post']['user_id'] || $user['role'] == 'admin') {
                 echo $this->element('btn', ['id' => $post['Post']['id']]);
             } ?>
         </div>

@@ -17,7 +17,7 @@ class PostsController extends AppController
         if (in_array($this->action, array('edit', 'delete'))) {
             $postId = (int)$this->request->params['pass'][0];
             // isOwnedByメソッドはPost.phpに記載
-            if ($this->Post->isOwnedBy($postId, $user['id'], $user['role'])) {
+            if ($this->Post->isOwnedBy($postId, $user['id'])) {
                 return true;
             }
         }
