@@ -192,6 +192,7 @@ msgid "Search post"
 msgstr ""
 
 #: View/Elements/search.ctp:111
+#: View/Posts/add.ctp:31
 #: View/Posts/edit.ctp:27
 msgid "Title"
 msgstr ""

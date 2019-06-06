@@ -70,12 +70,11 @@
     <hr>
     <?php
     echo $this->Form->input('id', array('type' => 'hidden'));
-    echo $this->Form->submit('Edit', array(
+    echo $this->Form->submit(__('Edit'), array(
         'div' => array(
             'class' => 'text-right'
         ),
         'class' => 'btn btn-info mb-0',
-        'label' => __('Edit'),
     )); ?>
     <?php echo $this->Form->end(); ?>
 </div>

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"PO-Revision-Date: 2019-05-31 17:43+0900\n"
+"PO-Revision-Date: 2019-06-06 10:33+0900\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: View/Categories/add.ctp:3 View/Categories/index.ctp:2
 msgid "New Category"
-msgstr "カテゴリーを追加"
+msgstr "カテゴリー追加"
 
 #: View/Categories/add.ctp:14 View/Categories/edit.ctp:10
 #: View/Elements/search.ctp:98 View/Posts/add.ctp:14 View/Posts/edit.ctp:13
@@ -123,11 +123,11 @@ msgstr "さらにタグを追加"
 
 #: View/Categories/add.ctp:41
 msgid "Save Category"
-msgstr "更新"
+msgstr "保存"
 
 #: View/Categories/edit.ctp:3
 msgid "Edit Category"
-msgstr "更新"
+msgstr "カテゴリー更新"
 
 #: View/Categories/edit.ctp:43
 msgid "Check to delete Tag"
@@ -167,7 +167,7 @@ msgstr "CSVファイルインポート"
 
 #: View/Elements/search.ctp:56
 msgid "Category&Tag Edit"
-msgstr "カテゴリーとタグの編集"
+msgstr "カテゴリー, タグの編集"
 
 #: View/Elements/search.ctp:69 View/Users/add.ctp:2
 msgid "Sign up"
@@ -181,7 +181,7 @@ msgstr "サインイン"
 msgid "Search post"
 msgstr "記事検索"
 
-#: View/Elements/search.ctp:111 View/Posts/edit.ctp:27
+#: View/Elements/search.ctp:111 View/Posts/add.ctp:31 View/Posts/edit.ctp:27
 msgid "Title"
 msgstr "タイトル"
 
@@ -202,9 +202,8 @@ msgid "Import"
 msgstr "インポート"
 
 #: View/Posts/add.ctp:2
-#, fuzzy
 msgid "Add Post"
-msgstr "さらにタグを追加"
+msgstr "記事を投稿する"
 
 #: View/Posts/add.ctp:15
 msgid "Select category"
@@ -215,14 +214,12 @@ msgid "Body"
 msgstr "本文"
 
 #: View/Posts/add.ctp:62 View/Posts/edit.ctp:71
-#, fuzzy
 msgid "Save Post"
-msgstr "更新"
+msgstr "保存"
 
 #: View/Posts/edit.ctp:47
-#, fuzzy
 msgid "Check to delete Image"
-msgstr "削除するタグをチェック"
+msgstr "削除する画像をチェック"
 
 #: View/Posts/edit.ctp:50
 #, fuzzy
@@ -263,9 +260,8 @@ msgid "Sign Up"
 msgstr "サインアップ"
 
 #: View/Users/edit.ctp:2
-#, fuzzy
 msgid "Edit User"
-msgstr "編集"
+msgstr "ユーザー登録内容変更"
 
 #: View/Users/edit.ctp:26
 msgid "〒Zipcode"

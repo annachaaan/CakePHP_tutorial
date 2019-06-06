@@ -28,7 +28,7 @@
             'class' => 'form-group'
         ),
         'class' => 'form-control',
-        'label' => 'Title',
+        'label' => __('Title'),
         'error' => array(
             'attributes' => array(
                 'wrap' => 'div',
