@@ -5,10 +5,10 @@ class CategoriesController extends AppController
 {
     public function isAuthorized($user)
     {
-        // 登録済ユーザーは投稿できる
-        if ($this->action === 'add' || $this->action === 'edit' || $this->action === 'delete') {
-            return true;
-        }
+        // // 登録済ユーザーは投稿できる
+        // if ($this->action === 'add' || $this->action === 'edit' || $this->action === 'delete') {
+        //     return true;
+        // }
         return parent::isAuthorized($user);
     }
 

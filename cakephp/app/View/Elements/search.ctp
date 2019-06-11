@@ -39,6 +39,7 @@
             </li>
 
             <!-- 管理者 -->
+            <?php if ($user['role'] == 'admin') : ?>
             <li>
                 <?php
                 echo $this->Html->link(
@@ -60,6 +61,7 @@
                     )
                 ); ?>
             </li>
+            <?php endif; ?>
 
         <?php else : ?>
             <!-- ゲスト -->

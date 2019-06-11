@@ -5,6 +5,11 @@ class PostelcodesController extends AppController
 
     public $layout = "main";
 
+    public function isAuthorized($user)
+    {
+        return parent::isAuthorized($user);
+    }
+
     /**
      * 郵便番号CSVをインポート、postelcodesテーブルを書き換える
      * インポートCSV保存先
