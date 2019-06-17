@@ -207,6 +207,7 @@ class UsersController extends AppController
                         $this->Flash->set(__('Hello, ') . $this->Auth->user('username'), array(
                             'element' => 'success'
                         ));
+                        // 管理者用TOPページへ移動する
                         $this->redirect(array('controller' => 'categories', 'action' => 'index', 'admin' => true));
                     } else {
                         $this->Flash->set('The user has been faild.', array(

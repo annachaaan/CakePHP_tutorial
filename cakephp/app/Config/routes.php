@@ -30,7 +30,7 @@
  * デフォルトのルーティング設定↓
  * Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 **/
-  Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
+  Router::connect('/', array('controller' => 'posts', 'action' => 'index', 'admin' => false));
 
 
   Router::connect('/admin',array('controller'=>'users','action'=>'index','admin'=>true));
