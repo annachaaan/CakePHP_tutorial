@@ -191,11 +191,8 @@ class UsersController extends AppController
                 ),
             );
             if ($this->User->validates(array('fieldList' => array('password', 'email')))) {
-                // debug($this->Auth->login());
-                // debug($this->User->find('all', 
-                //     array('conditions' => array('User.email' => $this->request->data['User']['email']),
-                //     'fields' => 'User.role')));
-                // exit;
+
+                // ログインしたユーザーをemailから見つける
                 $user = $this->User->find(
                     'all',
                     array(
@@ -203,8 +200,8 @@ class UsersController extends AppController
                         'fields' => 'User.role'
                     )
                 );
-                // debug($user[0]['User']['role']);
-                // exit;
+
+                // ログインしたユーザーがadminの時
                 if ($user[0]['User']['role'] == 'admin') {
                     if ($this->Auth->login()) {
                         $this->Flash->set(__('Hello, ') . $this->Auth->user('username'), array(

@@ -73,7 +73,6 @@ class AppController extends Controller {
         $user = $this->set('user', $this->Auth->user());
         if(isset($this->request->params['admin']) || $user['role'] == 'admin'){
             $this->layout = "admin_main";
-        //    $this->Auth->loginAction = array('controller' => 'users','action' => 'login', 'admin'=>true);
            $this->Auth->loginRedirect = array('controller' => 'categories', 'action' => 'index', 'admin'=>true);
            $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login', 'admin'=>false);
         }
