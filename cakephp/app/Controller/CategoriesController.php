@@ -16,12 +16,12 @@ class CategoriesController extends AppController
 
     public $layout = "main";
 
-    public function index()
+    public function admin_index()
     {
         $this->set('categories', $this->paginate());
     }
 
-    public function add()
+    public function admin_add()
     {
         if ($this->request->is('post')) {
             $this->Category->create();
@@ -44,7 +44,7 @@ class CategoriesController extends AppController
         }
     }
 
-    public function edit($id = null)
+    public function admin_edit($id = null)
     {
         // $ifがない場合
         if (!$id) {
@@ -93,7 +93,7 @@ class CategoriesController extends AppController
         }
     }
 
-    public function delete($id = null, $cascade = true)
+    public function admin_delete($id = null, $cascade = true)
     {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();

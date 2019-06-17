@@ -6,6 +6,7 @@
     <ul>
         <!-- ログイン -->
         <?php if (isset($user)) : ?>
+            <?php if ($user['role'] === 'author') : ?>
             <li>
                 <?php
                 echo $this->Html->link(
@@ -27,6 +28,7 @@
                     )
                 ); ?>
             </li>
+            <?php endif; ?>
             <li>
                 <?php
                 echo $this->Html->link(
@@ -46,7 +48,8 @@
                     __('CSVImport'),
                     array(
                         'controller' => 'postelcodes',
-                        'action' => 'index'
+                        'action' => 'index',
+                        'admin' => true
                     )
                 ); ?>
             </li>
@@ -57,7 +60,8 @@
                     __('Category&Tag Edit'),
                     array(
                         'controller' => 'categories',
-                        'action' => 'index'
+                        'action' => 'index',
+                        'admin' => true
                     )
                 ); ?>
             </li>
@@ -71,7 +75,8 @@
                     __('Sign up'),
                     array(
                         'controller' => 'users',
-                        'action' => 'add'
+                        'action' => 'add',
+                        'admin' => false
                     )
                 ); ?>
             </li>

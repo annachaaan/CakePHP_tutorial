@@ -15,10 +15,12 @@ class UsersController extends AppController
 
     public function isAuthorized($user)
     {
-        // Check that the $user is equal to the current user.
-        $id = $this->request->params['pass'][0];
-        if ($id == $user['id']) {
-            return true;
+        if ($user['role'] === 'author') {
+            // Check that the $user is equal to the current user.
+            $id = $this->request->params['pass'][0];
+            if ($id == $user['id']) {
+                return true;
+            }
         }
         return parent::isAuthorized($user);
     }
@@ -157,5 +159,73 @@ class UsersController extends AppController
         $this->Flash->set('退会できませんでした', array(
             'element' => 'error'
         ));
+    }
+
+    /**
+     * ここからadminユーザー用メソッド
+     * loginリダイレクト先->categories/index admin=>true
+     * logoutリダイレクト先->posts/index admin=>false
+     */
+
+    public function admin_index()
+    { }
+
+    public function admin_login()
+    {
+        $this->render('login');
+        // ログインしているユーザーは前のページに飛ばされる
+        $user = $this->Auth->user();
+        if (isset($user) && $user['role'] == 'admin') {
+            return $this->redirect($this->referer(null, true));
+        }
+
+        if ($this->request->is('post')) {
+
+            // バリデーションをコントローラから呼び出し
+            // rule2はユニークなemailからnotBlankに変更
+            $this->User->set($this->request->data);
+            $this->User->validate['email'] = array(
+                'rule2' => array(
+                    'rule' => 'notBlank',
+                    'message' => 'A email is required'
+                ),
+            );
+            if ($this->User->validates(array('fieldList' => array('password', 'email')))) {
+                // debug($this->Auth->login());
+                // debug($this->User->find('all', 
+                //     array('conditions' => array('User.email' => $this->request->data['User']['email']),
+                //     'fields' => 'User.role')));
+                // exit;
+                $user = $this->User->find(
+                    'all',
+                    array(
+                        'conditions' => array('User.email' => $this->request->data['User']['email']),
+                        'fields' => 'User.role'
+                    )
+                );
+                // debug($user[0]['User']['role']);
+                // exit;
+                if ($user[0]['User']['role'] == 'admin') {
+                    if ($this->Auth->login()) {
+                        $this->Flash->set(__('Hello, ') . $this->Auth->user('username'), array(
+                            'element' => 'success'
+                        ));
+                        $this->redirect(array('controller' => 'categories', 'action' => 'index', 'admin' => true));
+                    } else {
+                        $this->Flash->set('The user has been faild.', array(
+                            'element' => 'error'
+                        ));
+                    }
+                } else {
+                    $this->Flash->set('The user is not admin.', array(
+                        'element' => 'error'
+                    ));
+                }
+            }
+        }
+    }
+    public function admin_logout()
+    {
+        $this->logout();
     }
 }

@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 class PostelcodesController extends AppController
 {
 
-    public $layout = "main";
+    public $layout = "admin_main";
 
     public function isAuthorized($user)
     {
@@ -16,7 +16,7 @@ class PostelcodesController extends AppController
      * 文字コード書き換え前CSV -> webroot/files/csvs
      * 文字コード書き換え後CSV -> webroot/files/csvs/encoded
      */
-    public function index()
+    public function admin_index()
     {
         if ($this->request->is('post')) {
             $this->Postelcode->create();

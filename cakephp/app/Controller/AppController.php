@@ -70,7 +70,13 @@ class AppController extends Controller {
 
     // beforeFilter()で、全てのコントローラにこいつが適用される
     public function beforeFilter() {
-        $this->set('user', $this->Auth->user());
+        $user = $this->set('user', $this->Auth->user());
+        if(isset($this->request->params['admin']) || $user['role'] == 'admin'){
+            $this->layout = "admin_main";
+        //    $this->Auth->loginAction = array('controller' => 'users','action' => 'login', 'admin'=>true);
+           $this->Auth->loginRedirect = array('controller' => 'categories', 'action' => 'index', 'admin'=>true);
+           $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login', 'admin'=>false);
+        }
         // indexとviewアクションのときはログインを必要としない
         $this->Auth->allow('index', 'view', 'search_ajax', 'ajax');
     }

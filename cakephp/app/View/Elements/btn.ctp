@@ -17,7 +17,8 @@ echo $this->Form->postLink(
     __('Delete'),
     array(
         'action' => 'delete',
-        $id
+        $id,
+        'admin' => $boolean
     ),
     array(
         'class' => 'btn btn-sm btn-danger'

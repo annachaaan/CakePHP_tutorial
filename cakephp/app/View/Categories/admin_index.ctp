@@ -11,10 +11,14 @@
                     $category['Category']['category'],
                     array(
                         'action' => 'edit',
-                        $category['Category']['id']
+                        $category['Category']['id'],
+                        'admin' => true
                     )
                 );
-                echo $this->element('btn', ['id' => $category['Category']['id']]);
+                echo $this->element('btn', array(
+                    'id' => $category['Category']['id'],
+                    'boolean' => true
+                ));
                 ?>
 
                 <!-- このタグリストをアコーディオンにしたい（クリックしたらタグが見れる） -->
